@@ -19,24 +19,19 @@ import edu.wpi.first.wpilibj.SimpleRobot;
  */
 public class Main extends SimpleRobot 
 {
-    /**
-     * This function is called once each time the robot enters autonomous mode.
-     */
+    public void robotInit()
+    {
+    }
+    
     public void autonomous() 
     {
     }
-
-    /**
-     * This function is called once each time the robot enters operator control.
-     */
+    
     public void operatorControl()
     {
     }
     
-    /**
-     * This function is called once each time the robot enters test mode.
-     */
-    public void test() 
+    public void disabled() 
     {
     }
 }

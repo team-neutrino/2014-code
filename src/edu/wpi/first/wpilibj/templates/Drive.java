@@ -41,6 +41,21 @@ public class Drive
     
     public void traction(boolean isDown)
     {
-        
+        DriveFrontIn.set(!isDown);
+        DriveFrontOut.set(isDown);
+        DriveBackIn.set(!isDown);
+        DriveBackOut.set(isDown);
+    }
+    
+    public void goLeft(double speed)
+    {
+        DriveFL.set(-Math.abs(speed)*speed);
+        DriveBL.set(-Math.abs(speed)*speed);
+    }
+    
+    public void goRight(double speed)
+    {
+        DriveFR.set(Math.abs(speed)*speed);
+        DriveBR.set(Math.abs(speed)*speed);
     }
 }
