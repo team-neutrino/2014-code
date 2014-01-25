@@ -7,7 +7,6 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
 
@@ -26,8 +25,8 @@ public class Main extends SimpleRobot
     
     public void robotInit()
     {
-        JoystickRight = new Joystick(MainConstant.RIGHT_JOY_PORT);
-        JoystickLeft = new Joystick(MainConstant.LEFT_JOY_PORT);
+        JoystickRight = new Joystick(MainConstants.RIGHT_JOY_PORT);
+        JoystickLeft = new Joystick(MainConstants.LEFT_JOY_PORT);
         Drive = new Drive();
     }
     
@@ -38,18 +37,14 @@ public class Main extends SimpleRobot
     public void operatorControl()
     {
         while(true)
-        { 
-            //System.out.println(JoystickRight.getAxis(Joystick.AxisType.kY));
+        {
             //drive
-            Drive.goLeft(-JoystickLeft.getAxis(Joystick.AxisType.kY));
-            Drive.goRight(-JoystickRight.getAxis(Joystick.AxisType.kY));
+            Drive.goLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+            Drive.goRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
             
-            //System.out.println(JoystickRight.getButton(Joystick.ButtonType.kTrigger));
             //traction
-            Drive.traction(JoystickRight.getButton(Joystick.ButtonType.kTrigger));
-            Drive.traction(JoystickLeft.getButton(Joystick.ButtonType.kTrigger));
+            Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
         }
-        
     }
     
     public void disabled() 
