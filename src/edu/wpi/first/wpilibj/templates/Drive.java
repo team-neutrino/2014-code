@@ -15,15 +15,15 @@ import edu.wpi.first.wpilibj.Victor;
  */
 public class Drive 
 {
-    Victor DriveFL;
-    Victor DriveFR;
-    Victor DriveBL;
-    Victor DriveBR;
+    private Victor DriveFL;
+    private Victor DriveFR;
+    private Victor DriveBL;
+    private Victor DriveBR;
     
-    Solenoid DriveFrontIn;
-    Solenoid DriveFrontOut;
-    Solenoid DriveBackIn;
-    Solenoid DriveBackOut;
+    private Solenoid DriveFrontIn;
+    private Solenoid DriveFrontOut;
+    private Solenoid DriveBackIn;
+    private Solenoid DriveBackOut;
     
     public Drive()
     {
@@ -37,6 +37,7 @@ public class Drive
         DriveBackIn  = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_BACK_IN_CHANNEL);
         DriveBackOut = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_BACK_OUT_CHANNEL);
         
+        traction(false);
     }
     
     public void traction(boolean isDown)
