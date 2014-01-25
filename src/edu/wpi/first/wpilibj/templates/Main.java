@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
 
 /**
@@ -19,8 +20,15 @@ import edu.wpi.first.wpilibj.SimpleRobot;
  */
 public class Main extends SimpleRobot 
 {
+    Joystick JoystickRight;
+    Joystick JoystickLeft;
+    Drive Drive;
+    
     public void robotInit()
     {
+        JoystickRight = new Joystick(MainConstant.RIGHT_JOY_PORT);
+        JoystickLeft = new Joystick(MainConstant.LEFT_JOY_PORT);
+        Drive = new Drive();
     }
     
     public void autonomous() 
@@ -29,6 +37,19 @@ public class Main extends SimpleRobot
     
     public void operatorControl()
     {
+        while(true)
+        { 
+            //System.out.println(JoystickRight.getAxis(Joystick.AxisType.kY));
+            //drive
+            Drive.goLeft(-JoystickLeft.getAxis(Joystick.AxisType.kY));
+            Drive.goRight(-JoystickRight.getAxis(Joystick.AxisType.kY));
+            
+            //System.out.println(JoystickRight.getButton(Joystick.ButtonType.kTrigger));
+            //traction
+            Drive.traction(JoystickRight.getButton(Joystick.ButtonType.kTrigger));
+            Drive.traction(JoystickLeft.getButton(Joystick.ButtonType.kTrigger));
+        }
+        
     }
     
     public void disabled() 
