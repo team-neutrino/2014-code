@@ -27,7 +27,15 @@ public class Camera
     {
         int tapes;
         while(!RobotCamera.freshImage())
-            ;
+        {
+            try
+            {
+                Thread.sleep(1);
+            } catch (InterruptedException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
         try 
         {
             ColorImage image = RobotCamera.getImage();
