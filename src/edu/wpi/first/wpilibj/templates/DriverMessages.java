@@ -1,0 +1,76 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package edu.wpi.first.wpilibj.templates;
+
+import edu.wpi.first.wpilibj.DriverStationLCD;
+
+/**
+ *
+ * @author Team Neutrino
+ */
+public class DriverMessages
+{
+    private int AutoMode;
+    private DriverStationLCD DriverStation;
+    public DriverMessages(int autoMode)
+    {
+        DriverStation = DriverStationLCD.getInstance();
+        AutoMode = autoMode;
+        updateLCD();
+    }
+    
+    public void updateAutoMode(int autoMode)
+    {
+        AutoMode = autoMode;
+        updateLCD();
+    }
+    
+    private void updateLCD()
+    {
+        //autonomous display
+        String autoDescription;
+        switch(AutoMode)
+        {
+            case 1:
+                autoDescription = "Auto 1 Description";
+                break;
+            case 2:
+                autoDescription = "Auto 2 Description";
+                break;
+            case 3:
+                autoDescription = "Auto 3 Description";
+                break;
+            case 4:
+                autoDescription = "Auto 4 Description";
+                break;
+            case 5:
+                autoDescription = "Auto 5 Description";
+                break;
+            case 6:
+                autoDescription = "Auto 6 Description";
+                break;
+            case 7:
+                autoDescription = "Auto 7 Description";
+                break;
+            case 8:
+                autoDescription = "Auto 8 Description";
+                break;
+            case 9:
+                autoDescription = "Auto 9 Description";
+                break;
+            case 10:
+                autoDescription = "Auto 10 Description";
+                break;
+            default:
+                autoDescription = "Auto Error, Check the code";
+                break;
+        }
+        DriverStation.println(DriverStationLCD.Line.kUser1, 1, "Auto " + AutoMode + "                     ");
+        DriverStation.println(DriverStationLCD.Line.kUser2, 1, autoDescription+ "                     ");
+        DriverStation.updateLCD();
+    }
+}

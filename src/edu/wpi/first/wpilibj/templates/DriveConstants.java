@@ -8,7 +8,7 @@ package edu.wpi.first.wpilibj.templates;
 
 /**
  *
- * @author Tony Milosch
+ * @author Team Neutrino
  */
 public class DriveConstants 
 {

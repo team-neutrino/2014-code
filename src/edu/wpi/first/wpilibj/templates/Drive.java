@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Victor;
 
 /**
  *
- * @author Tony Milosch
+ * @author Team Neutrino
  */
 public class Drive 
 {

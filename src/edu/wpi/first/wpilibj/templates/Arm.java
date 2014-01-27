@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Victor;
 
 /**
  *
- * @author TimothySteward
+ * @author Team Neutrino
  */
 public class Arm 
 {
