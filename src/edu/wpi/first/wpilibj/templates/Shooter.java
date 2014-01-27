@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.templates.ShooterConstants;
 
 /**
  *
- * @author team Neutrino
+ * @author Team Neutrino
  */
 public class Shooter implements Runnable
 {
