@@ -43,5 +43,8 @@ public class Arm
         RollerMotor.set(-1);
     }
     
-    
+    public void rollerStop()
+    {
+        RollerMotor.set(0);
+    }
 }
