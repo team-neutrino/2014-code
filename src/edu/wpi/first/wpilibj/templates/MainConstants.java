@@ -24,4 +24,5 @@ public class MainConstants
     //drive
     public static final int DRIVE_AXIS = 2;
     public static final int TRACTION_BUTTON = 1;
+    public static final int SHOOT_BUTTON = 2;
 }

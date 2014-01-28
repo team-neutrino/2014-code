@@ -26,7 +26,8 @@ public class Camera
     public boolean getHot()
     {
         int tapes;
-        while(!RobotCamera.freshImage())
+        long startTime = System.currentTimeMillis();
+        while(!RobotCamera.freshImage() && (System.currentTimeMillis() > startTime + 1000))
         {
             try
             {
@@ -53,7 +54,7 @@ public class Camera
         catch (Exception ex) 
         {
             ex.printStackTrace();
-            return false;
+            return true;
         }
         return (tapes == 2);
     }

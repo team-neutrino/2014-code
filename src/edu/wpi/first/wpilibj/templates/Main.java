@@ -7,6 +7,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
 
@@ -22,7 +23,9 @@ public class Main extends SimpleRobot
     Joystick JoystickRight;
     Joystick JoystickLeft;
     Drive Drive;
+    Shooter Shooter;
     DriverMessages DriverMessages;
+    DriverStation DriverStation;
     
     int AutoMode;
     
@@ -31,6 +34,8 @@ public class Main extends SimpleRobot
         JoystickRight = new Joystick(MainConstants.RIGHT_JOY_PORT);
         JoystickLeft = new Joystick(MainConstants.LEFT_JOY_PORT);
         Drive = new Drive();
+        Shooter = new Shooter();
+        DriverStation = DriverStation.getInstance();
         
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
         DriverMessages = new DriverMessages(AutoMode);
@@ -75,7 +80,7 @@ public class Main extends SimpleRobot
     
     public void operatorControl()
     {
-        while(true)
+        while(DriverStation.isOperatorControl())
         {
             //drive
             Drive.goLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
@@ -83,12 +88,17 @@ public class Main extends SimpleRobot
             
             //traction
             Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
+            
+            if(JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON))
+            {
+                Shooter.shoot();
+            }
         }
     }
     
     public void disabled() 
     {
-        while(true)
+        while(DriverStation.isDisabled())
         {
             //set auto program
             if(JoystickLeft.getRawButton(1) || JoystickRight.getRawButton(1))
