@@ -48,13 +48,13 @@ public class Drive
         DriveBackOut.set(isDown);
     }
     
-    public void goLeft(double speed)
+    public void setLeft(double speed)
     {
         DriveFL.set(-Math.abs(speed)*speed);
         DriveBL.set(-Math.abs(speed)*speed);
     }
     
-    public void goRight(double speed)
+    public void setRight(double speed)
     {
         DriveFR.set(Math.abs(speed)*speed);
         DriveBR.set(Math.abs(speed)*speed);

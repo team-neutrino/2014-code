@@ -23,7 +23,7 @@ public class Camera
         RobotCamera = AxisCamera.getInstance();
     }
     
-    public boolean getHot()
+    public boolean goalIsHot()
     {
         int tapes;
         long startTime = System.currentTimeMillis();

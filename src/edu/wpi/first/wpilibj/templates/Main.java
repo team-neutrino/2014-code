@@ -29,6 +29,7 @@ public class Main extends SimpleRobot
     DriverStation DriverStation;
     Arm ArmFront;
     Arm ArmBack;
+    Camera Camera;
     
     int AutoMode;
     
@@ -50,38 +51,51 @@ public class Main extends SimpleRobot
     
     public void autonomous() 
     {
-        switch(AutoMode)
+        try {
+            switch(AutoMode)
+            {
+                case 1:
+                    if(Camera.goalIsHot())
+                    {
+                        auto1Hot();
+                    }
+                    else
+                    {
+                        auto1Cold();
+                    }
+                    break;
+                case 2:
+                    //code for auto 2
+                    break;
+                case 3:
+                    //code for auto 3
+                    break;
+                case 4:
+                    //code for auto 4
+                    break;
+                case 5:
+                    //code for auto 5
+                    break;
+                case 6:
+                    //code for auto 6
+                    break;
+                case 7:
+                    //code for auto 7
+                    break;
+                case 8:
+                    //code for auto 8
+                    break;
+                case 9:
+                    //code for auto 9
+                    break;
+                case 10:
+                    //code for auto 10
+                    break;
+            }
+        }
+        catch (InterruptedException ex) 
         {
-            case 1:
-                //code for auto 1
-                break;
-            case 2:
-                //code for auto 2
-                break;
-            case 3:
-                //code for auto 3
-                break;
-            case 4:
-                //code for auto 4
-                break;
-            case 5:
-                //code for auto 5
-                break;
-            case 6:
-                //code for auto 6
-                break;
-            case 7:
-                //code for auto 7
-                break;
-            case 8:
-                //code for auto 8
-                break;
-            case 9:
-                //code for auto 9
-                break;
-            case 10:
-                //code for auto 10
-                break;
+                ex.printStackTrace();
         }
     }
     
@@ -90,8 +104,8 @@ public class Main extends SimpleRobot
         while(DriverStation.isOperatorControl())
         {
             //drive
-            Drive.goLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
-            Drive.goRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+            Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+            Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
             
             //traction
             Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
@@ -147,5 +161,27 @@ public class Main extends SimpleRobot
                 }
             }
         }
+    }
+
+    private void auto1Hot() throws InterruptedException 
+    {
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(3000);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        Thread.sleep(200);
+        Shooter.shoot();
+    }
+
+    private void auto1Cold() throws InterruptedException 
+    {
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(3000);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        Thread.sleep(3200);
+        Shooter.shoot();
     }
 }
