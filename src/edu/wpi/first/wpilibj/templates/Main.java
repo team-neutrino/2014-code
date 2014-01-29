@@ -45,8 +45,8 @@ public class Main extends SimpleRobot
         
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
         DriverMessages = new DriverMessages(AutoMode);
-        ArmFront = new Arm();
-        ArmBack = new Arm();
+        ArmFront = new Arm(ArmConstants.PISTON_FRONT_CHANNEL, ArmConstants.ROLLER_FRONT_CHANNEL);
+        ArmBack = new Arm(ArmConstants.PISTON_BACK_CHANNEL, ArmConstants.ROLLER_BACK_CHANNEL);
     }
     
     public void autonomous() 

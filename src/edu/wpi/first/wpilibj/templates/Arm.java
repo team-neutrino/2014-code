@@ -19,12 +19,13 @@ public class Arm
     private Solenoid ArmDown;
     private Victor RollerMotor;
     
-    public Arm()
+    public Arm(int pistonChannel, int rollerChannel)
     {
         //TODO add slot and channel
-        ArmUp = new Solenoid(0, 0);
-        ArmDown = new Solenoid(0, 0);
-        RollerMotor = new Victor(0);
+        
+        ArmUp = new Solenoid(ArmConstants.PISTON_SLOT, pistonChannel);
+        ArmDown = new Solenoid(ArmConstants.PISTON_SLOT, pistonChannel);
+        RollerMotor = new Victor(rollerChannel);
     }
     
     public void armUp(boolean up)
