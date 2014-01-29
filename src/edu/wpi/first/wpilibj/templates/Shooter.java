@@ -22,7 +22,7 @@ public class Shooter implements Runnable
     private Solenoid ReleasePistonOut;
     private Victor WinchMotor1;
     private Victor WinchMotor2;
-    private boolean ThreadRunning;
+    private boolean Loading;
     private DigitalInput LimitSwitch;
     public Shooter()
    
@@ -31,17 +31,16 @@ public class Shooter implements Runnable
         ReleasePistonOut = new Solenoid(ShooterConstants.RELEASE_PISTON_SLOT, ShooterConstants.RELEASE_PISTON_OUT_CHANNEL);
         WinchMotor1 = new Victor(ShooterConstants.WINCH_MOTOR_1_CHANNEL);
         WinchMotor2 = new Victor(ShooterConstants.WINCH_MOTOR_2_CHANNEL);
-        ThreadRunning = false;
+        Loading = false;
         LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
         shooterCock();
     }
    
     private void shooterCock()
     {
-        
-        if(!ThreadRunning)
+        if(!Loading)
         {
-            ThreadRunning = true;
+            Loading = true;
             Thread thread = new Thread(this);
             thread.start();
         }
@@ -49,9 +48,12 @@ public class Shooter implements Runnable
     
     public void shoot()
     {
-        ReleasePistonIn.set(false);
-        ReleasePistonOut.set(true);
-        shooterCock();
+        if (!Loading)
+        {
+            ReleasePistonIn.set(false);
+            ReleasePistonOut.set(true);
+            shooterCock();
+        }
     }
     
     public void run() 
@@ -70,7 +72,7 @@ public class Shooter implements Runnable
             WinchMotor1.set(0);
             WinchMotor2.set(0);
             
-            ThreadRunning = false;
+            Loading = false;
         }
         catch (InterruptedException ex) 
         {
