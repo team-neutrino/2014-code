@@ -112,7 +112,8 @@ public class Main extends SimpleRobot
             {
                 ArmFront.rollerStop();
             }
-            if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
+            if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
+                    || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
             {
                 ArmFront.armUp(true);
                 ArmBack.armUp(true);    
@@ -135,55 +136,15 @@ public class Main extends SimpleRobot
         while(DriverStation.isDisabled())
         {
             //set auto program
-            if(JoystickLeft.getRawButton(1) || JoystickRight.getRawButton(1))
+            boolean buttonPressed = false;
+            for(int autoMode = 1; 10 <= autoMode && false == buttonPressed; autoMode++)
             {
-                AutoMode = 1;
-                DriverMessages.updateAutoMode(AutoMode);
-            } 
-            else if (JoystickLeft.getRawButton(2) || JoystickRight.getRawButton(2))
-            {
-                AutoMode = 2;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(3) || JoystickRight.getRawButton(3))
-            {
-                AutoMode = 3;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(4) || JoystickRight.getRawButton(4))
-            {
-                AutoMode = 4;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(5) || JoystickRight.getRawButton(5))
-            {
-                AutoMode = 5;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(6) || JoystickRight.getRawButton(6))
-            {
-                AutoMode = 6;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(7) || JoystickRight.getRawButton(7))
-            {
-                AutoMode = 7;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(8) || JoystickRight.getRawButton(8))
-            {
-                AutoMode = 8;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(9) || JoystickRight.getRawButton(9))
-            {
-                AutoMode = 9;
-                DriverMessages.updateAutoMode(AutoMode);
-            }
-            else if (JoystickLeft.getRawButton(10) || JoystickRight.getRawButton(10))
-            {
-                AutoMode = 10;
-                DriverMessages.updateAutoMode(AutoMode);
+                if(JoystickLeft.getRawButton(autoMode) || JoystickRight.getRawButton(autoMode))
+                {
+                    AutoMode = autoMode;
+                    DriverMessages.updateAutoMode(autoMode);
+                    buttonPressed = true;
+                }
             }
         }
     }
