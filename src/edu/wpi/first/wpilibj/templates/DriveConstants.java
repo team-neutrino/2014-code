@@ -18,8 +18,6 @@ public class DriveConstants
     public static final int DRIVE_BR_CHANNEL = 3;
     
     public static final int DRIVE_SOLENOID_SLOT = 4;
-    public static final int DRIVE_SOLENOID_FRONT_OUT_CHANNEL = 5;
-    public static final int DRIVE_SOLENOID_FRONT_IN_CHANNEL = 6;
-    public static final int DRIVE_SOLENOID_BACK_OUT_CHANNEL = 7;
-    public static final int DRIVE_SOLENOID_BACK_IN_CHANNEL = 8;
+    public static final int DRIVE_SOLENOID_FRONT_CHANNEL = 5;
+    public static final int DRIVE_SOLENOID_BACK_CHANNEL = 7;
 }

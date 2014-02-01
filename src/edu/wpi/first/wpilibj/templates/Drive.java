@@ -20,10 +20,8 @@ public class Drive
     private Victor DriveBL;
     private Victor DriveBR;
     
-    private Solenoid DriveFrontIn;
-    private Solenoid DriveFrontOut;
-    private Solenoid DriveBackIn;
-    private Solenoid DriveBackOut;
+    private Solenoid DriveFront;
+    private Solenoid DriveBack;
     
     public Drive()
     {
@@ -32,20 +30,16 @@ public class Drive
         DriveBL = new Victor(DriveConstants.DRIVE_BL_CHANNEL);
         DriveBR = new Victor(DriveConstants.DRIVE_BR_CHANNEL);
         
-        DriveFrontIn = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_FRONT_IN_CHANNEL);
-        DriveFrontOut = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_FRONT_OUT_CHANNEL);
-        DriveBackIn  = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_BACK_IN_CHANNEL);
-        DriveBackOut = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_BACK_OUT_CHANNEL);
+        DriveFront = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_FRONT_CHANNEL);
+        DriveBack = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_BACK_CHANNEL);
         
         traction(false);
     }
     
     public void traction(boolean isDown)
     {
-        DriveFrontIn.set(!isDown);
-        DriveFrontOut.set(isDown);
-        DriveBackIn.set(!isDown);
-        DriveBackOut.set(isDown);
+        DriveFront.set(isDown);
+        DriveBack.set(isDown);
     }
     
     public void setLeft(double speed)
