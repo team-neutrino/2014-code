@@ -17,6 +17,10 @@ public class MainConstants
     //defaults
     public static final int DEFUALT_AUTO_MODE = 1;
     
+    //Compressor
+    public static final int COMPRESSOR_SWITCH_CHANNEL = 399;
+    public static final int COMPRESSOR_RELAY_CHANNEL = 399;
+    
     //joysticks
     public static final int LEFT_JOY_PORT = 1;
     public static final int RIGHT_JOY_PORT = 2;

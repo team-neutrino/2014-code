@@ -7,6 +7,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
@@ -30,6 +31,7 @@ public class Main extends SimpleRobot
     Arm ArmFront;
     Arm ArmBack;
     Camera Camera;
+    Compressor Compressor;
     
     int AutoMode;
     
@@ -47,6 +49,9 @@ public class Main extends SimpleRobot
         DriverMessages = new DriverMessages(AutoMode);
         ArmFront = new Arm(ArmConstants.PISTON_FRONT_CHANNEL, ArmConstants.ROLLER_FRONT_CHANNEL);
         ArmBack = new Arm(ArmConstants.PISTON_BACK_CHANNEL, ArmConstants.ROLLER_BACK_CHANNEL);
+        
+        Compressor = new Compressor(MainConstants.COMPRESSOR_SWITCH_CHANNEL, MainConstants.COMPRESSOR_RELAY_CHANNEL);
+        Compressor.start();
     }
     
     public void autonomous() 
