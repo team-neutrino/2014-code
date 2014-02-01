@@ -73,4 +73,17 @@ public class DriverMessages
         DriverStation.println(DriverStationLCD.Line.kUser2, 1, autoDescription+ "                     ");
         DriverStation.updateLCD();
     }
+    
+    public void displayHot(boolean hot)
+    {
+        DriverStation.updateLCD();
+        if(hot)
+        {
+            DriverStation.println(DriverStationLCD.Line.kUser1, 1, "Auto " + AutoMode + " Hot                     ");
+        }
+        else
+        {
+            DriverStation.println(DriverStationLCD.Line.kUser1, 1, "Auto " + AutoMode + " Cold                     ");
+        }
+    }
 }
