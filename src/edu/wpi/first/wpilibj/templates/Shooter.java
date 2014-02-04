@@ -4,7 +4,6 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.templates.ShooterConstants;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

@@ -17,9 +17,12 @@ public class MainConstants
     //defaults
     public static final int DEFUALT_AUTO_MODE = 1;
     
+    //Modules
+    public static final boolean TWO_SOLENOID_SOLTS = false;
+    
     //Compressor
-    public static final int COMPRESSOR_SWITCH_CHANNEL = 399;
-    public static final int COMPRESSOR_RELAY_CHANNEL = 399;
+    public static final int COMPRESSOR_SWITCH_CHANNEL = 1;
+    public static final int COMPRESSOR_RELAY_CHANNEL = 1;
     
     //joysticks
     public static final int LEFT_JOY_PORT = 1;
