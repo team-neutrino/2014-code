@@ -27,7 +27,7 @@ public class Camera
     {
         int tapes;
         long startTime = System.currentTimeMillis();
-        while(!RobotCamera.freshImage() && (System.currentTimeMillis() > startTime + 1000))
+        while(!RobotCamera.freshImage() && (System.currentTimeMillis() - startTime < 1000))
         {
             try
             {

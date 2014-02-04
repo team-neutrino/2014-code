@@ -39,22 +39,21 @@ public class Main extends SimpleRobot
     
     public void robotInit()
     {
+        Compressor = new Compressor(MainConstants.COMPRESSOR_SWITCH_CHANNEL, MainConstants.COMPRESSOR_RELAY_CHANNEL);
+        Compressor.start();
 
         JoystickRight = new Joystick(MainConstants.RIGHT_JOY_PORT);
         JoystickLeft = new Joystick(MainConstants.LEFT_JOY_PORT);
         Gamepad = new Joystick(MainConstants.GAMEPAD_PORT);
         
         Drive = new Drive();
-        //Shooter = new Shooter();
         DriverStation = DriverStation.getInstance();
+        Shooter = new Shooter(DriverStation);
         
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
         DriverMessages = new DriverMessages(AutoMode);
         //ArmFront = new Arm(ArmConstants.PISTON_FRONT_CHANNEL, ArmConstants.ROLLER_FRONT_CHANNEL);
         //ArmBack = new Arm(ArmConstants.PISTON_BACK_CHANNEL, ArmConstants.ROLLER_BACK_CHANNEL);
-        
-        Compressor = new Compressor(MainConstants.COMPRESSOR_SWITCH_CHANNEL, MainConstants.COMPRESSOR_RELAY_CHANNEL);
-        Compressor.start();
     }
     
     public void autonomous() 
@@ -119,10 +118,10 @@ public class Main extends SimpleRobot
             Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
             
             //shoot
-//            if(JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON))
-//            {
-//                Shooter.shoot();
-//            }
+            if(JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON))
+            {
+                Shooter.shoot();
+            }
 //            
 //            //arm
 //            if(Gamepad.getRawButton(MainConstants.FRONT_PICKUP_BUTTON))
