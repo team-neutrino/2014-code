@@ -82,10 +82,10 @@ public class Shooter implements Runnable
             ReleasePistonOut.set(false);
             long startLoad = System.currentTimeMillis();
             System.out.println(LimitSwitch.get());
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 3000))
+            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 1500))
             {
-                WinchMotor1.set(.5);
-                WinchMotor2.set(.5);
+                WinchMotor1.set(-.5);
+                WinchMotor2.set(-.5);
                 Thread.sleep(5);
             }
             WinchMotor1.set(0);
