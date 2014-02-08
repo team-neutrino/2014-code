@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
-import edu.wpi.first.wpilibj.Solenoid;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,13 +28,12 @@ public class Main extends SimpleRobot
     Shooter Shooter;
     DriverMessages DriverMessages;
     DriverStation DriverStation;
-    //Arm ArmFront;
-    //Arm ArmBack;
+    Arm ArmFront;
+    Arm ArmBack;
     Camera Camera;
     Compressor Compressor;
     
     int AutoMode;
-    boolean test = false;
     
     public void robotInit()
     {
@@ -48,14 +46,17 @@ public class Main extends SimpleRobot
         JoystickLeft = new Joystick(MainConstants.LEFT_JOY_PORT);
         Gamepad = new Joystick(MainConstants.GAMEPAD_PORT);
         
-        Drive = new Drive();
-        DriverStation = DriverStation.getInstance();
-        Shooter = new Shooter(DriverStation);
-        
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
         DriverMessages = new DriverMessages(AutoMode);
-        //ArmFront = new Arm(true);
-        //ArmBack = new Arm(ArmConstants.PISTON_BACK_UP_CHANNEL, ArmConstants.ROLLER_BACK_CHANNEL);
+        
+        
+        DriverStation = DriverStation.getInstance();
+        
+        Drive = new Drive();
+        Shooter = new Shooter(DriverStation, DriverMessages);
+        
+        ArmFront = new Arm(true);
+        ArmBack = new Arm(false);
     }
     
     public void autonomous() 
@@ -110,6 +111,10 @@ public class Main extends SimpleRobot
     
     public void operatorControl()
     {
+        boolean frontToggle;
+        boolean backToggle; 
+        boolean frontTogglePrevious = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
+        boolean backTogglePrevious = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
         while(DriverStation.isOperatorControl())
         {
             //drive
@@ -125,52 +130,91 @@ public class Main extends SimpleRobot
                 Shooter.shoot();
             }
             
-//            //arm
-//            if(Gamepad.getRawButton(MainConstants.FRONT_PICKUP_BUTTON))
-//            {
-//                ArmFront.armUp(false);
-//                ArmFront.rollerForward();
-//            }
-//            else
-//            {
-//                ArmFront.rollerStop();
-//            }
-//            if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
-//                    || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
-//            {
-//                ArmFront.armUp(true);
-//                ArmBack.armUp(true);    
-//            }
-//            else if(Gamepad.getRawButton(MainConstants.BACK_PICKUP_BUTTON))
-//            {
-//                ArmBack.armUp(false);
-//                ArmBack.rollerBackward();
-//            }
-//            else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
-//            {
-//                ArmFront.armUp(false);
-//                ArmFront.armUp(false);
-//            }
+            //arm (up/down)
+            if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
+                    || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
+            {
+                ArmFront.armUp(true);
+                ArmBack.armUp(true);    
+            }
+            else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
+            {
+                ArmFront.armUp(false);
+                ArmBack.armUp(false);
+            }
+            else
+            {
+                frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
+                backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
+                if (frontTogglePrevious != frontToggle)
+                {
+                    ArmFront.armUp(!ArmFront.isUp());
+                }
+                if (backTogglePrevious != backToggle)
+                {
+                    ArmBack.armUp(!ArmBack.isUp());
+                }
+            }
+            
+            //arm (rollers)
+            if(ArmFront.isUp())
+            {
+                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+                {
+                    ArmFront.rollerForward();
+                }
+                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
+                {
+                    ArmFront.rollerBackward();
+                }
+                else
+                {
+                    ArmFront.rollerStop();
+                }
+            }
+            else
+            {
+                ArmFront.rollerStop();
+            }
+            if(ArmBack.isUp())
+            {
+                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+                {
+                    ArmBack.rollerForward();
+                }
+                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
+                {
+                    ArmBack.rollerBackward();
+                }
+                else
+                {
+                    ArmBack.rollerStop();
+                }
+            }
+            else
+            {
+                ArmBack.rollerStop();
+            }
         }
     }
     
-//    public void disabled() 
-//    {
-//        while(DriverStation.isDisabled())
-//        {
-//            //set auto program
-//            boolean buttonPressed = false;
-//            for(int autoMode = 1; 10 <= autoMode && false == buttonPressed; autoMode++)
-//            {
-//                if(JoystickLeft.getRawButton(autoMode) || JoystickRight.getRawButton(autoMode))
-//                {
-//                    AutoMode = autoMode;
-//                    DriverMessages.updateAutoMode(autoMode);
-//                    buttonPressed = true;
-//                }
-//            }
-//        }
-//    }
+    public void disabled() 
+    {
+        while(DriverStation.isDisabled())
+        {
+            //set auto program
+            boolean buttonPressed = false;
+            for(int autoMode = 1; 10 <= autoMode && false == buttonPressed; autoMode++)
+            {
+                if(JoystickLeft.getRawButton(autoMode) || JoystickRight.getRawButton(autoMode))
+                {
+                    AutoMode = autoMode;
+                    DriverMessages.updateAutoMode(autoMode);
+                    buttonPressed = true;
+                }
+            }
+        }
+    }
 
     private void auto1Hot() throws InterruptedException 
     {

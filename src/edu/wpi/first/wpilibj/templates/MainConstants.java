@@ -28,12 +28,16 @@ public class MainConstants
     public static final int TRACTION_BUTTON = 1;
     public static final int SHOOT_BUTTON = 2;
     
+    //arms
     public static final int ALL_ARMS_UP_DRIVER = 3;
-    public static final int ALL_ARMS_UP_GAMEPAD = 6;
-    public static final int ALL_ARMS_DOWN_GAMEPAD = 5;
+    public static final int ALL_ARMS_UP_GAMEPAD = 9;
+    public static final int ALL_ARMS_DOWN_GAMEPAD = 10;
     
-    public static final int FRONT_PICKUP_BUTTON = 1;
-    public static final int BACK_PICKUP_BUTTON = 2;
+    public static final int FRONT_ARM_TOGGLE = 4;
+    public static final int BACK_ARM_TOGGLE = 2;
+    
+    public static final int ROLLER_FORWARD = 5;
+    public static final int ROLLER_BACKWARD = 6;
     
     private static void real() 
     {

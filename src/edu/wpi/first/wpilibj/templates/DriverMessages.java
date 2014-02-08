@@ -76,7 +76,6 @@ public class DriverMessages
     
     public void displayHot(boolean hot)
     {
-        DriverStation.updateLCD();
         if(hot)
         {
             DriverStation.println(DriverStationLCD.Line.kUser1, 1, "Auto " + AutoMode + " Hot                     ");
@@ -85,5 +84,16 @@ public class DriverMessages
         {
             DriverStation.println(DriverStationLCD.Line.kUser1, 1, "Auto " + AutoMode + " Cold                     ");
         }
+        DriverStation.updateLCD();
+    }
+    
+    public void displayShooterTimeout(boolean display)
+    {
+        if(display)
+        {
+            DriverStation.println(DriverStationLCD.Line.kUser3, 1, "Shooter Timeout                     ");
+            DriverStation.println(DriverStationLCD.Line.kUser3, 1, "                     ");
+        }
+        DriverStation.updateLCD();
     }
 }

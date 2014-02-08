@@ -14,10 +14,10 @@ public class ArmConstants
 {
     private static void real()
     {
-        PISTON_BACK_UP_CHANNEL = 0;
-        PISTON_FRONT_UP_CHANNEL = 1;
-        PISTON_BACK_DOWN_CHANNEL = 0;
-        PISTON_FRONT_DOWN_CHANNEL = 5;
+        SOLENOID_BACK_UP_CHANNEL = 0;
+        SOLENOID_FRONT_UP_CHANNEL = 1;
+        SOLENOID_BACK_DOWN_CHANNEL = 0;
+        SOLENOID_FRONT_DOWN_CHANNEL = 5;
         PISTON_SLOT = 3;
 
         ROLLER_FRONT_CHANNEL = 0;
@@ -26,20 +26,20 @@ public class ArmConstants
     
     private static void practice()
     {
-        PISTON_BACK_UP_CHANNEL = 0;
-        PISTON_FRONT_UP_CHANNEL = 1;
-        PISTON_BACK_DOWN_CHANNEL = 0;
-        PISTON_FRONT_DOWN_CHANNEL = 5;
+        SOLENOID_BACK_UP_CHANNEL = 0;
+        SOLENOID_FRONT_UP_CHANNEL = 1;
+        SOLENOID_BACK_DOWN_CHANNEL = 0;
+        SOLENOID_FRONT_DOWN_CHANNEL = 5;
         PISTON_SLOT = 3;
 
         ROLLER_FRONT_CHANNEL = 0;
         ROLLER_BACK_CHANNEL = 0;
     }
     
-    public static int PISTON_BACK_UP_CHANNEL;
-    public static int PISTON_FRONT_UP_CHANNEL;
-    public static int PISTON_BACK_DOWN_CHANNEL;
-    public static int PISTON_FRONT_DOWN_CHANNEL;
+    public static int SOLENOID_BACK_UP_CHANNEL;
+    public static int SOLENOID_FRONT_UP_CHANNEL;
+    public static int SOLENOID_BACK_DOWN_CHANNEL;
+    public static int SOLENOID_FRONT_DOWN_CHANNEL;
     public static int PISTON_SLOT;
     
     public static int ROLLER_FRONT_CHANNEL;

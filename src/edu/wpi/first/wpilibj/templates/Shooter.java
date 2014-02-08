@@ -25,8 +25,9 @@ public class Shooter implements Runnable
     private boolean Loading;
     private DigitalInput LimitSwitch;
     private DriverStation DriverStation;
+    private DriverMessages DriverMessages;
     
-    public Shooter(DriverStation driverStation)
+    public Shooter(DriverStation driverStation, DriverMessages driverMessages)
     {
         if(MainConstants.TWO_SOLENOID_SOLTS)
         {
@@ -44,6 +45,7 @@ public class Shooter implements Runnable
         Loading = false;
         LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
         DriverStation = driverStation;
+        DriverMessages = driverMessages;
         shooterCock();
     }
    
@@ -89,6 +91,8 @@ public class Shooter implements Runnable
             }
             WinchMotor1.set(0);
             WinchMotor2.set(0);
+            
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1500);
             
             Loading = false;
         }
