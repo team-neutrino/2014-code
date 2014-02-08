@@ -29,8 +29,8 @@ public class Main extends SimpleRobot
     Shooter Shooter;
     DriverMessages DriverMessages;
     DriverStation DriverStation;
-    Arm ArmFront;
-    Arm ArmBack;
+    //Arm ArmFront;
+    //Arm ArmBack;
     Camera Camera;
     Compressor Compressor;
     
@@ -39,6 +39,8 @@ public class Main extends SimpleRobot
     
     public void robotInit()
     {
+        initConstants();
+        
         Compressor = new Compressor(MainConstants.COMPRESSOR_SWITCH_CHANNEL, MainConstants.COMPRESSOR_RELAY_CHANNEL);
         Compressor.start();
 
@@ -52,8 +54,8 @@ public class Main extends SimpleRobot
         
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
         DriverMessages = new DriverMessages(AutoMode);
-        //ArmFront = new Arm(ArmConstants.PISTON_FRONT_CHANNEL, ArmConstants.ROLLER_FRONT_CHANNEL);
-        //ArmBack = new Arm(ArmConstants.PISTON_BACK_CHANNEL, ArmConstants.ROLLER_BACK_CHANNEL);
+        //ArmFront = new Arm(true);
+        //ArmBack = new Arm(ArmConstants.PISTON_BACK_UP_CHANNEL, ArmConstants.ROLLER_BACK_CHANNEL);
     }
     
     public void autonomous() 
@@ -122,7 +124,7 @@ public class Main extends SimpleRobot
             {
                 Shooter.shoot();
             }
-//            
+            
 //            //arm
 //            if(Gamepad.getRawButton(MainConstants.FRONT_PICKUP_BUTTON))
 //            {
@@ -190,5 +192,13 @@ public class Main extends SimpleRobot
         Drive.setRight(0);
         Thread.sleep(3200);
         Shooter.shoot();
+    }
+    
+    private void initConstants()
+    {
+        MainConstants.init();
+        ShooterConstants.init();
+        DriveConstants.init();
+        ArmConstants.init();
     }
 }

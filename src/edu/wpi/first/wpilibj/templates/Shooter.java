@@ -27,7 +27,6 @@ public class Shooter implements Runnable
     private DriverStation DriverStation;
     
     public Shooter(DriverStation driverStation)
-   
     {
         if(MainConstants.TWO_SOLENOID_SOLTS)
         {

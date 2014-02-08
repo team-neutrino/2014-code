@@ -17,15 +17,35 @@ public class Arm
 {
     private Solenoid ArmUp;
     private Solenoid ArmDown;
-    private Victor RollerMotor;
+    //private Victor RollerMotor;
     
-    public Arm(int pistonChannel, int rollerChannel)
+    public Arm(boolean front)
     {
-        //TODO add slot and channel
-        
-        ArmUp = new Solenoid(ArmConstants.PISTON_SLOT, pistonChannel);
-        ArmDown = new Solenoid(ArmConstants.PISTON_SLOT, pistonChannel);
-        RollerMotor = new Victor(rollerChannel);
+        if(front)
+        {
+            int pistoUpChannel = ArmConstants.PISTON_FRONT_UP_CHANNEL;
+            int pistonDownChannel = ArmConstants.PISTON_FRONT_DOWN_CHANNEL;
+            int rollerChannel = ArmConstants.ROLLER_FRONT_CHANNEL;
+        }
+        else
+        {
+            int pistoUpChannel = ArmConstants.PISTON_BACK_UP_CHANNEL;
+            int pistonDownChannel = ArmConstants.PISTON_BACK_DOWN_CHANNEL;
+            int rollerChannel = ArmConstants.ROLLER_BACK_CHANNEL;
+        }
+
+        if(MainConstants.TWO_SOLENOID_SOLTS)
+        {
+            ArmUp = new Solenoid(ArmConstants.PISTON_SLOT, ArmConstants.PISTON_FRONT_UP_CHANNEL);
+            ArmDown = new Solenoid(ArmConstants.PISTON_SLOT, ArmConstants.PISTON_FRONT_DOWN_CHANNEL);
+            //RollerMotor = new Victor(rollerChannel);
+        }
+        else
+        {
+            ArmUp = new Solenoid(ArmConstants.PISTON_FRONT_UP_CHANNEL);
+            ArmDown = new Solenoid(ArmConstants.PISTON_FRONT_DOWN_CHANNEL);
+            //RollerMotor = new Victor(rollerChannel);
+        }
     }
     
     public void armUp(boolean up)
@@ -36,16 +56,16 @@ public class Arm
     
     public void rollerForward()
     {
-        RollerMotor.set(1);
+        //RollerMotor.set(1);
     }
     
     public void rollerBackward()
     {
-        RollerMotor.set(-1);
+        //RollerMotor.set(-1);
     }
     
     public void rollerStop()
     {
-        RollerMotor.set(0);
+        //RollerMotor.set(0);
     }
 }

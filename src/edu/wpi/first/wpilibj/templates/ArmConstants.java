@@ -12,10 +12,48 @@ package edu.wpi.first.wpilibj.templates;
  */
 public class ArmConstants
 {
-    public static final int PISTON_BACK_CHANNEL = 0;
-    public static final int PISTON_FRONT_CHANNEL = 1;
-    public static final int PISTON_SLOT = 1;
+    private static void real()
+    {
+        PISTON_BACK_UP_CHANNEL = 0;
+        PISTON_FRONT_UP_CHANNEL = 1;
+        PISTON_BACK_DOWN_CHANNEL = 0;
+        PISTON_FRONT_DOWN_CHANNEL = 5;
+        PISTON_SLOT = 3;
+
+        ROLLER_FRONT_CHANNEL = 0;
+        ROLLER_BACK_CHANNEL = 0;
+    }
     
-    public static final int ROLLER_FRONT_CHANNEL = 0;
-    public static final int ROLLER_BACK_CHANNEL = 1;
+    private static void practice()
+    {
+        PISTON_BACK_UP_CHANNEL = 0;
+        PISTON_FRONT_UP_CHANNEL = 1;
+        PISTON_BACK_DOWN_CHANNEL = 0;
+        PISTON_FRONT_DOWN_CHANNEL = 5;
+        PISTON_SLOT = 3;
+
+        ROLLER_FRONT_CHANNEL = 0;
+        ROLLER_BACK_CHANNEL = 0;
+    }
+    
+    public static int PISTON_BACK_UP_CHANNEL;
+    public static int PISTON_FRONT_UP_CHANNEL;
+    public static int PISTON_BACK_DOWN_CHANNEL;
+    public static int PISTON_FRONT_DOWN_CHANNEL;
+    public static int PISTON_SLOT;
+    
+    public static int ROLLER_FRONT_CHANNEL;
+    public static int ROLLER_BACK_CHANNEL;
+    
+    public static void init()
+    {
+        if(MainConstants.REAL_BOT)
+        {
+            real();
+        }
+        else
+        {
+            practice();
+        }
+    }
 }

@@ -6,23 +6,17 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Joystick;
-
 /**
  *
  * @author Tony Milosch
  */
 public class MainConstants
 {
+    
+    public static final boolean REAL_BOT = true;
+    
     //defaults
     public static final int DEFUALT_AUTO_MODE = 1;
-    
-    //Modules
-    public static final boolean TWO_SOLENOID_SOLTS = false;
-    
-    //Compressor
-    public static final int COMPRESSOR_SWITCH_CHANNEL = 1;
-    public static final int COMPRESSOR_RELAY_CHANNEL = 1;
     
     //joysticks
     public static final int LEFT_JOY_PORT = 1;
@@ -35,9 +29,48 @@ public class MainConstants
     public static final int SHOOT_BUTTON = 2;
     
     public static final int ALL_ARMS_UP_DRIVER = 3;
-    public static final int ALL_ARMS_UP_GAMEPAD = 102;
-    public static final int ALL_ARMS_DOWN_GAMEPAD = 103;
+    public static final int ALL_ARMS_UP_GAMEPAD = 6;
+    public static final int ALL_ARMS_DOWN_GAMEPAD = 5;
     
-    public static final int FRONT_PICKUP_BUTTON = 100;
-    public static final int BACK_PICKUP_BUTTON = 101;
+    public static final int FRONT_PICKUP_BUTTON = 1;
+    public static final int BACK_PICKUP_BUTTON = 2;
+    
+    private static void real() 
+    {
+        //Modules
+        TWO_SOLENOID_SOLTS = true;
+
+        //Compressor
+        COMPRESSOR_SWITCH_CHANNEL = 1;
+        COMPRESSOR_RELAY_CHANNEL = 1;
+    }
+    
+    private static void practice() 
+    {
+        //Modules
+        TWO_SOLENOID_SOLTS = false;
+
+        //Compressor
+        COMPRESSOR_SWITCH_CHANNEL = 1;
+        COMPRESSOR_RELAY_CHANNEL = 1;
+    }
+    
+    //Modules
+    public static boolean TWO_SOLENOID_SOLTS;
+    
+    //Compressor
+    public static int COMPRESSOR_SWITCH_CHANNEL;
+    public static int COMPRESSOR_RELAY_CHANNEL;
+    
+    public static void init()
+    {
+        if(REAL_BOT)
+        {
+            real();
+        }
+        else
+        {
+            practice();
+        }
+    }
 }
