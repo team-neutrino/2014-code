@@ -32,7 +32,7 @@ public class ArmConstants
         SOLENOID_FRONT_DOWN_CHANNEL = 5;
         PISTON_SLOT = 3;
 
-        ROLLER_FRONT_CHANNEL = 0;
+        ROLLER_FRONT_CHANNEL = 10;
         ROLLER_BACK_CHANNEL = 0;
     }
     

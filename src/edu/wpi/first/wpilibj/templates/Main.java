@@ -29,7 +29,7 @@ public class Main extends SimpleRobot
     DriverMessages DriverMessages;
     DriverStation DriverStation;
     Arm ArmFront;
-    Arm ArmBack;
+    //Arm ArmBack;
     Camera Camera;
     Compressor Compressor;
     
@@ -56,7 +56,7 @@ public class Main extends SimpleRobot
         Shooter = new Shooter(DriverStation, DriverMessages);
         
         ArmFront = new Arm(true);
-        ArmBack = new Arm(false);
+        //ArmBack = new Arm(false);
     }
     
     public void autonomous() 
@@ -135,12 +135,12 @@ public class Main extends SimpleRobot
                     || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
             {
                 ArmFront.armUp(true);
-                ArmBack.armUp(true);    
+                //ArmBack.armUp(true);    
             }
             else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
             {
                 ArmFront.armUp(false);
-                ArmBack.armUp(false);
+                //ArmBack.armUp(false);
             }
             else
             {
@@ -152,7 +152,7 @@ public class Main extends SimpleRobot
                 }
                 if (backTogglePrevious != backToggle)
                 {
-                    ArmBack.armUp(!ArmBack.isUp());
+                    //ArmBack.armUp(!ArmBack.isUp());
                 }
             }
             
@@ -176,25 +176,25 @@ public class Main extends SimpleRobot
             {
                 ArmFront.rollerStop();
             }
-            if(ArmBack.isUp())
-            {
-                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
-                {
-                    ArmBack.rollerForward();
-                }
-                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
-                {
-                    ArmBack.rollerBackward();
-                }
-                else
-                {
-                    ArmBack.rollerStop();
-                }
-            }
-            else
-            {
-                ArmBack.rollerStop();
-            }
+//            if(ArmBack.isUp())
+//            {
+//                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+//                {
+//                    ArmBack.rollerForward();
+//                }
+//                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
+//                {
+//                    ArmBack.rollerBackward();
+//                }
+//                else
+//                {
+//                    ArmBack.rollerStop();
+//                }
+//            }
+//            else
+//            {
+//                ArmBack.rollerStop();
+//            }
         }
     }
     

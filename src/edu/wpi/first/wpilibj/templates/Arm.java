@@ -42,14 +42,13 @@ public class Arm
         {
             solenoidUp = new Solenoid(ArmConstants.PISTON_SLOT, solenoidUpChannel);
             solenoidDown = new Solenoid(ArmConstants.PISTON_SLOT, solenoidDownChannel);
-            RollerMotor = new Victor(rollerChannel);
         }
         else
         {
             solenoidUp = new Solenoid(solenoidUpChannel);
             solenoidDown = new Solenoid(solenoidDownChannel);
-            RollerMotor = new Victor(rollerChannel);
         }
+        RollerMotor = new Victor(rollerChannel);
     }
     
     public void armUp(boolean up)
@@ -60,12 +59,12 @@ public class Arm
     
     public void rollerForward()
     {
-        RollerMotor.set(1);
+        RollerMotor.set(-1);
     }
     
     public void rollerBackward()
     {
-        RollerMotor.set(-1);
+        RollerMotor.set(1);
     }
     
     public void rollerStop()

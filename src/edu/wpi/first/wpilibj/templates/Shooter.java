@@ -83,7 +83,7 @@ public class Shooter implements Runnable
             ReleasePistonOut.set(false);
             long startLoad = System.currentTimeMillis();
             System.out.println(LimitSwitch.get());
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 1500))
+            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 5000))
             {
                 WinchMotor1.set(-.5);
                 WinchMotor2.set(-.5);
@@ -92,7 +92,7 @@ public class Shooter implements Runnable
             WinchMotor1.set(0);
             WinchMotor2.set(0);
             
-            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1500);
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 5000);
             
             Loading = false;
         }
