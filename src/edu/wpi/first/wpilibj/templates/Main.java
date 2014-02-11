@@ -49,7 +49,6 @@ public class Main extends SimpleRobot
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
         DriverMessages = new DriverMessages(AutoMode);
         
-        
         DriverStation = DriverStation.getInstance();
         
         Drive = new Drive();
@@ -115,6 +114,10 @@ public class Main extends SimpleRobot
         boolean backToggle; 
         boolean frontTogglePrevious = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
         boolean backTogglePrevious = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
+        long frontTimeToggled = 0;
+        long backTimeToggled = 0;
+        long currentTime;
+        
         while(DriverStation.isOperatorControl())
         {
             //drive
@@ -146,11 +149,22 @@ public class Main extends SimpleRobot
             {
                 frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
                 backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
-                if (!frontTogglePrevious && frontToggle)
+                currentTime = System.currentTimeMillis();
+                
+                if(frontToggle)
+                {
+                    frontTimeToggled = currentTime;
+                }
+                if(backToggle)
+                {
+                    backTimeToggled = currentTime;
+                }
+                
+                if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
                 {
                     ArmFront.armUp(!ArmFront.isUp());
                 }
-                if (!backTogglePrevious && backToggle)
+                if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
                 {
                     ArmBack.armUp(!ArmBack.isUp());
                 }
