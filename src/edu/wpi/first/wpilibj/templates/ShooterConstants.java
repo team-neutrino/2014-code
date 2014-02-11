@@ -22,11 +22,11 @@ public class ShooterConstants
         LIMIT_SWITCH_CHANNEL = 2;
     }
     
-    private static void practice()
+    private static void practice() 
     {
         RELEASE_PISTON_SLOT = 3;
-        RELEASE_PISTON_IN_CHANNEL = 6;
-        RELEASE_PISTON_OUT_CHANNEL = 2;
+        RELEASE_PISTON_IN_CHANNEL = 2;
+        RELEASE_PISTON_OUT_CHANNEL = 6;
         WINCH_MOTOR_1_CHANNEL = 9;
         WINCH_MOTOR_2_CHANNEL = 7;
         LIMIT_SWITCH_CHANNEL = 2;

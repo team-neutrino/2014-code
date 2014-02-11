@@ -18,12 +18,14 @@ public class Arm
     private Solenoid solenoidUp;
     private Solenoid solenoidDown;
     private Victor RollerMotor;
+    private boolean Front;
     
     public Arm(boolean front)
     {
         int solenoidUpChannel;
         int solenoidDownChannel;
         int rollerChannel;
+        Front = front;
         
         if(front)
         {
@@ -59,12 +61,26 @@ public class Arm
     
     public void rollerForward()
     {
-        RollerMotor.set(-1);
+        if(Front)
+        {
+            RollerMotor.set(-1);
+        }
+        else
+        {
+            RollerMotor.set(1);
+        }
     }
     
     public void rollerBackward()
     {
-        RollerMotor.set(1);
+        if(Front)
+        {
+            RollerMotor.set(1);
+        }
+        else
+        {
+            RollerMotor.set(-1);
+        }
     }
     
     public void rollerStop()

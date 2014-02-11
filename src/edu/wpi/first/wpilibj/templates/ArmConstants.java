@@ -26,14 +26,14 @@ public class ArmConstants
     
     private static void practice()
     {
-        SOLENOID_BACK_UP_CHANNEL = 0;
-        SOLENOID_FRONT_UP_CHANNEL = 1;
-        SOLENOID_BACK_DOWN_CHANNEL = 0;
-        SOLENOID_FRONT_DOWN_CHANNEL = 5;
+        SOLENOID_BACK_UP_CHANNEL = 1;
+        SOLENOID_FRONT_UP_CHANNEL = 7;
+        SOLENOID_BACK_DOWN_CHANNEL = 5;
+        SOLENOID_FRONT_DOWN_CHANNEL = 3;
         PISTON_SLOT = 3;
 
         ROLLER_FRONT_CHANNEL = 10;
-        ROLLER_BACK_CHANNEL = 0;
+        ROLLER_BACK_CHANNEL = 1;
     }
     
     public static int SOLENOID_BACK_UP_CHANNEL;

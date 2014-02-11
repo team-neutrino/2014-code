@@ -29,8 +29,8 @@ public class Main extends SimpleRobot
     DriverMessages DriverMessages;
     DriverStation DriverStation;
     Arm ArmFront;
-    //Arm ArmBack;
-    Camera Camera;
+    Arm ArmBack;
+    //Camera Camera;
     Compressor Compressor;
     
     int AutoMode;
@@ -56,58 +56,58 @@ public class Main extends SimpleRobot
         Shooter = new Shooter(DriverStation, DriverMessages);
         
         ArmFront = new Arm(true);
-        //ArmBack = new Arm(false);
+        ArmBack = new Arm(false);
     }
     
-    public void autonomous() 
-    {
-        try {
-            switch(AutoMode)
-            {
-                case 1:
-                    if(Camera.goalIsHot())
-                    {
-                        auto1Hot();
-                    }
-                    else
-                    {
-                        auto1Cold();
-                    }
-                    break;
-                case 2:
-                    //code for auto 2
-                    break;
-                case 3:
-                    //code for auto 3
-                    break;
-                case 4:
-                    //code for auto 4
-                    break;
-                case 5:
-                    //code for auto 5
-                    break;
-                case 6:
-                    //code for auto 6
-                    break;
-                case 7:
-                    //code for auto 7
-                    break;
-                case 8:
-                    //code for auto 8
-                    break;
-                case 9:
-                    //code for auto 9
-                    break;
-                case 10:
-                    //code for auto 10
-                    break;
-            }
-        }
-        catch (InterruptedException ex) 
-        {
-                ex.printStackTrace();
-        }
-    }
+//    public void autonomous() 
+//    {
+//        try {
+//            switch(AutoMode)
+//            {
+//                case 1:
+//                    if(Camera.goalIsHot())
+//                    {
+//                        auto1Hot();
+//                    }
+//                    else
+//                    {
+//                        auto1Cold();
+//                    }
+//                    break;
+//                case 2:
+//                    //code for auto 2
+//                    break;
+//                case 3:
+//                    //code for auto 3
+//                    break;
+//                case 4:
+//                    //code for auto 4
+//                    break;
+//                case 5:
+//                    //code for auto 5
+//                    break;
+//                case 6:
+//                    //code for auto 6
+//                    break;
+//                case 7:
+//                    //code for auto 7
+//                    break;
+//                case 8:
+//                    //code for auto 8
+//                    break;
+//                case 9:
+//                    //code for auto 9
+//                    break;
+//                case 10:
+//                    //code for auto 10
+//                    break;
+//            }
+//        }
+//        catch (InterruptedException ex) 
+//        {
+//                ex.printStackTrace();
+//        }
+//    }
     
     public void operatorControl()
     {
@@ -135,24 +135,24 @@ public class Main extends SimpleRobot
                     || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
             {
                 ArmFront.armUp(true);
-                //ArmBack.armUp(true);    
+                ArmBack.armUp(true);    
             }
             else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
             {
                 ArmFront.armUp(false);
-                //ArmBack.armUp(false);
+                ArmBack.armUp(false);
             }
             else
             {
                 frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
                 backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
-                if (frontTogglePrevious != frontToggle)
+                if (!frontTogglePrevious && frontToggle)
                 {
                     ArmFront.armUp(!ArmFront.isUp());
                 }
-                if (backTogglePrevious != backToggle)
+                if (!backTogglePrevious && backToggle)
                 {
-                    //ArmBack.armUp(!ArmBack.isUp());
+                    ArmBack.armUp(!ArmBack.isUp());
                 }
             }
             
@@ -176,25 +176,25 @@ public class Main extends SimpleRobot
             {
                 ArmFront.rollerStop();
             }
-//            if(ArmBack.isUp())
-//            {
-//                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
-//                {
-//                    ArmBack.rollerForward();
-//                }
-//                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
-//                {
-//                    ArmBack.rollerBackward();
-//                }
-//                else
-//                {
-//                    ArmBack.rollerStop();
-//                }
-//            }
-//            else
-//            {
-//                ArmBack.rollerStop();
-//            }
+            if(ArmBack.isUp())
+            {
+                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+                {
+                    ArmBack.rollerForward();
+                }
+                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
+                {
+                    ArmBack.rollerBackward();
+                }
+                else
+                {
+                    ArmBack.rollerStop();
+                }
+            }
+            else
+            {
+                ArmBack.rollerStop();
+            }
         }
     }
     
@@ -215,28 +215,28 @@ public class Main extends SimpleRobot
             }
         }
     }
-
-    private void auto1Hot() throws InterruptedException 
-    {
-        Drive.setLeft(1);
-        Drive.setRight(1);
-        Thread.sleep(3000);
-        Drive.setLeft(0);
-        Drive.setRight(0);
-        Thread.sleep(200);
-        Shooter.shoot();
-    }
-
-    private void auto1Cold() throws InterruptedException 
-    {
-        Drive.setLeft(1);
-        Drive.setRight(1);
-        Thread.sleep(3000);
-        Drive.setLeft(0);
-        Drive.setRight(0);
-        Thread.sleep(3200);
-        Shooter.shoot();
-    }
+//
+//    private void auto1Hot() throws InterruptedException 
+//    {
+//        Drive.setLeft(1);
+//        Drive.setRight(1);
+//        Thread.sleep(3000);
+//        Drive.setLeft(0);
+//        Drive.setRight(0);
+//        Thread.sleep(200);
+//        Shooter.shoot();
+//    }
+//
+//    private void auto1Cold() throws InterruptedException 
+//    {
+//        Drive.setLeft(1);
+//        Drive.setRight(1);
+//        Thread.sleep(3000);
+//        Drive.setLeft(0);
+//        Drive.setRight(0);
+//        Thread.sleep(3200);
+//        Shooter.shoot();
+//    }
     
     private void initConstants()
     {

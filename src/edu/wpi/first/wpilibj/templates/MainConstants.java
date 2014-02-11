@@ -30,11 +30,11 @@ public class MainConstants
     
     //arms
     public static final int ALL_ARMS_UP_DRIVER = 3;
-    public static final int ALL_ARMS_UP_GAMEPAD = 9;
-    public static final int ALL_ARMS_DOWN_GAMEPAD = 10;
+    public static final int ALL_ARMS_UP_GAMEPAD = 8;
+    public static final int ALL_ARMS_DOWN_GAMEPAD = 7;
     
     public static final int FRONT_ARM_TOGGLE = 4;
-    public static final int BACK_ARM_TOGGLE = 2;
+    public static final int BACK_ARM_TOGGLE = 1;
     
     public static final int ROLLER_FORWARD = 5;
     public static final int ROLLER_BACKWARD = 6;
