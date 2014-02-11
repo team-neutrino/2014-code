@@ -157,22 +157,45 @@ public class Main extends SimpleRobot
             }
             
             //arm (rollers)
-            if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+            if(ArmFront.isUp())
             {
-                ArmFront.rollerForward();
-                ArmBack.rollerForward();
-            }
-            else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
-            {
-                ArmFront.rollerBackward();
-                ArmBack.rollerBackward();
+                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+                {
+                    ArmFront.rollerForward();
+                }
+                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
+                {
+                    ArmFront.rollerBackward();
+                }
+                else
+                {
+                    ArmFront.rollerStop();
+                }
             }
             else
             {
                 ArmFront.rollerStop();
+            }
+            if(ArmBack.isUp())
+            {
+                if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+                {
+                    ArmBack.rollerForward();
+                }
+                else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
+                {
+                    ArmBack.rollerBackward();
+                }
+                else
+                {
+                    ArmBack.rollerStop();
+                }
+            }
+            else
+            {
                 ArmBack.rollerStop();
             }
-        } 
+        }
     }
     
     public void disabled() 
@@ -192,11 +215,9 @@ public class Main extends SimpleRobot
             }
         }
     }
-
+//
 //    private void auto1Hot() throws InterruptedException 
 //    {
-//        ArmFront.armUp(false);
-//        ArmBack.armUp(false);
 //        Drive.setLeft(1);
 //        Drive.setRight(1);
 //        Thread.sleep(3000);
@@ -208,8 +229,6 @@ public class Main extends SimpleRobot
 //
 //    private void auto1Cold() throws InterruptedException 
 //    {
-//        ArmFront.armUp(false);
-//        ArmBack.armUp(false);
 //        Drive.setLeft(1);
 //        Drive.setRight(1);
 //        Thread.sleep(3000);
