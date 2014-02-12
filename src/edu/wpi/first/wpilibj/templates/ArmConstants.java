@@ -20,8 +20,8 @@ public class ArmConstants
         SOLENOID_FRONT_DOWN_CHANNEL = 5;
         PISTON_SLOT = 3;
 
-        ROLLER_FRONT_CHANNEL = 0;
-        ROLLER_BACK_CHANNEL = 0;
+        ROLLER_FRONT_CHANNEL = 8;
+        ROLLER_BACK_CHANNEL = 5;
     }
     
     private static void practice()
