@@ -28,18 +28,9 @@ public class Shooter implements Runnable
     private DriverMessages DriverMessages;
     
     public Shooter(DriverStation driverStation, DriverMessages driverMessages)
-    {
-        if(MainConstants.TWO_SOLENOID_SOLTS)
-        {
-            ReleasePistonIn = new Solenoid(ShooterConstants.RELEASE_PISTON_SLOT, ShooterConstants.RELEASE_PISTON_IN_CHANNEL);
-            ReleasePistonOut = new Solenoid(ShooterConstants.RELEASE_PISTON_SLOT, ShooterConstants.RELEASE_PISTON_OUT_CHANNEL);
-        }
-        else
-        {
-            ReleasePistonIn = new Solenoid(ShooterConstants.RELEASE_PISTON_IN_CHANNEL);
-            ReleasePistonOut = new Solenoid(ShooterConstants.RELEASE_PISTON_OUT_CHANNEL);
-        }
-        
+{
+        ReleasePistonIn = new Solenoid(ShooterConstants.RELEASE_PISTON_IN_SLOT, ShooterConstants.RELEASE_PISTON_IN_CHANNEL);
+        ReleasePistonOut = new Solenoid(ShooterConstants.RELEASE_PISTON_OUT_SLOT, ShooterConstants.RELEASE_PISTON_OUT_CHANNEL);
         WinchMotor1 = new Victor(ShooterConstants.WINCH_MOTOR_1_CHANNEL);
         WinchMotor2 = new Victor(ShooterConstants.WINCH_MOTOR_2_CHANNEL);
         Loading = false;

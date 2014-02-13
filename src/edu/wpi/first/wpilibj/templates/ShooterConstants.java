@@ -14,25 +14,27 @@ public class ShooterConstants
 {
     private static void real()
     {
-        RELEASE_PISTON_SLOT = 2;
-        RELEASE_PISTON_IN_CHANNEL = 8;
-        RELEASE_PISTON_OUT_CHANNEL = 2;
-        WINCH_MOTOR_1_CHANNEL = 2;
-        WINCH_MOTOR_2_CHANNEL = 6;
+        RELEASE_PISTON_IN_SLOT = 2;
+        RELEASE_PISTON_OUT_SLOT = 2;
+        RELEASE_PISTON_IN_CHANNEL = 2;
+        RELEASE_PISTON_OUT_CHANNEL = 8;
+        WINCH_MOTOR_1_CHANNEL = 6;
+        WINCH_MOTOR_2_CHANNEL = 2;
         LIMIT_SWITCH_CHANNEL = 2;
     }
     
     private static void practice() 
     {
-        RELEASE_PISTON_SLOT = 3;
-        RELEASE_PISTON_IN_CHANNEL = 2;
-        RELEASE_PISTON_OUT_CHANNEL = 6;
+        RELEASE_PISTON_IN_SLOT = 1;
+        RELEASE_PISTON_OUT_SLOT = 1;
+        RELEASE_PISTON_OUT_CHANNEL = 3;//6;
         WINCH_MOTOR_1_CHANNEL = 9;
         WINCH_MOTOR_2_CHANNEL = 7;
         LIMIT_SWITCH_CHANNEL = 2;
     }
     
-    public static int RELEASE_PISTON_SLOT;
+    public static int RELEASE_PISTON_IN_SLOT;
+    public static int RELEASE_PISTON_OUT_SLOT;
     public static int RELEASE_PISTON_IN_CHANNEL;
     public static int RELEASE_PISTON_OUT_CHANNEL;
     public static int WINCH_MOTOR_1_CHANNEL;

@@ -22,6 +22,8 @@ public class Arm
     
     public Arm(boolean front)
     {
+        int solenoidUpSlot;
+        int solenoidDownSlot;
         int solenoidUpChannel;
         int solenoidDownChannel;
         int rollerChannel;
@@ -29,27 +31,23 @@ public class Arm
         
         if(front)
         {
+            solenoidUpSlot = ArmConstants.SOLENOID_FRONT_UP_SLOT;
+            solenoidDownSlot = ArmConstants.SOLENOID_FRONT_DOWN_SLOT;
             solenoidUpChannel = ArmConstants.SOLENOID_FRONT_UP_CHANNEL;
             solenoidDownChannel = ArmConstants.SOLENOID_FRONT_DOWN_CHANNEL;
             rollerChannel = ArmConstants.ROLLER_FRONT_CHANNEL;
         }
         else
         {
+            solenoidUpSlot = ArmConstants.SOLENOID_BACK_UP_SLOT;
+            solenoidDownSlot = ArmConstants.SOLENOID_BACK_DOWN_SLOT;
             solenoidUpChannel = ArmConstants.SOLENOID_BACK_UP_CHANNEL;
             solenoidDownChannel = ArmConstants.SOLENOID_BACK_DOWN_CHANNEL;
             rollerChannel = ArmConstants.ROLLER_BACK_CHANNEL;
         }
 
-        if(MainConstants.TWO_SOLENOID_SOLTS)
-        {
-            solenoidUp = new Solenoid(ArmConstants.PISTON_SLOT, solenoidUpChannel);
-            solenoidDown = new Solenoid(ArmConstants.PISTON_SLOT, solenoidDownChannel);
-        }
-        else
-        {
-            solenoidUp = new Solenoid(solenoidUpChannel);
-            solenoidDown = new Solenoid(solenoidDownChannel);
-        }
+        solenoidUp = new Solenoid(solenoidUpSlot, solenoidUpChannel);
+        solenoidDown = new Solenoid(solenoidDownSlot, solenoidDownChannel);
         RollerMotor = new Victor(rollerChannel);
     }
     
