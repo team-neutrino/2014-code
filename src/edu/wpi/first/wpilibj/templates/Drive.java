@@ -29,16 +29,8 @@ public class Drive
         DriveFR = new Victor(DriveConstants.DRIVE_FR_CHANNEL);
         DriveBL = new Victor(DriveConstants.DRIVE_BL_CHANNEL);
         DriveBR = new Victor(DriveConstants.DRIVE_BR_CHANNEL);
-        if(MainConstants.TWO_SOLENOID_SOLTS)
-        {
-            DriveOut = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_OUT_CHANNEL);
-            DriveIn = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_IN_CHANNEL);
-        }
-        else
-        {
-            DriveOut = new Solenoid(DriveConstants.DRIVE_SOLENOID_OUT_CHANNEL);
-            DriveIn = new Solenoid(DriveConstants.DRIVE_SOLENOID_IN_CHANNEL);
-        }
+        DriveOut = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_OUT_CHANNEL);
+        DriveIn = new Solenoid(DriveConstants.DRIVE_SOLENOID_SLOT, DriveConstants.DRIVE_SOLENOID_IN_CHANNEL);
         
         traction(false);
     }

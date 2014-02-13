@@ -31,7 +31,7 @@ public class DriveConstants
         DRIVE_BL_CHANNEL = 2;
         DRIVE_BR_CHANNEL = 5;
 
-        DRIVE_SOLENOID_SLOT = 3;
+        DRIVE_SOLENOID_SLOT = 1;
         DRIVE_SOLENOID_OUT_CHANNEL = 8;
         DRIVE_SOLENOID_IN_CHANNEL = 4;
     }

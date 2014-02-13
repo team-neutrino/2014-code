@@ -36,7 +36,7 @@ public class DriverMessages
         switch(AutoMode)
         {
             case 1:
-                autoDescription = "Auto 1 Description";
+                autoDescription = "Shoot Hot & Mobility";
                 break;
             case 2:
                 autoDescription = "Auto 2 Description";

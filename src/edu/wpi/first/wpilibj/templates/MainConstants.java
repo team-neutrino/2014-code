@@ -41,9 +41,6 @@ public class MainConstants
     
     private static void real() 
     {
-        //Modules
-        TWO_SOLENOID_SOLTS = true;
-
         //Compressor
         COMPRESSOR_SWITCH_CHANNEL = 1;
         COMPRESSOR_RELAY_CHANNEL = 1;
@@ -51,16 +48,10 @@ public class MainConstants
     
     private static void practice() 
     {
-        //Modules
-        TWO_SOLENOID_SOLTS = false;
-
         //Compressor
         COMPRESSOR_SWITCH_CHANNEL = 1;
         COMPRESSOR_RELAY_CHANNEL = 1;
     }
-    
-    //Modules
-    public static boolean TWO_SOLENOID_SOLTS;
     
     //Compressor
     public static int COMPRESSOR_SWITCH_CHANNEL;
