@@ -28,7 +28,7 @@ public class Shooter implements Runnable
     private DriverMessages DriverMessages;
     
     public Shooter(DriverStation driverStation, DriverMessages driverMessages)
-{
+    {
         ReleasePistonIn = new Solenoid(ShooterConstants.RELEASE_PISTON_IN_SLOT, ShooterConstants.RELEASE_PISTON_IN_CHANNEL);
         ReleasePistonOut = new Solenoid(ShooterConstants.RELEASE_PISTON_OUT_SLOT, ShooterConstants.RELEASE_PISTON_OUT_CHANNEL);
         WinchMotor1 = new Victor(ShooterConstants.WINCH_MOTOR_1_CHANNEL);
@@ -37,7 +37,7 @@ public class Shooter implements Runnable
         LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
         DriverStation = driverStation;
         DriverMessages = driverMessages;
-        shooterCock();
+        //shooterCock();
     }
    
     private void shooterCock()
@@ -52,6 +52,7 @@ public class Shooter implements Runnable
     
     public void shoot()
     {
+        System.out.println("Shoot");
         if (!Loading)
         {
             ReleasePistonIn.set(false);

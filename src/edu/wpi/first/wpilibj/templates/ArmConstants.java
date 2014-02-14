@@ -30,13 +30,13 @@ public class ArmConstants
     private static void practice()
     {
         SOLENOID_BACK_UP_SLOT = 1;
-        SOLENOID_BACK_UP_CHANNEL = 2;//1;
+        SOLENOID_BACK_UP_CHANNEL = 1;
         SOLENOID_BACK_DOWN_SLOT = 1;
-        SOLENOID_BACK_DOWN_CHANNEL = 3;//5;
-        SOLENOID_FRONT_UP_SLOT = 8;//1;
-        SOLENOID_FRONT_UP_CHANNEL = 4;//7;
-        SOLENOID_FRONT_DOWN_SLOT = 6;//1;
-        SOLENOID_FRONT_DOWN_CHANNEL = 5;//3;
+        SOLENOID_BACK_DOWN_CHANNEL = 5;
+        SOLENOID_FRONT_UP_SLOT = 1;
+        SOLENOID_FRONT_UP_CHANNEL = 7;
+        SOLENOID_FRONT_DOWN_SLOT = 1;
+        SOLENOID_FRONT_DOWN_CHANNEL = 3;
 
         ROLLER_FRONT_CHANNEL = 10;
         ROLLER_BACK_CHANNEL = 1;

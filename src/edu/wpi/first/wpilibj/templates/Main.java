@@ -170,6 +170,9 @@ public class Main extends SimpleRobot
                 {
                     ArmBack.armUp(!ArmBack.isUp());
                 }
+                
+                frontTogglePrevious = frontToggle;
+                backTogglePrevious = backToggle;
             }
             
             //arm (rollers)

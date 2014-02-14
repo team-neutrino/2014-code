@@ -20,11 +20,20 @@ public class Camera
     
     public Camera()
     {
-        RobotCamera = AxisCamera.getInstance();
+        if(MainConstants.REAL_BOT)
+        {
+            RobotCamera = AxisCamera.getInstance();
+        }
     }
     
     public boolean goalIsHot()
     {
+        if(!MainConstants.REAL_BOT)
+        {
+            return true;
+        }
+        
+        
         int tapes;
         long startTime = System.currentTimeMillis();
         while(!RobotCamera.freshImage() && (System.currentTimeMillis() - startTime < 1000))

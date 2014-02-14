@@ -13,7 +13,7 @@ package edu.wpi.first.wpilibj.templates;
 public class MainConstants
 {
     
-    public static final boolean REAL_BOT = true;
+    public static final boolean REAL_BOT = false;
     
     //defaults
     public static final int DEFUALT_AUTO_MODE = 1;
@@ -24,6 +24,8 @@ public class MainConstants
     public static final int GAMEPAD_PORT = 3;
     
     //drive
+    
+    
     public static final int DRIVE_AXIS = 2;
     public static final int TRACTION_BUTTON = 1;
     public static final int SHOOT_BUTTON = 2;
