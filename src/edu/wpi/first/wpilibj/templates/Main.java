@@ -76,13 +76,20 @@ public class Main extends SimpleRobot
                     }
                     break;
                 case 2:
-                    //code for auto 2
+                    if(Camera.goalIsHot())
+                    {
+                        auto2Hot();
+                    }
+                    else
+                    {
+                        auto2Cold();
+                    }
                     break;
                 case 3:
-                    //code for auto 3
+                    auto3();
                     break;
                 case 4:
-                    //code for auto 4
+                    auto4();
                     break;
                 case 5:
                     //code for auto 5
@@ -218,6 +225,7 @@ public class Main extends SimpleRobot
         }
     }
 
+    //Shoot Hot & Mobility
     private void auto1Hot() throws InterruptedException 
     {
         ArmFront.armUp(false);
@@ -237,6 +245,64 @@ public class Main extends SimpleRobot
         ArmFront.armUp(false);
         ArmBack.armUp(false);
         Thread.sleep(5000);
+        Shooter.shoot();
+        Thread.sleep(1000);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(3000);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+    }
+    
+    //Shoot Hot
+    private void auto2Hot() throws InterruptedException 
+    {
+        ArmFront.armUp(false);
+        ArmBack.armUp(false);
+        Thread.sleep(1000);
+        Shooter.shoot();
+    }
+    
+    private void auto2Cold() throws InterruptedException 
+    {
+        ArmFront.armUp(false);
+        ArmBack.armUp(false);
+        Thread.sleep(5000);
+        Shooter.shoot();
+    }
+    
+    //Mobility
+    private void auto3() throws InterruptedException 
+    {
+        ArmFront.armUp(false);
+        ArmBack.armUp(false);
+        Thread.sleep(1000);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(3000);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+    }
+    
+    //Shoot 2 & Mobility
+    private void auto4() throws InterruptedException 
+    {
+        ArmFront.armUp(false);
+        ArmBack.armUp(false);
+        Thread.sleep(1000);
+        Shooter.shoot();
+        Thread.sleep(1000);
+        Drive.setLeft(-1);
+        Drive.setRight(-1);
+        ArmBack.rollerForward();
+        Thread.sleep(1000);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(1000);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        ArmBack.rollerStop();
+        Thread.sleep(1000);
         Shooter.shoot();
         Thread.sleep(1000);
         Drive.setLeft(1);
