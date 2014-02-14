@@ -1,6 +1,5 @@
 package edu.wpi.first.wpilibj.templates;
 
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -52,12 +51,21 @@ public class Shooter implements Runnable
     
     public void shoot()
     {
-        System.out.println("Shoot");
+        System.out.println(System.currentTimeMillis() + "Shoot");
         if (!Loading)
         {
             ReleasePistonIn.set(false);
             ReleasePistonOut.set(true);
             shooterCock();
+        }
+    }
+    
+    public void release()
+    {
+        if (!Loading)
+        {
+            ReleasePistonIn.set(false);
+            ReleasePistonOut.set(true);
         }
     }
     
@@ -74,7 +82,7 @@ public class Shooter implements Runnable
             ReleasePistonIn.set(true);
             ReleasePistonOut.set(false);
             long startLoad = System.currentTimeMillis();
-            System.out.println(LimitSwitch.get());
+            //System.out.println(LimitSwitch.get());
             while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 5000))
             {
                 WinchMotor1.set(-.5);

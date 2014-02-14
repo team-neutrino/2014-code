@@ -153,15 +153,6 @@ public class Main extends SimpleRobot
                 backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
                 currentTime = System.currentTimeMillis();
                 
-                if(frontToggle)
-                {
-                    frontTimeToggled = currentTime;
-                }
-                if(backToggle)
-                {
-                    backTimeToggled = currentTime;
-                }
-                
                 if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
                 {
                     ArmFront.armUp(!ArmFront.isUp());
@@ -169,6 +160,15 @@ public class Main extends SimpleRobot
                 if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
                 {
                     ArmBack.armUp(!ArmBack.isUp());
+                }
+                
+                if(frontToggle)
+                {
+                    frontTimeToggled = currentTime;
+                }
+                if(backToggle)
+                {
+                    backTimeToggled = currentTime;
                 }
                 
                 frontTogglePrevious = frontToggle;
@@ -190,6 +190,12 @@ public class Main extends SimpleRobot
             {
                 ArmFront.rollerStop();
                 ArmBack.rollerStop();
+            }
+            
+            //release shooter at match end
+            if(154.9 <= DriverStation.getMatchTime())
+            {
+                Shooter.release();
             }
         } 
     }
