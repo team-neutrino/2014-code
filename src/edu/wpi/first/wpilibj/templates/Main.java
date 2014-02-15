@@ -65,7 +65,7 @@ public class Main extends SimpleRobot
         try {
             switch(AutoMode)
             {
-                case 1:
+                case 1://Check Hot, Shoot, & Mobility
                     if(Camera.goalIsHot())
                     {
                         auto1Hot();
@@ -75,7 +75,7 @@ public class Main extends SimpleRobot
                         auto1Cold();
                     }
                     break;
-                case 2:
+                case 2:// Check and Shoot Hot
                     if(Camera.goalIsHot())
                     {
                         auto2Hot();
@@ -85,10 +85,10 @@ public class Main extends SimpleRobot
                         auto2Cold();
                     }
                     break;
-                case 3:
+                case 3://Mobility
                     auto3();
                     break;
-                case 4:
+                case 4://Shoot 2 and Mobility
                     auto4();
                     break;
                 case 5:
@@ -137,7 +137,7 @@ public class Main extends SimpleRobot
             Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
             
             //shoot
-            if((JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON)) && !ArmFront.isUp())
+            if((JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON)) /*&& !ArmFront.isUp()*/)
             {
                 Shooter.shoot();
             }
@@ -200,7 +200,12 @@ public class Main extends SimpleRobot
             }
             
             //release shooter at match end
-            if(154.9 <= DriverStation.getMatchTime())
+//            if(154.9 <= DriverStation.getMatchTime())
+//            {
+//                Shooter.release();
+//            }
+            
+            if(Gamepad.getRawButton(3))
             {
                 Shooter.release();
             }
@@ -220,6 +225,7 @@ public class Main extends SimpleRobot
                     AutoMode = autoMode;
                     DriverMessages.updateAutoMode(autoMode);
                     buttonPressed = true;
+                    System.out.println("Switching to Auto " + autoMode);
                 }
             }
         }
