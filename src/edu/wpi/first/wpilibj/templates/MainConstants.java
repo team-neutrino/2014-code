@@ -13,7 +13,7 @@ package edu.wpi.first.wpilibj.templates;
 public class MainConstants
 {
     
-    public static final boolean REAL_BOT = false;
+    public static final boolean REAL_BOT = true;
     
     //defaults
     public static final int DEFUALT_AUTO_MODE = 1;
@@ -44,7 +44,7 @@ public class MainConstants
     private static void real() 
     {
         //Compressor
-        COMPRESSOR_SWITCH_CHANNEL = 1;
+        COMPRESSOR_SWITCH_CHANNEL = 4;
         COMPRESSOR_RELAY_CHANNEL = 1;
     }
     

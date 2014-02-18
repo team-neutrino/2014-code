@@ -65,7 +65,7 @@ public class Main extends SimpleRobot
         try {
             switch(AutoMode)
             {
-                case 1://Check Hot, Shoot, & Mobility
+                case 1://Check Hot, Shoot, & Move
                     if(Camera.goalIsHot())
                     {
                         auto1Hot();
@@ -85,10 +85,10 @@ public class Main extends SimpleRobot
                         auto2Cold();
                     }
                     break;
-                case 3://Mobility
+                case 3://Move
                     auto3();
                     break;
-                case 4://Shoot 2 and Mobility
+                case 4://Shoot 2 balls and Move
                     auto4();
                     break;
                 case 5:

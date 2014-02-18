@@ -78,7 +78,7 @@ public class Shooter implements Runnable
                 Thread.sleep(5);
             }
             
-            Thread.sleep(500);
+            Thread.sleep(1000);
             ReleasePistonIn.set(true);
             ReleasePistonOut.set(false);
             long startLoad = System.currentTimeMillis();
