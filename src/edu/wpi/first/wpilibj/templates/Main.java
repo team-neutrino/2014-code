@@ -41,7 +41,7 @@ public class Main extends SimpleRobot
         
         Compressor = new Compressor(MainConstants.COMPRESSOR_SWITCH_CHANNEL, MainConstants.COMPRESSOR_RELAY_CHANNEL);
         Compressor.start();
-
+        System.out.println("Tewatrsdgfasfhd" + MainConstants.COMPRESSOR_SWITCH_CHANNEL +" "+ MainConstants.COMPRESSOR_RELAY_CHANNEL);
         JoystickRight = new Joystick(MainConstants.RIGHT_JOY_PORT);
         JoystickLeft = new Joystick(MainConstants.LEFT_JOY_PORT);
         Gamepad = new Joystick(MainConstants.GAMEPAD_PORT);
@@ -57,7 +57,7 @@ public class Main extends SimpleRobot
         ArmFront = new Arm(true);
         ArmBack = new Arm(false);
         
-        Camera = new Camera();
+        //Camera = new Camera();
     }
     
     public void autonomous() 

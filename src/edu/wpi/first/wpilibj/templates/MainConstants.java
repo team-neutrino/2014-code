@@ -46,7 +46,7 @@ public class MainConstants
     {
         //Compressor
         COMPRESSOR_SWITCH_CHANNEL = 4;
-        COMPRESSOR_RELAY_CHANNEL = 1;
+        COMPRESSOR_RELAY_CHANNEL = 4;
     }
     
     private static void practice() 
