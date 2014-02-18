@@ -141,6 +141,10 @@ public class Main extends SimpleRobot
             {
                 Shooter.shoot();
             }
+            if(Gamepad.getRawButton(MainConstants.SHOOTER_RELEASE_BUTTON))
+            {
+                Shooter.release();
+            }
             
             //arm (up/down)
             if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
@@ -204,11 +208,6 @@ public class Main extends SimpleRobot
 //            {
 //                Shooter.release();
 //            }
-            
-            if(Gamepad.getRawButton(3))
-            {
-                Shooter.release();
-            }
         } 
     }
     

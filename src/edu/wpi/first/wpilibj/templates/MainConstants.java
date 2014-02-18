@@ -24,11 +24,12 @@ public class MainConstants
     public static final int GAMEPAD_PORT = 3;
     
     //drive
-    
-    
     public static final int DRIVE_AXIS = 2;
     public static final int TRACTION_BUTTON = 1;
+    
+    //shoot
     public static final int SHOOT_BUTTON = 2;
+    public static final int SHOOTER_RELEASE_BUTTON = 3;
     
     //arms
     public static final int ALL_ARMS_UP_DRIVER = 3;
