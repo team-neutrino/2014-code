@@ -211,10 +211,11 @@ public class Main extends SimpleRobot
         } 
     }
     
-    public void disabled() 
+    protected void disabled() 
     {
         while(DriverStation.isDisabled())
         {
+            //System.out.println(System.currentTimeMillis() + "Disabled");
             //set auto program
             boolean buttonPressed = false;
             for(int autoMode = 1; 10 <= autoMode && false == buttonPressed; autoMode++)
