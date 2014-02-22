@@ -57,7 +57,7 @@ public class Main extends SimpleRobot
         ArmFront = new Arm(true);
         ArmBack = new Arm(false);
         
-        //Camera = new Camera();
+        Camera = new Camera();
     }
     
     public void autonomous() 
