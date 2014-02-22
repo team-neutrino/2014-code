@@ -47,6 +47,10 @@ public class MainConstants
         //Compressor
         COMPRESSOR_SWITCH_CHANNEL = 4;
         COMPRESSOR_RELAY_CHANNEL = 4;
+        
+        //Camera
+        CAMERA_LIGHT_SLOT = 2;
+        CAMERA_LIGHT_CHANNEL = 8;
     }
     
     private static void practice() 
@@ -54,11 +58,19 @@ public class MainConstants
         //Compressor
         COMPRESSOR_SWITCH_CHANNEL = 1;
         COMPRESSOR_RELAY_CHANNEL = 1;
+        
+        //Camera
+        CAMERA_LIGHT_SLOT = 2;
+        CAMERA_LIGHT_CHANNEL = 1;
     }
     
     //Compressor
     public static int COMPRESSOR_SWITCH_CHANNEL;
     public static int COMPRESSOR_RELAY_CHANNEL;
+    
+    //Camera
+    public static int CAMERA_LIGHT_SLOT;
+    public static int CAMERA_LIGHT_CHANNEL;
     
     public static void init()
     {

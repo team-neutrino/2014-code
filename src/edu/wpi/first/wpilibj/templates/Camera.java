@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.image.BinaryImage;
 import edu.wpi.first.wpilibj.image.ColorImage;
@@ -16,15 +17,18 @@ import edu.wpi.first.wpilibj.image.ColorImage;
  */
 public class Camera 
 {
-    AxisCamera RobotCamera;
+    private AxisCamera RobotCamera;
+    private Solenoid CameraLight;
     
     public Camera()
     {
         RobotCamera = AxisCamera.getInstance();
+        CameraLight = new Solenoid(MainConstants.CAMERA_LIGHT_SLOT, MainConstants.CAMERA_LIGHT_CHANNEL);
     }
     
     public boolean goalIsHot()
     {
+        CameraLight.set(true);
         int tapes;
         long startTime = System.currentTimeMillis();
         while(!RobotCamera.freshImage() && (System.currentTimeMillis() - startTime < 1000))
@@ -56,6 +60,9 @@ public class Camera
             ex.printStackTrace();
             return true;
         }
+        
+        CameraLight.set(false);
+        
         return (tapes == 2);
     }
 }
