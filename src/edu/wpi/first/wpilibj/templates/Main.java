@@ -216,7 +216,7 @@ public class Main extends SimpleRobot
         {
             //set auto program
             boolean buttonPressed = false;
-            for(int autoMode = 1; 10 <= autoMode && false == buttonPressed; autoMode++)
+            for(int autoMode = 1; autoMode <= 10 && false == buttonPressed; autoMode++)
             {
                 if(JoystickLeft.getRawButton(autoMode) || JoystickRight.getRawButton(autoMode))
                 {
