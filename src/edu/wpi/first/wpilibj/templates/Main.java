@@ -126,7 +126,7 @@ public class Main extends SimpleRobot
         long backTimeToggled = 0;
         long currentTime;
         
-        while(DriverStation.isOperatorControl())
+        while(DriverStation.isOperatorControl() && DriverStation.isEnabled())
         {
             //drive
             Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
@@ -210,11 +210,10 @@ public class Main extends SimpleRobot
         } 
     }
     
-    protected void disabled() 
+    public void disabled() 
     {
         while(DriverStation.isDisabled())
         {
-            //System.out.println(System.currentTimeMillis() + "Disabled");
             //set auto program
             boolean buttonPressed = false;
             for(int autoMode = 1; 10 <= autoMode && false == buttonPressed; autoMode++)
