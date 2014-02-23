@@ -41,6 +41,7 @@ public class Main extends SimpleRobot
         
         Compressor = new Compressor(MainConstants.COMPRESSOR_SWITCH_CHANNEL, MainConstants.COMPRESSOR_RELAY_CHANNEL);
         Compressor.start();
+        System.out.println("Compressor Slot & Channel" + MainConstants.COMPRESSOR_SWITCH_CHANNEL +" "+ MainConstants.COMPRESSOR_RELAY_CHANNEL);
         JoystickRight = new Joystick(MainConstants.RIGHT_JOY_PORT);
         JoystickLeft = new Joystick(MainConstants.LEFT_JOY_PORT);
         Gamepad = new Joystick(MainConstants.GAMEPAD_PORT);
