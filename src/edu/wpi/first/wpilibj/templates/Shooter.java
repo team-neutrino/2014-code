@@ -51,7 +51,6 @@ public class Shooter implements Runnable
     
     public void shoot()
     {
-        System.out.println(System.currentTimeMillis() + "Shoot");
         if (!Loading)
         {
             ReleasePistonIn.set(false);
