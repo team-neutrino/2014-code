@@ -137,7 +137,7 @@ public class Main extends SimpleRobot
             Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
             
             //shoot
-            if((JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON)) /*&& !ArmFront.isUp()*/)
+            if((JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON)))
             {
                 Shooter.shoot();
             }
