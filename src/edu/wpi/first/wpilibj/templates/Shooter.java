@@ -25,6 +25,7 @@ public class Shooter implements Runnable
     private DigitalInput LimitSwitch;
     private DriverStation DriverStation;
     private DriverMessages DriverMessages;
+    private boolean Loaded;
     
     public Shooter(DriverStation driverStation, DriverMessages driverMessages)
     {
@@ -36,12 +37,17 @@ public class Shooter implements Runnable
         LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
         DriverStation = driverStation;
         DriverMessages = driverMessages;
+        
+        //check if shooter loaded based on limit switch
+        Loaded = LimitSwitch.get();
+        
         //shooterCock();
     }
-   
-    private void shooterCock()
+    
+    public void shoot()
     {
-        if(!Loading)
+        //shoot and automatically recock the shooter
+        if (!Loading)
         {
             Loading = true;
             Thread thread = new Thread(this);
@@ -49,44 +55,47 @@ public class Shooter implements Runnable
         }
     }
     
-    public void shoot()
-    {
-        if (!Loading)
-        {
-            ReleasePistonIn.set(false);
-            ReleasePistonOut.set(true);
-            shooterCock();
-        }
-    }
-    
     public void release()
     {
+        //release the shooter without recocking
         if (!Loading)
         {
             ReleasePistonIn.set(false);
             ReleasePistonOut.set(true);
         }
+        
+        Loaded = false;
     }
     
     public void run() 
     {
         try 
         {
+            if(Loaded)
+            {
+            //release shooter
+                ReleasePistonIn.set(false);
+                ReleasePistonOut.set(true);
+                Thread.sleep(1000);
+            }
+            
+            
+            ReleasePistonIn.set(true);
+            ReleasePistonOut.set(false);
+            
+            //don't start load timeout timer when robot diabled
             while (!DriverStation.isEnabled()) 
-            {                
+            {
                 Thread.sleep(5);
             }
             
-            Thread.sleep(1000);
-            ReleasePistonIn.set(true);
-            ReleasePistonOut.set(false);
             long startLoad = System.currentTimeMillis();
-            //System.out.println(LimitSwitch.get());
             while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 5000))
             {
                 WinchMotor1.set(-.1);
                 WinchMotor2.set(-1);
                 Thread.sleep(5);
+                //System.out.println(LimitSwitch.get());
             }
             WinchMotor1.set(0);
             WinchMotor2.set(0);
@@ -94,6 +103,7 @@ public class Shooter implements Runnable
             DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 5000);
             
             Loading = false;
+            Loaded = true;
         }
         catch (InterruptedException ex) 
         {
