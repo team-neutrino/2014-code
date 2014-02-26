@@ -48,7 +48,7 @@ public class DriverMessages
                 autoDescription = "Shoot 2 & Mobility";
                 break;
             case 5:
-                autoDescription = "Auto 5 Description";
+                autoDescription = "Shoot 3 & Mobility";
                 break;
             case 6:
                 autoDescription = "Auto 6 Description";

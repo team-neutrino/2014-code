@@ -19,11 +19,13 @@ public class Camera
 {
     private AxisCamera RobotCamera;
     private Solenoid CameraLight;
+    private DriverMessages DriverMessages;
     
-    public Camera()
+    public Camera(DriverMessages driverMessages)
     {
         RobotCamera = AxisCamera.getInstance();
         CameraLight = new Solenoid(MainConstants.CAMERA_LIGHT_SLOT, MainConstants.CAMERA_LIGHT_CHANNEL);
+        DriverMessages = driverMessages;
     }
     
     public boolean goalIsHot()
@@ -58,11 +60,13 @@ public class Camera
         catch (Exception ex) 
         {
             ex.printStackTrace();
+            DriverMessages.displayHot(true);
             return true;
         }
         
         CameraLight.set(false);
         
+        DriverMessages.displayHot(false);
         return (tapes == 2);
     }
 }

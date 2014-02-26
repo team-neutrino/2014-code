@@ -51,7 +51,7 @@ public class Arm
         RollerMotor = new Victor(rollerChannel);
     }
     
-    public void armUp(boolean up)
+    public void armDown(boolean up)
     {
         solenoidUp.set(up);
         solenoidDown.set(!up);
