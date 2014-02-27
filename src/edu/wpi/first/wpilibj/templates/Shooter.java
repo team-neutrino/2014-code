@@ -92,7 +92,7 @@ public class Shooter implements Runnable
             long startLoad = System.currentTimeMillis();
             while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 5000))
             {
-                WinchMotor1.set(-.1);
+                WinchMotor1.set(-1);
                 WinchMotor2.set(-1);
                 Thread.sleep(5);
                 //System.out.println(LimitSwitch.get());
