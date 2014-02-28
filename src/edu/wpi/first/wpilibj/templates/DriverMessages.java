@@ -51,19 +51,19 @@ public class DriverMessages
                 autoDescription = "Shoot 3 & Mobility";
                 break;
             case 6:
-                autoDescription = "Auto 6 Description";
+                autoDescription = "Do Nothing";
                 break;
             case 7:
-                autoDescription = "Auto 7 Description";
+                autoDescription = "Not Created";
                 break;
             case 8:
-                autoDescription = "Auto 8 Description";
+                autoDescription = "Not Created";
                 break;
             case 9:
-                autoDescription = "Auto 9 Description";
+                autoDescription = "Not Created";
                 break;
             case 10:
-                autoDescription = "Auto 10 Description";
+                autoDescription = "Not Created";
                 break;
             default:
                 autoDescription = "Auto Error, Check the code";

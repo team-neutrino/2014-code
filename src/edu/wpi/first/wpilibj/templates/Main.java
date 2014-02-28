@@ -96,7 +96,7 @@ public class Main extends SimpleRobot
                     auto5();
                     break;
                 case 6:
-                    //code for auto 6
+                    //Do Nothing
                     break;
                 case 7:
                     //code for auto 7
@@ -234,9 +234,9 @@ public class Main extends SimpleRobot
     //Shoot Hot & Mobility
     private void auto1Hot() throws InterruptedException 
     {
+        Drive.traction(true);
         ArmFront.armDown(false);
         ArmBack.armDown(false);
-        Drive.traction(true);
         Drive.setLeft(1);
         Drive.setRight(1);
         Thread.sleep(1500);
@@ -250,43 +250,49 @@ public class Main extends SimpleRobot
 
     private void auto1Cold() throws InterruptedException 
     {
-        //TODO edit from above
+        Drive.traction(true);
+        Thread.sleep(2500);
+        ArmFront.armDown(false);
+        ArmBack.armDown(false);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(1500);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        ArmBack.armDown(true);
+        Thread.sleep(1000);
+        Shooter.shoot();
+        Drive.traction(false);
     }
     
     //Shoot Hot
     private void auto2Hot() throws InterruptedException 
     {
-        //TODO redo
-        Drive.traction(true);
         ArmFront.armDown(false);
-        ArmBack.armDown(false);
+        ArmBack.armDown(true);
         Thread.sleep(1000);
         Shooter.shoot();
-        Drive.traction(false);
     }
     
     private void auto2Cold() throws InterruptedException 
     {
-        //TODO redo
-        Drive.traction(true);
         ArmFront.armDown(false);
-        ArmBack.armDown(false);
-        Thread.sleep(5000);
+        ArmBack.armDown(true);
+        Thread.sleep(4000);
+        ArmBack.armDown(true);
+        Thread.sleep(1000);
         Shooter.shoot();
-        Drive.traction(false);
     }
     
     //Mobility
     private void auto3() throws InterruptedException 
     {
-        //TODO redo
         Drive.traction(true);
         ArmFront.armDown(false);
         ArmBack.armDown(false);
-        Thread.sleep(1000);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         Drive.setLeft(0);
         Drive.setRight(0);
         Drive.traction(false);
