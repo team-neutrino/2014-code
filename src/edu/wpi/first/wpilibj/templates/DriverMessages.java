@@ -92,6 +92,9 @@ public class DriverMessages
         if(display)
         {
             DriverStation.println(DriverStationLCD.Line.kUser3, 1, "Shooter Timeout                     ");
+        }
+        else
+        {
             DriverStation.println(DriverStationLCD.Line.kUser3, 1, "                     ");
         }
         DriverStation.updateLCD();
