@@ -140,7 +140,7 @@ public class Main extends SimpleRobot
             //shoot
             if((JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON)))
             {
-                Shooter.shoot();
+                Shooter.shootCock();
             }
             if(Gamepad.getRawButton(MainConstants.SHOOTER_RELEASE_BUTTON))
             {
@@ -244,7 +244,7 @@ public class Main extends SimpleRobot
         Drive.setRight(0);
         ArmBack.armDown(true);
         Thread.sleep(1000);
-        Shooter.shoot();
+        Shooter.shootCock();
         Drive.traction(false);
     }
 
@@ -261,7 +261,7 @@ public class Main extends SimpleRobot
         Drive.setRight(0);
         ArmBack.armDown(true);
         Thread.sleep(1000);
-        Shooter.shoot();
+        Shooter.shootCock();
         Drive.traction(false);
     }
     
@@ -271,7 +271,7 @@ public class Main extends SimpleRobot
         ArmFront.armDown(false);
         ArmBack.armDown(true);
         Thread.sleep(1000);
-        Shooter.shoot();
+        Shooter.shootCock();
     }
     
     private void auto2Cold() throws InterruptedException 
@@ -281,7 +281,7 @@ public class Main extends SimpleRobot
         Thread.sleep(4000);
         ArmBack.armDown(true);
         Thread.sleep(1000);
-        Shooter.shoot();
+        Shooter.shootCock();
     }
     
     //Mobility
@@ -310,11 +310,11 @@ public class Main extends SimpleRobot
         Drive.setLeft(0);
         Drive.setRight(0);
         Thread.sleep(500);
-        Shooter.shoot();
+        Shooter.shootCock();
         Thread.sleep(1500);
         ArmFront.rollerForward();
         Thread.sleep(3000);
-        Shooter.shoot();
+        Shooter.shootCock();
         ArmFront.rollerStop();
         Drive.traction(false);
     }
@@ -331,11 +331,11 @@ public class Main extends SimpleRobot
         Drive.setLeft(0);
         Drive.setRight(0);
         Thread.sleep(500);
-        Shooter.shoot();
+        Shooter.shootCock();
         Thread.sleep(1500);
         ArmFront.rollerForward();
         Thread.sleep(2000);
-        Shooter.shoot();
+        Shooter.shootCock();
         ArmFront.rollerStop();
         Thread.sleep(500);
         ArmBack.armDown(true);

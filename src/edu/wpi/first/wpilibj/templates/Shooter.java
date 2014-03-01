@@ -44,7 +44,7 @@ public class Shooter implements Runnable
         //shooterCock();
     }
     
-    public void shoot()
+    public void shootCock()
     {
         //shoot and automatically recock the shooter
         if (!Loading)
