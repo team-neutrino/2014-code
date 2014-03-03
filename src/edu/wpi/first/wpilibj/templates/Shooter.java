@@ -90,7 +90,7 @@ public class Shooter implements Runnable
             }
             
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 5000))
+            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 500)) //TODO update this to a value that makes more sense with testing
             {
                 WinchMotor1.set(-1);
                 WinchMotor2.set(-1);
@@ -100,7 +100,7 @@ public class Shooter implements Runnable
             WinchMotor1.set(0);
             WinchMotor2.set(0);
             
-            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 5000);
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 500); //TODO update this one to match
             
             Loading = false;
             Loaded = true;
