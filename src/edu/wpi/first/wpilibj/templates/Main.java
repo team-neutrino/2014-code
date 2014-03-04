@@ -28,7 +28,7 @@ public class Main extends SimpleRobot
     Shooter Shooter;
     DriverMessages DriverMessages;
     DriverStation DriverStation;
-    Arm ArmFront;
+    //Arm ArmFront;
     Arm ArmBack;
     Camera Camera;
     Compressor Compressor;
@@ -54,7 +54,7 @@ public class Main extends SimpleRobot
         Drive = new Drive();
         Shooter = new Shooter(DriverStation, DriverMessages);
         
-        ArmFront = new Arm(true);
+        //ArmFront = new Arm(true);
         ArmBack = new Arm(false);
         
         Camera = new Camera(DriverMessages);
@@ -151,12 +151,12 @@ public class Main extends SimpleRobot
             if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
                     || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
             {
-                ArmFront.armDown(true);
+                //ArmFront.armDown(true);
                 ArmBack.armDown(true);    
             }
             else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
             {
-                ArmFront.armDown(false);
+                //ArmFront.armDown(false);
                 ArmBack.armDown(false);
             }
             else
@@ -167,7 +167,7 @@ public class Main extends SimpleRobot
                 
                 if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
                 {
-                    ArmFront.armDown(!ArmFront.isUp());
+                    //ArmFront.armDown(!ArmFront.isUp());
                 }
                 if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
                 {
@@ -190,17 +190,17 @@ public class Main extends SimpleRobot
             //arm (rollers)
             if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
             {
-                ArmFront.rollerForward();
+                //ArmFront.rollerForward();
                 ArmBack.rollerForward();
             }
             else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
             {
-                ArmFront.rollerBackward();
+                //ArmFront.rollerBackward();
                 ArmBack.rollerBackward();
             }
             else
             {
-                ArmFront.rollerStop();
+                //ArmFront.rollerStop();
                 ArmBack.rollerStop();
             }
             
@@ -235,7 +235,7 @@ public class Main extends SimpleRobot
     private void auto1Hot() throws InterruptedException 
     {
         Drive.traction(true);
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
@@ -252,7 +252,7 @@ public class Main extends SimpleRobot
     {
         Drive.traction(true);
         Thread.sleep(2500);
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
@@ -268,7 +268,7 @@ public class Main extends SimpleRobot
     //Shoot Hot
     private void auto2Hot() throws InterruptedException 
     {
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(true);
         Thread.sleep(1000);
         Shooter.shootCock();
@@ -276,7 +276,7 @@ public class Main extends SimpleRobot
     
     private void auto2Cold() throws InterruptedException 
     {
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(true);
         Thread.sleep(4000);
         ArmBack.armDown(true);
@@ -288,7 +288,7 @@ public class Main extends SimpleRobot
     private void auto3() throws InterruptedException 
     {
         Drive.traction(true);
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
@@ -302,7 +302,7 @@ public class Main extends SimpleRobot
     private void auto4() throws InterruptedException 
     {
         Drive.traction(true);
-        ArmFront.armDown(true);
+        //ArmFront.armDown(true);
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
@@ -312,10 +312,10 @@ public class Main extends SimpleRobot
         Thread.sleep(500);
         Shooter.shootCock();
         Thread.sleep(1500);
-        ArmFront.rollerForward();
+        //ArmFront.rollerForward();
         Thread.sleep(3000);
         Shooter.shootCock();
-        ArmFront.rollerStop();
+        //ArmFront.rollerStop();
         Drive.traction(false);
     }
     
@@ -323,7 +323,7 @@ public class Main extends SimpleRobot
     private void auto5() throws InterruptedException
     {
         Drive.traction(true);
-        ArmFront.armDown(true);
+        //ArmFront.armDown(true);
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
@@ -333,13 +333,13 @@ public class Main extends SimpleRobot
         Thread.sleep(500);
         Shooter.shootCock();
         Thread.sleep(1500);
-        ArmFront.rollerForward();
+        //ArmFront.rollerForward();
         Thread.sleep(2000);
         Shooter.shootCock();
-        ArmFront.rollerStop();
+        ///ArmFront.rollerStop();
         Thread.sleep(500);
         ArmBack.armDown(true);
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.rollerForward();
         Drive.setLeft(-1);
         Drive.setRight(-1);
