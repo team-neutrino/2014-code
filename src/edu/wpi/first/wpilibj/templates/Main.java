@@ -161,30 +161,30 @@ public class Main extends SimpleRobot
             }
             else
             {
-                frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
-                backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
-                currentTime = System.currentTimeMillis();
-                
-                if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
-                {
-                    //ArmFront.armDown(!ArmFront.isUp());
-                }
-                if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
-                {
-                    ArmBack.armDown(!ArmBack.isUp());
-                }
-                
-                if(frontToggle)
-                {
-                    frontTimeToggled = currentTime;
-                }
-                if(backToggle)
-                {
-                    backTimeToggled = currentTime;
-                }
-                
-                frontTogglePrevious = frontToggle;
-                backTogglePrevious = backToggle;
+//                frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
+//                backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
+//                currentTime = System.currentTimeMillis();
+//                
+//                if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
+//                {
+//                    //ArmFront.armDown(!ArmFront.isUp());
+//                }
+//                if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
+//                {
+//                    ArmBack.armDown(!ArmBack.isUp());
+//                }
+//                
+//                if(frontToggle)
+//                {
+//                    frontTimeToggled = currentTime;
+//                }
+//                if(backToggle)
+//                {
+//                    backTimeToggled = currentTime;
+//                }
+//                
+//                frontTogglePrevious = frontToggle;
+//                backTogglePrevious = backToggle;
             }
             
             //arm (rollers)
