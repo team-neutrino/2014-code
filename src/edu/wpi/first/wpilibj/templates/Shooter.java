@@ -52,8 +52,8 @@ public class Shooter implements Runnable
     
     public void eject(boolean out)
     {
-        EjectPistonIn.set(!out);
-        EjectPistonOut.set(out);
+        EjectPistonIn.set(out);
+        EjectPistonOut.set(!out);
     }
     
     public void shootCock()

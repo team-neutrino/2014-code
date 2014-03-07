@@ -36,10 +36,10 @@ public class ShooterConstants
         RELEASE_PISTON_IN_CHANNEL = 2;
         RELEASE_PISTON_OUT_CHANNEL = 6;
         
-        EJECT_PISTON_IN_SOLT = 0;
-        EJECT_PISTON_OUT_SLOT = 0;
-        EJECT_PISTON_IN_CHANNEL = 0;
-        EJECT_PISTON_OUT_CHANNEL = 0;
+        EJECT_PISTON_IN_SOLT = 1;
+        EJECT_PISTON_OUT_SLOT = 1;
+        EJECT_PISTON_IN_CHANNEL = 3;
+        EJECT_PISTON_OUT_CHANNEL = 7;
         
         WINCH_MOTOR_1_CHANNEL = 9;
         WINCH_MOTOR_2_CHANNEL = 7;
