@@ -102,17 +102,17 @@ public class Shooter implements Runnable
             }
             
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 1000)) //TODO update this to a value that makes more sense with testing
+            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 1500))
             {
-                WinchMotor1.set(-1);
-                WinchMotor2.set(-1);
+                WinchMotor1.set(-.7);
+                WinchMotor2.set(-.7);
                 Thread.sleep(5);
                 System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
             WinchMotor1.set(0);
             WinchMotor2.set(0);
             
-            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1000); //TODO update this one to match
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1500);
             
             Loading = false;
             Loaded = true;
