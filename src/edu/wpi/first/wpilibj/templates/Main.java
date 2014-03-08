@@ -202,8 +202,8 @@ public class Main extends SimpleRobot
             }
             else
             {
-                //ArmFront.rollerStop();
-                ArmBack.rollerStop();
+                //ArmFront.rollerSlow();
+                ArmBack.rollerSlow();
             }
             
             //release shooter at match end
@@ -317,7 +317,7 @@ public class Main extends SimpleRobot
         //ArmFront.rollerForward();
         Thread.sleep(3000);
         Shooter.shootCock();
-        //ArmFront.rollerStop();
+        //ArmFront.rollerSlow();
         Drive.traction(false);
     }
     
@@ -338,7 +338,7 @@ public class Main extends SimpleRobot
         //ArmFront.rollerForward();
         Thread.sleep(2000);
         Shooter.shootCock();
-        ///ArmFront.rollerStop();
+        ///ArmFront.rollerSlow();
         Thread.sleep(500);
         ArmBack.armDown(true);
         //ArmFront.armDown(false);

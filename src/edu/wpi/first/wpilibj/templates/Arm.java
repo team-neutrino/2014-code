@@ -81,9 +81,16 @@ public class Arm
         }
     }
     
-    public void rollerStop()
+    public void rollerSlow()
     {
-        RollerMotor.set(0);
+        if(Front)
+        {
+            RollerMotor.set(.5);
+        }
+        else
+        {
+            RollerMotor.set(-.5);
+        }
     }
     
     public boolean isUp()
