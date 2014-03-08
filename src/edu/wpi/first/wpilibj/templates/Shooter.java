@@ -110,8 +110,8 @@ public class Shooter implements Runnable
                 
                 if(Lob)
                 {
-                    EjectPistonOut.set(true);
-                    EjectPistonIn.set(false);
+                    EjectPistonOut.set(false);
+                    EjectPistonIn.set(true);
                 }
                 
                 Thread.sleep(1000);

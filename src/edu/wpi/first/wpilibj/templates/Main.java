@@ -144,7 +144,7 @@ public class Main extends SimpleRobot
             }
             else if((JoystickRight.getRawButton(MainConstants.SHOOT_LOB_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_LOB_BUTTON)))
             {
-                Shooter.shootCock();
+                Shooter.shootLobCock();
             }
             
             if(Gamepad.getRawButton(MainConstants.SHOOTER_RELEASE_BUTTON))
