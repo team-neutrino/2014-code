@@ -57,8 +57,8 @@ public class Shooter implements Runnable
     {
         if(!Lob)
         {
-            EjectPistonIn.set(out);
-            EjectPistonOut.set(!out);
+            EjectPistonIn.set(!out);
+            EjectPistonOut.set(out);
         }
     }
     
@@ -110,8 +110,8 @@ public class Shooter implements Runnable
                 
                 if(Lob)
                 {
-                    EjectPistonOut.set(false);
-                    EjectPistonIn.set(true);
+                    EjectPistonOut.set(true);
+                    EjectPistonIn.set(false);
                 }
                 
                 Thread.sleep(1000);
@@ -137,8 +137,8 @@ public class Shooter implements Runnable
             }
             WinchMotor1.set(0);
             WinchMotor2.set(0);
-            EjectPistonOut.set(true);
-            EjectPistonIn.set(false);
+            EjectPistonOut.set(false);
+            EjectPistonIn.set(true);
             Lob = false;
             
             DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1500);
