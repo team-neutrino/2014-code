@@ -16,7 +16,7 @@ public class MainConstants
     public static final boolean REAL_BOT = false;
     
     //defaults
-    public static final int DEFUALT_AUTO_MODE = 1;
+    public static final int DEFUALT_AUTO_MODE = 6;
     
     //joysticks
     public static final int LEFT_JOY_PORT = 1;
