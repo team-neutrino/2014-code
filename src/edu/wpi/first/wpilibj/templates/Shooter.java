@@ -19,8 +19,8 @@ public class Shooter implements Runnable
 {
     private Solenoid ReleasePistonIn;
     private Solenoid ReleasePistonOut;
-    private Solenoid EjectPistonIn;
     private Solenoid EjectPistonOut;
+    private Solenoid EjectPistonIn;
     private Victor WinchMotor1;
     private Victor WinchMotor2;
     private boolean Loading;
@@ -35,8 +35,8 @@ public class Shooter implements Runnable
         ReleasePistonIn = new Solenoid(ShooterConstants.RELEASE_PISTON_IN_SLOT, ShooterConstants.RELEASE_PISTON_IN_CHANNEL);
         ReleasePistonOut = new Solenoid(ShooterConstants.RELEASE_PISTON_OUT_SLOT, ShooterConstants.RELEASE_PISTON_OUT_CHANNEL);
         
-        EjectPistonIn = new Solenoid(ShooterConstants.EJECT_PISTON_IN_SOLT, ShooterConstants.EJECT_PISTON_IN_CHANNEL);
-        EjectPistonOut = new  Solenoid(ShooterConstants.EJECT_PISTON_OUT_SLOT, ShooterConstants.EJECT_PISTON_OUT_CHANNEL);
+        EjectPistonIn = new  Solenoid(ShooterConstants.EJECT_PISTON_IN_SLOT, ShooterConstants.EJECT_PISTON_IN_CHANNEL);
+        EjectPistonOut = new Solenoid(ShooterConstants.EJECT_PISTON_OUT_SLOT, ShooterConstants.EJECT_PISTON_OUT_CHANNEL);
         
         WinchMotor1 = new Victor(ShooterConstants.WINCH_MOTOR_1_CHANNEL);
         WinchMotor2 = new Victor(ShooterConstants.WINCH_MOTOR_2_CHANNEL);
