@@ -28,6 +28,7 @@ public class Shooter implements Runnable
     private DriverStation DriverStation;
     private DriverMessages DriverMessages;
     private boolean Loaded;
+    private boolean Lob;
     
     public Shooter(DriverStation driverStation, DriverMessages driverMessages)
     {
@@ -48,12 +49,17 @@ public class Shooter implements Runnable
         Loaded = LimitSwitch.get();
         
         //shooterCock();
+        
+        Lob = false;
     }
     
     public void eject(boolean out)
     {
-        EjectPistonIn.set(out);
-        EjectPistonOut.set(!out);
+        if(!Lob)
+        {
+            EjectPistonIn.set(out);
+            EjectPistonOut.set(!out);
+        }
     }
     
     public void shootCock()
@@ -61,6 +67,19 @@ public class Shooter implements Runnable
         //shoot and automatically recock the shooter
         if (!Loading)
         {
+            Lob = false;
+            Loading = true;
+            Thread thread = new Thread(this);
+            thread.start();
+        }
+    }
+    
+    public void shootLobCock()
+    {
+        //shoot and automatically recock the shooter
+        if (!Loading)
+        {
+            Lob = true;
             Loading = true;
             Thread thread = new Thread(this);
             thread.start();
@@ -88,6 +107,13 @@ public class Shooter implements Runnable
             //release shooter
                 ReleasePistonIn.set(false);
                 ReleasePistonOut.set(true);
+                
+                if(Lob)
+                {
+                    EjectPistonOut.set(true);
+                    EjectPistonIn.set(false);
+                }
+                
                 Thread.sleep(1000);
             }
             
@@ -111,11 +137,14 @@ public class Shooter implements Runnable
             }
             WinchMotor1.set(0);
             WinchMotor2.set(0);
+            EjectPistonOut.set(true);
+            EjectPistonIn.set(false);
+            Lob = false;
             
             DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1500);
             
-            Loading = false;
             Loaded = true;
+            Loading = false;
         }
         catch (InterruptedException ex) 
         {

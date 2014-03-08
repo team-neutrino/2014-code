@@ -29,6 +29,7 @@ public class MainConstants
     
     //shoot
     public static final int SHOOT_BUTTON = 2;
+    public static final int SHOOT_LOB_BUTTON = 2;
     public static final int SHOOTER_RELEASE_BUTTON = 3;
     
     public static final int BALL_EJECT_BUTTON = 2;
