@@ -35,6 +35,8 @@ public class Main extends SimpleRobot
     
     int AutoMode;
     
+    boolean InvertDrive;
+    
     public void robotInit()
     {
         initConstants();
@@ -58,6 +60,8 @@ public class Main extends SimpleRobot
         ArmBack = new Arm(false);
         
         Camera = new Camera(DriverMessages);
+        
+        InvertDrive = false;
     }
     
     public void autonomous() 
@@ -131,8 +135,25 @@ public class Main extends SimpleRobot
         while(DriverStation.isOperatorControl() && DriverStation.isEnabled())
         {
             //drive
-            Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
-            Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+            if((JoystickRight.getRawButton(MainConstants.DRIVE_INVERT_OFF) || JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT_OFF)))
+            {
+                InvertDrive = false;
+            }
+            else if((JoystickRight.getRawButton(MainConstants.DRIVE_INVERT_ON) || JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT_ON)))
+            {
+                InvertDrive = true;
+            }
+            
+            if(InvertDrive)
+            {
+                Drive.setLeft(JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+            }
+            else
+            {
+                Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+            }
             
             //traction
             Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
