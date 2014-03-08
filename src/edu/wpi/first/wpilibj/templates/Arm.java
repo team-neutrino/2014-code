@@ -51,8 +51,10 @@ public class Arm
         solenoidUp = new Solenoid(solenoidUpSlot, solenoidUpChannel);
         solenoidDown = new Solenoid(solenoidDownSlot, solenoidDownChannel);
         RollerMotor = new Victor(rollerChannel);
-        Down = true;
+        Down = false;
         SlowRollEnabled = true;
+        armDown(false);
+        rollerStopSlow();
     }
     
     public void armDown(boolean down)
