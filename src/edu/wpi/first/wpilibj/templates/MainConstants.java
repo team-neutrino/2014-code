@@ -27,12 +27,12 @@ public class MainConstants
     public static final int DRIVE_AXIS = 2;
     public static final int TRACTION_BUTTON = 1;
     
-    public static final int DRIVE_INVERT = 8;
+    public static final int DRIVE_INVERT = 1;
     
     
     //shoot
     public static final int SHOOT_BUTTON = 2;
-    public static final int SHOOT_LOB_BUTTON = 4;
+    public static final int SHOOT_LOB_BUTTON = 2;
     public static final int SHOOTER_RELEASE_BUTTON = 3;
     
     public static final int BALL_EJECT_BUTTON = 2;
