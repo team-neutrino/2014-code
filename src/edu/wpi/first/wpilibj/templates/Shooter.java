@@ -107,7 +107,7 @@ public class Shooter implements Runnable
                 WinchMotor1.set(-.7);
                 WinchMotor2.set(-.7);
                 Thread.sleep(5);
-                System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
+                //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
             WinchMotor1.set(0);
             WinchMotor2.set(0);
