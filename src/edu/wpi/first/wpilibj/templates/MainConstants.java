@@ -39,7 +39,7 @@ public class MainConstants
     public static final int ALL_ARMS_DOWN_GAMEPAD = 4; //8
     
     public static final int DISABLE_AUTO_ROLL = 7;
-    public static final int ENABLE_AUTO_ROLL = 7;
+    public static final int ENABLE_AUTO_ROLL = 8;
     
     public static final int FRONT_ARM_TOGGLE = 4;
     public static final int BACK_ARM_TOGGLE = 1;
