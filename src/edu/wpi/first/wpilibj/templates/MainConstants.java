@@ -27,8 +27,7 @@ public class MainConstants
     public static final int DRIVE_AXIS = 2;
     public static final int TRACTION_BUTTON = 1;
     
-    public static final int DRIVE_INVERT_ON = 8;
-    public static final int DRIVE_INVERT_OFF = 9;
+    public static final int DRIVE_INVERT = 8;
     
     
     //shoot

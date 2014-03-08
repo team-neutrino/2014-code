@@ -135,14 +135,7 @@ public class Main extends SimpleRobot
         while(DriverStation.isOperatorControl() && DriverStation.isEnabled())
         {
             //drive
-            if((JoystickRight.getRawButton(MainConstants.DRIVE_INVERT_OFF) || JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT_OFF)))
-            {
-                InvertDrive = false;
-            }
-            else if((JoystickRight.getRawButton(MainConstants.DRIVE_INVERT_ON) || JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT_ON)))
-            {
-                InvertDrive = true;
-            }
+            InvertDrive = (JoystickRight.getRawButton(MainConstants.DRIVE_INVERT) || JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT));
             
             if(InvertDrive)
             {
