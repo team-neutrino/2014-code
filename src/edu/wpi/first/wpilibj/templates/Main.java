@@ -200,10 +200,14 @@ public class Main extends SimpleRobot
                 //ArmFront.rollerBackward();
                 ArmBack.rollerBackward();
             }
+            else if(Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON))
+            {
+                ArmBack.rollerBackward();
+            }
             else
             {
-                //ArmFront.rollerSlow();
-                ArmBack.rollerSlow();
+                //ArmFront.rollerStopSlow();
+                ArmBack.rollerStopSlow();
             }
             
             //release shooter at match end
@@ -317,7 +321,7 @@ public class Main extends SimpleRobot
         //ArmFront.rollerForward();
         Thread.sleep(3000);
         Shooter.shootCock();
-        //ArmFront.rollerSlow();
+        //ArmFront.rollerStopSlow();
         Drive.traction(false);
     }
     
@@ -338,7 +342,7 @@ public class Main extends SimpleRobot
         //ArmFront.rollerForward();
         Thread.sleep(2000);
         Shooter.shootCock();
-        ///ArmFront.rollerSlow();
+        ///ArmFront.rollerStopSlow();
         Thread.sleep(500);
         ArmBack.armDown(true);
         //ArmFront.armDown(false);

@@ -19,6 +19,7 @@ public class Arm
     private Solenoid solenoidDown;
     private Victor RollerMotor;
     private boolean Front;
+    private boolean Down;
     
     public Arm(boolean front)
     {
@@ -49,12 +50,14 @@ public class Arm
         solenoidUp = new Solenoid(solenoidUpSlot, solenoidUpChannel);
         solenoidDown = new Solenoid(solenoidDownSlot, solenoidDownChannel);
         RollerMotor = new Victor(rollerChannel);
+        Down = true;
     }
     
-    public void armDown(boolean up)
+    public void armDown(boolean down)
     {
-        solenoidUp.set(up);
-        solenoidDown.set(!up);
+        Down = down;
+        solenoidUp.set(down);
+        solenoidDown.set(!down);
     }
     
     public void rollerForward()
@@ -81,15 +84,22 @@ public class Arm
         }
     }
     
-    public void rollerSlow()
+    public void rollerStopSlow()
     {
-        if(Front)
+        if (!Down)
         {
-            RollerMotor.set(-.5);
+            if(Front)
+            {
+                RollerMotor.set(-.5);
+            }
+            else
+            {
+                RollerMotor.set(.5);
+            }
         }
         else
         {
-            RollerMotor.set(.5);
+        RollerMotor.set(0);
         }
     }
     
