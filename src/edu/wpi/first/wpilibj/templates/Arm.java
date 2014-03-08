@@ -20,6 +20,7 @@ public class Arm
     private Victor RollerMotor;
     private boolean Front;
     private boolean Down;
+    private boolean SlowRollEnabled;
     
     public Arm(boolean front)
     {
@@ -51,6 +52,7 @@ public class Arm
         solenoidDown = new Solenoid(solenoidDownSlot, solenoidDownChannel);
         RollerMotor = new Victor(rollerChannel);
         Down = true;
+        SlowRollEnabled = true;
     }
     
     public void armDown(boolean down)
@@ -84,9 +86,14 @@ public class Arm
         }
     }
     
+    public void slowRollEnabled(boolean enabled)
+    {
+        SlowRollEnabled = enabled;
+    }
+    
     public void rollerStopSlow()
     {
-        if (!Down)
+        if (!Down && SlowRollEnabled)
         {
             if(Front)
             {

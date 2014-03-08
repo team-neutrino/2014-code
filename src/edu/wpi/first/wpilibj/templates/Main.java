@@ -210,6 +210,18 @@ public class Main extends SimpleRobot
                 ArmBack.rollerStopSlow();
             }
             
+            //arm (disable/enable autoroll)
+            if(Gamepad.getRawButton(MainConstants.ENABLE_AUTO_ROLL))
+            {
+                //ArmFront.slowRollEnabled(true);
+                ArmBack.slowRollEnabled(true);
+            }
+            else if(Gamepad.getRawButton(MainConstants.DISABLE_AUTO_ROLL))
+            {
+                //ArmFront.slowRollEnabled(false);
+                ArmBack.slowRollEnabled(false);
+            }
+            
             //release shooter at match end
 //            if(154.9 <= DriverStation.getMatchTime())
 //            {
