@@ -19,7 +19,7 @@ public class ShooterConstants
         RELEASE_PISTON_IN_CHANNEL = 2;
         RELEASE_PISTON_OUT_CHANNEL = 8;
         
-        EJECT_PISTON_IN_SOLT = 0;
+        EJECT_PISTON_IN_SLOT = 0;
         EJECT_PISTON_OUT_SLOT = 0;
         EJECT_PISTON_IN_CHANNEL = 0;
         EJECT_PISTON_OUT_CHANNEL = 0;
@@ -36,10 +36,10 @@ public class ShooterConstants
         RELEASE_PISTON_IN_CHANNEL = 2;
         RELEASE_PISTON_OUT_CHANNEL = 6;
         
-        EJECT_PISTON_IN_SOLT = 1;
+        EJECT_PISTON_IN_SLOT = 1;
         EJECT_PISTON_OUT_SLOT = 1;
-        EJECT_PISTON_IN_CHANNEL = 3;
-        EJECT_PISTON_OUT_CHANNEL = 7;
+        EJECT_PISTON_IN_CHANNEL = 7;
+        EJECT_PISTON_OUT_CHANNEL = 3;
         
         WINCH_MOTOR_1_CHANNEL = 9;
         WINCH_MOTOR_2_CHANNEL = 7;
@@ -51,7 +51,7 @@ public class ShooterConstants
     public static int RELEASE_PISTON_IN_CHANNEL;
     public static int RELEASE_PISTON_OUT_CHANNEL;
     
-    public static int EJECT_PISTON_IN_SOLT;
+    public static int EJECT_PISTON_IN_SLOT;
     public static int EJECT_PISTON_OUT_SLOT;
     public static int EJECT_PISTON_IN_CHANNEL;
     public static int EJECT_PISTON_OUT_CHANNEL;
