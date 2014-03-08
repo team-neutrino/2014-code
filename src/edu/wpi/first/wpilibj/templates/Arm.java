@@ -85,11 +85,11 @@ public class Arm
     {
         if(Front)
         {
-            RollerMotor.set(.5);
+            RollerMotor.set(-.5);
         }
         else
         {
-            RollerMotor.set(-.5);
+            RollerMotor.set(.5);
         }
     }
     
