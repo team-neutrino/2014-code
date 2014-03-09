@@ -64,7 +64,7 @@ public class Arm
         solenoidDown.set(!down);
     }
     
-    public void rollerForward()
+    public void rollerIn()
     {
         if(Front)
         {
@@ -76,7 +76,7 @@ public class Arm
         }
     }
     
-    public void rollerBackward()
+    public void rollerOut()
     {
         if(Front)
         {

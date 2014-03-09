@@ -217,16 +217,16 @@ public class Main extends SimpleRobot
             if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
             {
                 //ArmFront.rollerForward();
-                ArmBack.rollerForward();
+                ArmBack.rollerIn();
             }
             else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
             {
                 //ArmFront.rollerBackward();
-                ArmBack.rollerBackward();
+                ArmBack.rollerOut();
             }
             else if(Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON))
             {
-                ArmBack.rollerBackward();
+                ArmBack.rollerOut();
             }
             else
             {
@@ -342,7 +342,7 @@ public class Main extends SimpleRobot
         //ArmFront.armDown(false);
         ArmBack.armDown(true);
         boolean hot = Camera.goalIsHot();
-        ArmBack.rollerForward();
+        ArmBack.rollerIn();
         Thread.sleep(500);
         Drive.setLeft(1);
         Drive.setRight(1);
@@ -355,7 +355,7 @@ public class Main extends SimpleRobot
         Shooter.shootCock();
         Thread.sleep(1750);
         ArmBack.armDown(true);
-        ArmBack.rollerForward();
+        ArmBack.rollerIn();
         Thread.sleep(2500);
         Shooter.shootCock();
     }
@@ -381,7 +381,7 @@ public class Main extends SimpleRobot
         Thread.sleep(500);
         ArmBack.armDown(true);
         //ArmFront.armDown(false);
-        ArmBack.rollerForward();
+        ArmBack.rollerIn();
         Drive.setLeft(-1);
         Drive.setRight(-1);
         Thread.sleep(MainConstants.FORWARD_WAIT);
@@ -404,7 +404,7 @@ public class Main extends SimpleRobot
         Drive.traction(false);
         Thread.sleep(500);
         Shooter.eject(true);
-        ArmBack.rollerBackward();
+        ArmBack.rollerOut();
         Thread.sleep(2000);
         Shooter.eject(false);
         ArmBack.rollerStopSlow();
@@ -423,7 +423,7 @@ public class Main extends SimpleRobot
         Drive.traction(false);
         Thread.sleep(2750);
         Shooter.eject(true);
-        ArmBack.rollerBackward();
+        ArmBack.rollerOut();
         Thread.sleep(2000);
         Shooter.eject(false);
         ArmBack.rollerStopSlow();
