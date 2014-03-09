@@ -276,10 +276,9 @@ public class Main extends SimpleRobot
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
-        ArmBack.armDown(true);
         Thread.sleep(1000);
         Shooter.shootCock();
         Drive.traction(false);
@@ -288,15 +287,14 @@ public class Main extends SimpleRobot
     private void auto1Cold() throws InterruptedException 
     {
         Drive.traction(true);
-        Thread.sleep(2500);
+        Thread.sleep(5000 - MainConstants.FORWARD_WAIT);
         //ArmFront.armDown(false);
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
-        ArmBack.armDown(true);
         Thread.sleep(1000);
         Shooter.shootCock();
         Drive.traction(false);
@@ -306,7 +304,7 @@ public class Main extends SimpleRobot
     private void auto2Hot() throws InterruptedException 
     {
         //ArmFront.armDown(false);
-        ArmBack.armDown(true);
+        ArmBack.armDown(false);
         Thread.sleep(1000);
         Shooter.shootCock();
     }
@@ -314,10 +312,8 @@ public class Main extends SimpleRobot
     private void auto2Cold() throws InterruptedException 
     {
         //ArmFront.armDown(false);
-        ArmBack.armDown(true);
-        Thread.sleep(4000);
-        ArmBack.armDown(true);
-        Thread.sleep(1000);
+        ArmBack.armDown(false);
+        Thread.sleep(5000);
         Shooter.shootCock();
     }
     
@@ -329,7 +325,7 @@ public class Main extends SimpleRobot
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
         Drive.traction(false);
@@ -339,21 +335,25 @@ public class Main extends SimpleRobot
     private void auto4() throws InterruptedException 
     {
         Drive.traction(true);
-        //ArmFront.armDown(true);
-        ArmBack.armDown(false);
+        //ArmFront.armDown(false);
+        ArmBack.armDown(true);
+        boolean hot = Camera.goalIsHot();
+        ArmBack.rollerForward();
+        Thread.sleep(500);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
-        Thread.sleep(500);
-        Shooter.shootCock();
-        Thread.sleep(1500);
-        //ArmFront.rollerForward();
-        Thread.sleep(3000);
-        Shooter.shootCock();
-        //ArmFront.rollerStopSlow();
         Drive.traction(false);
+        ArmBack.rollerStopSlow();
+        Thread.sleep(700);
+        Shooter.shootCock();
+        Thread.sleep(1750);
+        ArmBack.armDown(true);
+        ArmBack.rollerForward();
+        Thread.sleep(2500);
+        Shooter.shootCock();
     }
     
     //Shoot 3 & Mobility
