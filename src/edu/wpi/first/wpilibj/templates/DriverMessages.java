@@ -48,13 +48,13 @@ public class DriverMessages
                 autoDescription = "Shoot 2 & Mobility";
                 break;
             case 5:
-                autoDescription = "Shoot 3 & Mobility";
+                autoDescription = "(don't use) Shoot 3 & Mobility";
                 break;
             case 6:
                 autoDescription = "Do Nothing";
                 break;
             case 7:
-                autoDescription = "Not Created";
+                autoDescription = "(don't use) Low Goal Hot";
                 break;
             case 8:
                 autoDescription = "Not Created";
@@ -91,11 +91,24 @@ public class DriverMessages
     {
         if(display)
         {
-            DriverStation.println(DriverStationLCD.Line.kUser3, 1, "Shooter Timeout                     ");
+            DriverStation.println(DriverStationLCD.Line.kUser4, 1, "Shooter Timedout                     ");
         }
         else
         {
-            DriverStation.println(DriverStationLCD.Line.kUser3, 1, "                     ");
+            DriverStation.println(DriverStationLCD.Line.kUser4, 1, "                     ");
+        }
+        DriverStation.updateLCD();
+    }
+    
+    public void displayCameraError(boolean display)
+    {
+        if(display)
+        {
+            DriverStation.println(DriverStationLCD.Line.kUser3, 1, "Camera Error                     ");
+        }
+        else 
+        {
+            DriverStation.println(DriverStationLCD.Line.kUser3, 1, "Camera Success                     ");
         }
         DriverStation.updateLCD();
     }

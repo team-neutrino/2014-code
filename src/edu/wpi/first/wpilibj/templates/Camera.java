@@ -60,12 +60,14 @@ public class Camera
         catch (Exception ex) 
         {
             ex.printStackTrace();
+            DriverMessages.displayCameraError(true);
             DriverMessages.displayHot(true);
             return true;
         }
         
         CameraLight.set(false);
         
+        DriverMessages.displayCameraError(false);
         DriverMessages.displayHot(false);
         return (tapes == 2);
     }
