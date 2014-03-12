@@ -28,12 +28,14 @@ public class Main extends SimpleRobot
     Shooter Shooter;
     DriverMessages DriverMessages;
     DriverStation DriverStation;
-    Arm ArmFront;
+    //Arm ArmFront;
     Arm ArmBack;
     Camera Camera;
     Compressor Compressor;
     
     int AutoMode;
+    
+    boolean InvertDrive;
     
     public void robotInit()
     {
@@ -54,10 +56,12 @@ public class Main extends SimpleRobot
         Drive = new Drive();
         Shooter = new Shooter(DriverStation, DriverMessages);
         
-        ArmFront = new Arm(true);
+        //ArmFront = new Arm(true);
         ArmBack = new Arm(false);
         
         Camera = new Camera(DriverMessages);
+        
+        InvertDrive = false;
     }
     
     public void autonomous() 
@@ -65,7 +69,7 @@ public class Main extends SimpleRobot
         try {
             switch(AutoMode)
             {
-                case 1://Check Hot, Shoot, & Move
+                case 1://Shoot Hot & Mobility
                     if(Camera.goalIsHot())
                     {
                         auto1Hot();
@@ -75,7 +79,7 @@ public class Main extends SimpleRobot
                         auto1Cold();
                     }
                     break;
-                case 2:// Check and Shoot Hot
+                case 2://Shoot Hot
                     if(Camera.goalIsHot())
                     {
                         auto2Hot();
@@ -85,21 +89,26 @@ public class Main extends SimpleRobot
                         auto2Cold();
                     }
                     break;
-                case 3://Move
+                case 3://Mobility
                     auto3();
                     break;
-                case 4://Shoot 2 balls and Move
+                case 4://Shoot 2 & Mobility
                     auto4();
                     break;
-                case 5:
-                    //Shoot 2 balls and Move
+                case 5://Shoot 3 & Mobility
                     auto5();
                     break;
-                case 6:
-                    //code for auto 6
+                case 6://Do Nothing
                     break;
-                case 7:
-                    //code for auto 7
+                case 7://Low Goal Hot
+                    if(Camera.goalIsHot())
+                    {
+                        auto7Hot();
+                    }
+                    else
+                    {
+                        auto7Cold();
+                    }
                     break;
                 case 8:
                     //code for auto 8
@@ -120,88 +129,121 @@ public class Main extends SimpleRobot
     
     public void operatorControl()
     {
-        boolean frontToggle;
-        boolean backToggle; 
-        boolean frontTogglePrevious = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
-        boolean backTogglePrevious = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
-        long frontTimeToggled = 0;
-        long backTimeToggled = 0;
-        long currentTime;
+//        boolean frontToggle;
+//        boolean backToggle; 
+//        boolean frontTogglePrevious = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
+//        boolean backTogglePrevious = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
+//        long frontTimeToggled = 0;
+//        long backTimeToggled = 0;
+//        long currentTime;
         
         while(DriverStation.isOperatorControl() && DriverStation.isEnabled())
         {
             //drive
-            Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
-            Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+            InvertDrive = (JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT));
+            
+            if(InvertDrive)
+            {
+                Drive.setLeft(JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+            }
+            else
+            {
+                Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+            }
             
             //traction
-            Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
+            Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON));
             
             //shoot
-            if((JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_BUTTON)))
+            if(JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON))
             {
-                Shooter.shoot();
+                Shooter.shootCock();
             }
+            else if(JoystickLeft.getRawButton(MainConstants.SHOOT_LOB_BUTTON))
+            {
+                Shooter.shootLobCock();
+            }
+            
             if(Gamepad.getRawButton(MainConstants.SHOOTER_RELEASE_BUTTON))
             {
                 Shooter.release();
             }
             
+            Shooter.eject(Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON));
+            
             //arm (up/down)
             if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
                     || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
             {
-                ArmFront.armDown(true);
+                //ArmFront.armDown(true);
                 ArmBack.armDown(true);    
             }
             else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
             {
-                ArmFront.armDown(false);
+                //ArmFront.armDown(false);
                 ArmBack.armDown(false);
             }
             else
             {
-                frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
-                backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
-                currentTime = System.currentTimeMillis();
-                
-                if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
-                {
-                    ArmFront.armDown(!ArmFront.isUp());
-                }
-                if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
-                {
-                    ArmBack.armDown(!ArmBack.isUp());
-                }
-                
-                if(frontToggle)
-                {
-                    frontTimeToggled = currentTime;
-                }
-                if(backToggle)
-                {
-                    backTimeToggled = currentTime;
-                }
-                
-                frontTogglePrevious = frontToggle;
-                backTogglePrevious = backToggle;
+//                frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
+//                backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
+//                currentTime = System.currentTimeMillis();
+//                
+//                if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
+//                {
+//                    //ArmFront.armDown(!ArmFront.isUp());
+//                }
+//                if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
+//                {
+//                    ArmBack.armDown(!ArmBack.isUp());
+//                }
+//                
+//                if(frontToggle)
+//                {
+//                    frontTimeToggled = currentTime;
+//                }
+//                if(backToggle)
+//                {
+//                    backTimeToggled = currentTime;
+//                }
+//                
+//                frontTogglePrevious = frontToggle;
+//                backTogglePrevious = backToggle;
             }
             
             //arm (rollers)
             if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
             {
-                ArmFront.rollerForward();
-                ArmBack.rollerForward();
+                //ArmFront.rollerForward();
+                ArmBack.rollerIn();
             }
             else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
             {
-                ArmFront.rollerBackward();
-                ArmBack.rollerBackward();
+                //ArmFront.rollerBackward();
+                ArmBack.rollerOut();
+            }
+            else if(Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON))
+            {
+                ArmBack.rollerOut();
             }
             else
             {
-                ArmFront.rollerStop();
-                ArmBack.rollerStop();
+                //ArmFront.rollerStopSlow();
+                ArmBack.rollerStopSlow();
+            }
+            
+            //arm (disable/enable autoroll)
+            if(Gamepad.getRawButton(MainConstants.ENABLE_AUTO_ROLL))
+            {
+                //ArmFront.slowRollEnabled(true);
+                ArmBack.slowRollEnabled(true);
+            }
+            else if(Gamepad.getRawButton(MainConstants.DISABLE_AUTO_ROLL))
+            {
+                //ArmFront.slowRollEnabled(false);
+                ArmBack.slowRollEnabled(false);
             }
             
             //release shooter at match end
@@ -234,59 +276,60 @@ public class Main extends SimpleRobot
     //Shoot Hot & Mobility
     private void auto1Hot() throws InterruptedException 
     {
-        ArmFront.armDown(false);
-        ArmBack.armDown(false);
         Drive.traction(true);
+        //ArmFront.armDown(false);
+        ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
-        ArmBack.armDown(true);
         Thread.sleep(1000);
-        Shooter.shoot();
+        Shooter.shootCock();
         Drive.traction(false);
     }
 
     private void auto1Cold() throws InterruptedException 
     {
-        //TODO edit from above
+        Drive.traction(true);
+        //ArmFront.armDown(false);
+        ArmBack.armDown(false);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        Thread.sleep(5000 - MainConstants.FORWARD_WAIT);
+        Shooter.shootCock();
+        Drive.traction(false);
     }
     
     //Shoot Hot
     private void auto2Hot() throws InterruptedException 
     {
-        //TODO redo
-        Drive.traction(true);
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(false);
         Thread.sleep(1000);
-        Shooter.shoot();
-        Drive.traction(false);
+        Shooter.shootCock();
     }
     
     private void auto2Cold() throws InterruptedException 
     {
-        //TODO redo
-        Drive.traction(true);
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(false);
         Thread.sleep(5000);
-        Shooter.shoot();
-        Drive.traction(false);
+        Shooter.shootCock();
     }
     
     //Mobility
     private void auto3() throws InterruptedException 
     {
-        //TODO redo
         Drive.traction(true);
-        ArmFront.armDown(false);
+        //ArmFront.armDown(false);
         ArmBack.armDown(false);
-        Thread.sleep(1000);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(3000);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
         Drive.traction(false);
@@ -296,53 +339,96 @@ public class Main extends SimpleRobot
     private void auto4() throws InterruptedException 
     {
         Drive.traction(true);
-        ArmFront.armDown(true);
-        ArmBack.armDown(false);
+        //ArmFront.armDown(false);
+        ArmBack.armDown(true);
+        boolean hot = Camera.goalIsHot();
+        ArmBack.rollerIn();
+        Thread.sleep(500);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
-        Thread.sleep(500);
-        Shooter.shoot();
-        Thread.sleep(1500);
-        ArmFront.rollerForward();
-        Thread.sleep(3000);
-        Shooter.shoot();
-        ArmFront.rollerStop();
         Drive.traction(false);
+        ArmBack.rollerStopSlow();
+        Thread.sleep(700);
+        Shooter.shootCock();
+        Thread.sleep(1750);
+        ArmBack.armDown(true);
+        ArmBack.rollerIn();
+        Thread.sleep(2500);
+        Shooter.shootCock();
     }
     
     //Shoot 3 & Mobility
     private void auto5() throws InterruptedException
     {
         Drive.traction(true);
-        ArmFront.armDown(true);
+        //ArmFront.armDown(true);
         ArmBack.armDown(false);
         Drive.setLeft(1);
         Drive.setRight(1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
         Thread.sleep(500);
-        Shooter.shoot();
+        Shooter.shootCock();
         Thread.sleep(1500);
-        ArmFront.rollerForward();
+        //ArmFront.rollerForward();
         Thread.sleep(2000);
-        Shooter.shoot();
-        ArmFront.rollerStop();
+        Shooter.shootCock();
+        ///ArmFront.rollerStopSlow();
         Thread.sleep(500);
         ArmBack.armDown(true);
-        ArmFront.armDown(false);
-        ArmBack.rollerForward();
+        //ArmFront.armDown(false);
+        ArmBack.rollerIn();
         Drive.setLeft(-1);
         Drive.setRight(-1);
-        Thread.sleep(1500);
+        Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.traction(false);
         Drive.setLeft(0);
         Drive.setRight(0);
     }
     
+    //Low Goal Hot
+    private void auto7Hot() throws InterruptedException
+    {
+        Drive.traction(true);
+        //ArmFront.armDown(false);
+        ArmBack.armDown(false);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(2250);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        Drive.traction(false);
+        Thread.sleep(500);
+        Shooter.eject(true);
+        ArmBack.rollerOut();
+        Thread.sleep(2000);
+        Shooter.eject(false);
+        ArmBack.rollerStopSlow();
+    }
+    
+    private void auto7Cold() throws InterruptedException
+    {
+        Drive.traction(true);
+        //ArmFront.armDown(false);
+        ArmBack.armDown(false);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(2250);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        Drive.traction(false);
+        Thread.sleep(2750);
+        Shooter.eject(true);
+        ArmBack.rollerOut();
+        Thread.sleep(2000);
+        Shooter.eject(false);
+        ArmBack.rollerStopSlow();
+    }
+            
     private void initConstants()
     {
         MainConstants.init();

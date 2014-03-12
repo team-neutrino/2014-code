@@ -15,8 +15,9 @@ public class MainConstants
     
     public static final boolean REAL_BOT = false;
     
-    //defaults
-    public static final int DEFUALT_AUTO_MODE = 1;
+    //autonomous
+    public static final int DEFUALT_AUTO_MODE = 6;
+    public static final int FORWARD_WAIT = 2500;
     
     //joysticks
     public static final int LEFT_JOY_PORT = 1;
@@ -27,14 +28,23 @@ public class MainConstants
     public static final int DRIVE_AXIS = 2;
     public static final int TRACTION_BUTTON = 1;
     
+    public static final int DRIVE_INVERT = 1;
+    
+    
     //shoot
     public static final int SHOOT_BUTTON = 2;
+    public static final int SHOOT_LOB_BUTTON = 2;
     public static final int SHOOTER_RELEASE_BUTTON = 3;
+    
+    public static final int BALL_EJECT_BUTTON = 2;
     
     //arms
     public static final int ALL_ARMS_UP_DRIVER = 3;
-    public static final int ALL_ARMS_UP_GAMEPAD = 7;
-    public static final int ALL_ARMS_DOWN_GAMEPAD = 8;
+    public static final int ALL_ARMS_UP_GAMEPAD = 1; //7
+    public static final int ALL_ARMS_DOWN_GAMEPAD = 4; //8
+    
+    public static final int DISABLE_AUTO_ROLL = 7;
+    public static final int ENABLE_AUTO_ROLL = 8;
     
     public static final int FRONT_ARM_TOGGLE = 4;
     public static final int BACK_ARM_TOGGLE = 1;

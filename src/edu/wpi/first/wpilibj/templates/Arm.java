@@ -19,6 +19,8 @@ public class Arm
     private Solenoid solenoidDown;
     private Victor RollerMotor;
     private boolean Front;
+    private boolean Down;
+    private boolean SlowRollEnabled;
     
     public Arm(boolean front)
     {
@@ -49,15 +51,20 @@ public class Arm
         solenoidUp = new Solenoid(solenoidUpSlot, solenoidUpChannel);
         solenoidDown = new Solenoid(solenoidDownSlot, solenoidDownChannel);
         RollerMotor = new Victor(rollerChannel);
+        Down = false;
+        SlowRollEnabled = true;
+        armDown(false);
+        rollerStopSlow();
     }
     
-    public void armDown(boolean up)
+    public void armDown(boolean down)
     {
-        solenoidUp.set(up);
-        solenoidDown.set(!up);
+        Down = down;
+        solenoidUp.set(down);
+        solenoidDown.set(!down);
     }
     
-    public void rollerForward()
+    public void rollerIn()
     {
         if(Front)
         {
@@ -69,7 +76,7 @@ public class Arm
         }
     }
     
-    public void rollerBackward()
+    public void rollerOut()
     {
         if(Front)
         {
@@ -81,9 +88,28 @@ public class Arm
         }
     }
     
-    public void rollerStop()
+    public void slowRollEnabled(boolean enabled)
     {
+        SlowRollEnabled = enabled;
+    }
+    
+    public void rollerStopSlow()
+    {
+        if (!Down && SlowRollEnabled)
+        {
+            if(Front)
+            {
+                RollerMotor.set(-.5);
+            }
+            else
+            {
+                RollerMotor.set(.5);
+            }
+        }
+        else
+        {
         RollerMotor.set(0);
+        }
     }
     
     public boolean isUp()

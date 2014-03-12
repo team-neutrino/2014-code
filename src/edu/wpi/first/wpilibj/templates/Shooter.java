@@ -19,6 +19,8 @@ public class Shooter implements Runnable
 {
     private Solenoid ReleasePistonIn;
     private Solenoid ReleasePistonOut;
+    private Solenoid EjectPistonOut;
+    private Solenoid EjectPistonIn;
     private Victor WinchMotor1;
     private Victor WinchMotor2;
     private boolean Loading;
@@ -26,11 +28,16 @@ public class Shooter implements Runnable
     private DriverStation DriverStation;
     private DriverMessages DriverMessages;
     private boolean Loaded;
+    private boolean Lob;
     
     public Shooter(DriverStation driverStation, DriverMessages driverMessages)
     {
         ReleasePistonIn = new Solenoid(ShooterConstants.RELEASE_PISTON_IN_SLOT, ShooterConstants.RELEASE_PISTON_IN_CHANNEL);
         ReleasePistonOut = new Solenoid(ShooterConstants.RELEASE_PISTON_OUT_SLOT, ShooterConstants.RELEASE_PISTON_OUT_CHANNEL);
+        
+        EjectPistonIn = new  Solenoid(ShooterConstants.EJECT_PISTON_IN_SLOT, ShooterConstants.EJECT_PISTON_IN_CHANNEL);
+        EjectPistonOut = new Solenoid(ShooterConstants.EJECT_PISTON_OUT_SLOT, ShooterConstants.EJECT_PISTON_OUT_CHANNEL);
+        
         WinchMotor1 = new Victor(ShooterConstants.WINCH_MOTOR_1_CHANNEL);
         WinchMotor2 = new Victor(ShooterConstants.WINCH_MOTOR_2_CHANNEL);
         Loading = false;
@@ -42,13 +49,37 @@ public class Shooter implements Runnable
         Loaded = LimitSwitch.get();
         
         //shooterCock();
+        
+        Lob = false;
     }
     
-    public void shoot()
+    public void eject(boolean out)
+    {
+        if(!Lob)
+        {
+            EjectPistonIn.set(!out);
+            EjectPistonOut.set(out);
+        }
+    }
+    
+    public void shootCock()
     {
         //shoot and automatically recock the shooter
         if (!Loading)
         {
+            Lob = false;
+            Loading = true;
+            Thread thread = new Thread(this);
+            thread.start();
+        }
+    }
+    
+    public void shootLobCock()
+    {
+        //shoot and automatically recock the shooter
+        if (!Loading)
+        {
+            Lob = true;
             Loading = true;
             Thread thread = new Thread(this);
             thread.start();
@@ -76,6 +107,13 @@ public class Shooter implements Runnable
             //release shooter
                 ReleasePistonIn.set(false);
                 ReleasePistonOut.set(true);
+                
+                if(Lob)
+                {
+                    EjectPistonOut.set(true);
+                    EjectPistonIn.set(false);
+                }
+                
                 Thread.sleep(1000);
             }
             
@@ -90,20 +128,23 @@ public class Shooter implements Runnable
             }
             
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 5000))
+            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 1500))
             {
-                WinchMotor1.set(-1);
-                WinchMotor2.set(-1);
+                WinchMotor1.set(-.7);
+                WinchMotor2.set(-.7);
                 Thread.sleep(5);
-                //System.out.println(LimitSwitch.get());
+                //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
             WinchMotor1.set(0);
             WinchMotor2.set(0);
+            EjectPistonOut.set(false);
+            EjectPistonIn.set(true);
+            Lob = false;
             
-            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 5000);
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1500);
             
-            Loading = false;
             Loaded = true;
+            Loading = false;
         }
         catch (InterruptedException ex) 
         {
