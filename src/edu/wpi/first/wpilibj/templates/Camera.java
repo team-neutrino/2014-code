@@ -46,11 +46,13 @@ public class Camera
         try 
         {
             ColorImage image = RobotCamera.getImage();
-            //image.write("color.bmp");
-            BinaryImage thresholdImage = image.thresholdRGB(0, 64, 128, 255, 0, 64);
-            //thresholdImage.write("threshold.bmp");
+            image.write("color.bmp");
+            //red green blue
+            //BinaryImage thresholdImage = image.thresholdRGB(0, 64, 128, 255, 0, 64); //green threshold
+            BinaryImage thresholdImage = image.thresholdRGB(0, 128, 192, 255, 192, 255); //blue threshold
+            thresholdImage.write("threshold.bmp");
             BinaryImage rmvpartImage = thresholdImage.removeSmallObjects(true, 3);
-            //rmvpartImage.write("rmpart.bmp");
+            rmvpartImage.write("rmpart.bmp");
             //System.out.println(rmvpartImage.getNumberParticles()); 
             tapes = rmvpartImage.getNumberParticles();
             image.free();
