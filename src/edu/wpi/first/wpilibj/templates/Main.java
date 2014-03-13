@@ -26,6 +26,7 @@ public class Main extends SimpleRobot
     Joystick Gamepad; 
     Drive Drive;
     Shooter Shooter;
+    LightManager LightManager;
     DriverMessages DriverMessages;
     DriverStation DriverStation;
     //Arm ArmFront;
@@ -49,6 +50,8 @@ public class Main extends SimpleRobot
         Gamepad = new Joystick(MainConstants.GAMEPAD_PORT);
         
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
+        
+        LightManager = new LightManager();
         DriverMessages = new DriverMessages(AutoMode);
         
         DriverStation = DriverStation.getInstance();
@@ -435,5 +438,6 @@ public class Main extends SimpleRobot
         ShooterConstants.init();
         DriveConstants.init();
         ArmConstants.init();
+        LightConstants.init();
     }
 }
