@@ -52,7 +52,7 @@ public class Main extends SimpleRobot
         AutoMode = MainConstants.DEFUALT_AUTO_MODE;
         
         LightManager = new LightManager();
-        DriverMessages = new DriverMessages(AutoMode);
+        DriverMessages = new DriverMessages(AutoMode, LightManager);
         
         DriverStation = DriverStation.getInstance();
         
@@ -69,6 +69,8 @@ public class Main extends SimpleRobot
     
     public void autonomous() 
     {
+        LightManager.setFrontLights(false);
+        LightManager.setBackLights(false);
         try {
             switch(AutoMode)
             {

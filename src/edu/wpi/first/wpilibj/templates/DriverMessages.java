@@ -16,8 +16,11 @@ public class DriverMessages
 {
     private int AutoMode;
     private DriverStationLCD DriverStation;
-    public DriverMessages(int autoMode)
+    private LightManager LightManager;
+    
+    public DriverMessages(int autoMode, LightManager lightManager)
     {
+        LightManager = lightManager;
         DriverStation = DriverStationLCD.getInstance();
         AutoMode = autoMode;
         updateLCD();
@@ -76,6 +79,8 @@ public class DriverMessages
     
     public void displayHot(boolean hot)
     {
+        LightManager.setFrontLights(hot);
+        LightManager.setBackLights(!hot);
         if(hot)
         {
             DriverStation.println(DriverStationLCD.Line.kUser1, 1, "Auto " + AutoMode + " Hot                     ");
@@ -89,6 +94,7 @@ public class DriverMessages
     
     public void displayShooterTimeout(boolean display)
     {
+        LightManager.blink();
         if(display)
         {
             DriverStation.println(DriverStationLCD.Line.kUser4, 1, "Shooter Timedout                     ");
