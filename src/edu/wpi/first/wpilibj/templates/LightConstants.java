@@ -15,9 +15,9 @@ public class LightConstants
     private static void real()
     {
         BACK_LIGHT_SLOT = 1;
-        FRONT_LIGHT_SLOT = 0;
+        FRONT_LIGHT_SLOT = 1;
         BACK_LIGHT_CHANNEL = 7;
-        FRONT_LIGHT_CHANNEL = 0;
+        FRONT_LIGHT_CHANNEL = 6;
     }
     
     private static void practice()
