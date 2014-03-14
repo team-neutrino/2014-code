@@ -128,10 +128,10 @@ public class Shooter implements Runnable
             }
             
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 1500))
+            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 6000))
             {
-                WinchMotor1.set(-.7);
-                WinchMotor2.set(-.7);
+                WinchMotor1.set(-.55);
+                WinchMotor2.set(-.55);
                 Thread.sleep(5);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
@@ -141,7 +141,7 @@ public class Shooter implements Runnable
             EjectPistonIn.set(true);
             Lob = false;
             
-            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 1500);
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 6000);
             
             Loaded = true;
             Loading = false;
