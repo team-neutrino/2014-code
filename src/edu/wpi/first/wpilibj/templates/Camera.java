@@ -56,7 +56,7 @@ public class Camera
             image.write("color.bmp");
             //red green blue
             //BinaryImage thresholdImage = image.thresholdRGB(0, 64, 128, 255, 0, 64); //green threshold
-            BinaryImage thresholdImage = image.thresholdRGB(0, 128, 192, 255, 192, 255); //blue threshold
+            BinaryImage thresholdImage = image.thresholdRGB(0, 128, 80, 255, 192, 255); //blue threshold
             thresholdImage.write("threshold.bmp");
             BinaryImage rmvpartImage = thresholdImage.removeSmallObjects(true, 3);
             rmvpartImage.write("rmpart.bmp");
