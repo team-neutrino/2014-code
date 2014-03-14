@@ -13,11 +13,11 @@ package edu.wpi.first.wpilibj.templates;
 public class MainConstants
 {
     
-    public static final boolean REAL_BOT = false;
+    public static final boolean REAL_BOT = true;
     
     //autonomous
-    public static final int DEFUALT_AUTO_MODE = 6;
-    public static final int FORWARD_WAIT = 2500;
+    public static final int DEFUALT_AUTO_MODE = 1;
+    public static final int FORWARD_WAIT = 2000;
     
     //joysticks
     public static final int LEFT_JOY_PORT = 1;
@@ -59,7 +59,7 @@ public class MainConstants
         COMPRESSOR_RELAY_CHANNEL = 4;
         
         //Camera
-        CAMERA_LIGHT_SLOT = 2;
+        CAMERA_LIGHT_SLOT = 1;
         CAMERA_LIGHT_CHANNEL = 8;
     }
     
