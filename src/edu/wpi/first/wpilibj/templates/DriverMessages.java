@@ -94,10 +94,10 @@ public class DriverMessages
     
     public void displayShooterTimeout(boolean display)
     {
-        LightManager.blink();
         if(display)
         {
             DriverStation.println(DriverStationLCD.Line.kUser4, 1, "Shooter Timedout                     ");
+            LightManager.blink();
         }
         else
         {
