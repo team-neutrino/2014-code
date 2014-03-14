@@ -75,8 +75,8 @@ public class Camera
         }
         
         DriverMessages.displayCameraError(false);
-        DriverMessages.displayHot(false);
-        return (tapes == 2);
+        DriverMessages.displayHot(tapes >= 2);
+        return (tapes >= 2);
     }
     
     public void setLight(boolean on)
