@@ -17,7 +17,7 @@ public class MainConstants
     
     //autonomous
     public static final int DEFUALT_AUTO_MODE = 1;
-    public static final int FORWARD_WAIT = 2000;
+    public static final int FORWARD_WAIT = 1500;
     
     //joysticks
     public static final int LEFT_JOY_PORT = 1;
