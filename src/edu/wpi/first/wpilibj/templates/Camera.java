@@ -31,6 +31,13 @@ public class Camera
     public boolean goalIsHot()
     {
         CameraLight.set(true);
+        try
+        {
+            Thread.sleep(100);
+        } catch (InterruptedException ex)
+        {
+            ex.printStackTrace();
+        }
         int tapes;
         long startTime = System.currentTimeMillis();
         while(!RobotCamera.freshImage() && (System.currentTimeMillis() - startTime < 1000))
@@ -67,10 +74,13 @@ public class Camera
             return true;
         }
         
-        CameraLight.set(false);
-        
         DriverMessages.displayCameraError(false);
         DriverMessages.displayHot(false);
         return (tapes == 2);
+    }
+    
+    public void setLight(boolean on)
+    {
+        CameraLight.set(on);
     }
 }

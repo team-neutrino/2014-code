@@ -130,6 +130,7 @@ public class Main extends SimpleRobot
         {
                 ex.printStackTrace();
         }
+        Camera.setLight(false);
     }
     
     public void operatorControl()
@@ -141,7 +142,7 @@ public class Main extends SimpleRobot
 //        long frontTimeToggled = 0;
 //        long backTimeToggled = 0;
 //        long currentTime;
-        
+        Camera.setLight(false);
         while(DriverStation.isOperatorControl() && DriverStation.isEnabled())
         {
             //drive
