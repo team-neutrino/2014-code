@@ -142,8 +142,6 @@ public class Main extends SimpleRobot
 //        long backTimeToggled = 0;
 //        long currentTime;
         
-        LightManager.blink();
-        
         while(DriverStation.isOperatorControl() && DriverStation.isEnabled())
         {
             //drive
