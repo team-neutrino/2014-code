@@ -58,7 +58,7 @@ public class Camera
             //BinaryImage thresholdImage = image.thresholdRGB(0, 64, 128, 255, 0, 64); //green threshold
             BinaryImage thresholdImage = image.thresholdRGB(0, 128, 80, 255, 192, 255); //blue threshold
             thresholdImage.write("threshold.bmp");
-            BinaryImage rmvpartImage = thresholdImage.removeSmallObjects(true, 3);
+            BinaryImage rmvpartImage = thresholdImage.removeSmallObjects(true, 2);
             rmvpartImage.write("rmpart.bmp");
             //System.out.println(rmvpartImage.getNumberParticles()); 
             tapes = rmvpartImage.getNumberParticles();
