@@ -362,9 +362,18 @@ public class Main extends SimpleRobot
         ArmBack.rollerStopSlow();
         Thread.sleep(700);
         Shooter.shootCock();
-        Thread.sleep(1750);
+        Thread.sleep(2500);
         ArmBack.armDown(true);
         ArmBack.rollerIn();
+        Drive.setLeft(-1);
+        Drive.setRight(-1);
+        Thread.sleep(250);
+        Drive.setLeft(1);
+        Drive.setRight(1);
+        Thread.sleep(250);
+        Drive.setLeft(0);
+        Drive.setRight(0);
+        ArmBack.armDown(false);
         Thread.sleep(2500);
         Shooter.shootCock();
     }
