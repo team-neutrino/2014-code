@@ -41,8 +41,8 @@ public class ShooterConstants
         EJECT_PISTON_IN_CHANNEL = 7;
         EJECT_PISTON_OUT_CHANNEL = 3;
         
-        WINCH_MOTOR_1_CHANNEL = 9;
-        WINCH_MOTOR_2_CHANNEL = 7;
+        WINCH_MOTOR_1_CHANNEL = 5;
+        WINCH_MOTOR_2_CHANNEL = 9;
         LIMIT_SWITCH_CHANNEL = 2;
     }
     
