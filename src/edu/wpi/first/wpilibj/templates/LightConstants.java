@@ -22,10 +22,10 @@ public class LightConstants
     
     private static void practice()
     {
-        BACK_LIGHT_SLOT = 0;
-        FRONT_LIGHT_SLOT = 0;
-        BACK_LIGHT_CHANNEL = 0;
-        FRONT_LIGHT_CHANNEL = 0;
+        BACK_LIGHT_SLOT = 2;
+        FRONT_LIGHT_SLOT = 2;
+        BACK_LIGHT_CHANNEL = 7;
+        FRONT_LIGHT_CHANNEL = 8;
     }
     
     public static int BACK_LIGHT_SLOT;
