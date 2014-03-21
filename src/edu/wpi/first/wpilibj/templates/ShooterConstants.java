@@ -27,7 +27,7 @@ public class ShooterConstants
         WINCH_MOTOR_1_CHANNEL = 6;
         WINCH_MOTOR_2_CHANNEL = 2;
         
-        BEAM_BREAK_CHANNEL = 2;
+        BEAM_BREAK_CHANNEL = 0;
         BEAM_BREAK_POWER_SLOT = 0;
         BEAM_BREAK_POWER_CHANNEL = 0;
     }
@@ -48,8 +48,8 @@ public class ShooterConstants
         WINCH_MOTOR_2_CHANNEL = 9;
         
         BEAM_BREAK_CHANNEL = 2;
-        BEAM_BREAK_POWER_SLOT = 0;
-        BEAM_BREAK_POWER_CHANNEL = 0;
+        BEAM_BREAK_POWER_SLOT = 2;
+        BEAM_BREAK_POWER_CHANNEL = 1;
     }
     
     public static int RELEASE_PISTON_IN_SLOT;
