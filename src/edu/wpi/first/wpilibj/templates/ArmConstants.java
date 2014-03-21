@@ -39,7 +39,7 @@ public class ArmConstants
         SOLENOID_FRONT_DOWN_CHANNEL = 3;
 
         ROLLER_FRONT_CHANNEL = 10;
-        ROLLER_BACK_CHANNEL = 1;
+        ROLLER_BACK_CHANNEL = 4;
     }
     
     public static int SOLENOID_BACK_UP_SLOT;

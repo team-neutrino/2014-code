@@ -26,10 +26,10 @@ public class DriveConstants
     
     private static void practice()
     {
-        DRIVE_FL_CHANNEL = 8;
+        DRIVE_FL_CHANNEL = 9;
         DRIVE_FR_CHANNEL = 6;
-        DRIVE_BL_CHANNEL = 7;
-        DRIVE_BR_CHANNEL = 4;
+        DRIVE_BL_CHANNEL = 2;
+        DRIVE_BR_CHANNEL = 5;
 
         DRIVE_SOLENOID_SLOT = 1;
         DRIVE_SOLENOID_OUT_CHANNEL = 8;
