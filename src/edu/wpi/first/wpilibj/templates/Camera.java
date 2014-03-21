@@ -23,13 +23,22 @@ public class Camera
     
     public Camera(DriverMessages driverMessages)
     {
-        RobotCamera = AxisCamera.getInstance();
-        CameraLight = new Solenoid(MainConstants.CAMERA_LIGHT_SLOT, MainConstants.CAMERA_LIGHT_CHANNEL);
-        DriverMessages = driverMessages;
+        if(MainConstants.REAL_BOT)
+        {
+            RobotCamera = AxisCamera.getInstance();
+            CameraLight = new Solenoid(MainConstants.CAMERA_LIGHT_SLOT, MainConstants.CAMERA_LIGHT_CHANNEL);
+            DriverMessages = driverMessages;
+        }
     }
     
     public boolean goalIsHot()
     {
+        if(!MainConstants.REAL_BOT)
+        {
+            DriverMessages.displayCameraError(true);
+            DriverMessages.displayHot(true);
+            return true;
+        }
         CameraLight.set(true);
         try
         {
@@ -81,6 +90,9 @@ public class Camera
     
     public void setLight(boolean on)
     {
-        CameraLight.set(on);
+        if(MainConstants.REAL_BOT)
+        {
+            CameraLight.set(on);
+        }
     }
 }
