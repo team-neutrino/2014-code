@@ -86,6 +86,8 @@ public class Main extends SimpleRobot
         try {
             switch(AutoMode)
             {
+                case 0://Do Nothing
+                    break;
                 case 1://Shoot Hot & Mobility
                     if(Camera.goalIsHot())
                     {
@@ -115,26 +117,24 @@ public class Main extends SimpleRobot
                 case 5://Shoot 3 & Mobility
                     auto5();
                     break;
-                case 6://Do Nothing
-                    break;
-                case 7://Low Goal Hot
+                case 6://Low Goal Hot
                     if(Camera.goalIsHot())
                     {
-                        auto7Hot();
+                        auto6Hot();
                     }
                     else
                     {
-                        auto7Cold();
+                        auto6Cold();
                     }
+                    break;
+                case 7:
+                    //code for auto 7
                     break;
                 case 8:
                     //code for auto 8
                     break;
                 case 9:
                     //code for auto 9
-                    break;
-                case 10:
-                    //code for auto 10
                     break;
             }
         }
@@ -409,7 +409,7 @@ public class Main extends SimpleRobot
     }
     
     //Low Goal Hot
-    private void auto7Hot() throws InterruptedException
+    private void auto6Hot() throws InterruptedException
     {
         Drive.traction(true);
         //ArmFront.armDown(false);
@@ -428,7 +428,7 @@ public class Main extends SimpleRobot
         ArmBack.rollerStopSlow();
     }
     
-    private void auto7Cold() throws InterruptedException
+    private void auto6Cold() throws InterruptedException
     {
         Drive.traction(true);
         //ArmFront.armDown(false);

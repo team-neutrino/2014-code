@@ -41,6 +41,9 @@ public class DriverMessages
         String autoDescription;
         switch(AutoMode)
         {
+            case 0:
+                autoDescription = "Do Nothing";
+                break;
             case 1:
                 autoDescription = "Shoot Hot & Mobility";
                 break;
@@ -57,18 +60,15 @@ public class DriverMessages
                 autoDescription = "(don't use) Shoot 3 & Mobility";
                 break;
             case 6:
-                autoDescription = "Do Nothing";
+                autoDescription = "(don't use) Low Goal Hot";
                 break;
             case 7:
-                autoDescription = "(don't use) Low Goal Hot";
+                autoDescription = "Not Created";
                 break;
             case 8:
                 autoDescription = "Not Created";
                 break;
             case 9:
-                autoDescription = "Not Created";
-                break;
-            case 10:
                 autoDescription = "Not Created";
                 break;
             default:
