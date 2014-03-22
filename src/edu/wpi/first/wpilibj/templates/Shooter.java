@@ -140,16 +140,16 @@ public class Shooter implements Runnable
             long startLoad = System.currentTimeMillis();
             while(!BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
-                WinchMotor1.set(-1);
-                WinchMotor2.set(-1);
+                WinchMotor1.set(1);
+                WinchMotor2.set(1);
                 Thread.sleep(5);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
             
             while(BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
-                WinchMotor1.set(-.3);
-                WinchMotor2.set(-.3);
+                WinchMotor1.set(.3);
+                WinchMotor2.set(.3);
                 Thread.sleep(1);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
