@@ -242,7 +242,7 @@ public class Main extends SimpleRobot
                 //ArmFront.rollerOut();
                 ArmBack.rollerOut();
             }
-            else if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD) || Gamepad.getRawButton(MainConstants.ARM_HOLD))
+            else if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
             {
                 //ArmFront.rollerIn();
                 ArmBack.rollerIn();
