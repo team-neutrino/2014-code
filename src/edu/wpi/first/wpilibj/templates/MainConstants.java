@@ -43,6 +43,8 @@ public class MainConstants
     public static final int ALL_ARMS_UP_GAMEPAD = 1; //7
     public static final int ALL_ARMS_DOWN_GAMEPAD = 4; //8
     
+    public static final int ARM_HOLD = 4;
+    
     public static final int DISABLE_AUTO_ROLL = 7;
     public static final int ENABLE_AUTO_ROLL = 8;
     
@@ -51,6 +53,7 @@ public class MainConstants
     
     public static final int ROLLER_FORWARD = 5;
     public static final int ROLLER_BACKWARD = 6;
+    public static final int ROLLER_STOP = 1;
     
     private static void real() 
     {

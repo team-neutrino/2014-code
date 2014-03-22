@@ -179,58 +179,60 @@ public class Main extends SimpleRobot
             Shooter.eject(Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON));
             
             //arm (up/down)
-            if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
-                    || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
-            {
-                //ArmFront.armDown(true);
-                ArmBack.armDown(true);    
-            }
-            else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
-            {
-                //ArmFront.armDown(false);
-                ArmBack.armDown(false);
-            }
-            else
-            {
-//                frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
-//                backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
-//                currentTime = System.currentTimeMillis();
-//                
-//                if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
-//                {
-//                    //ArmFront.armDown(!ArmFront.isUp());
-//                }
-//                if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
-//                {
-//                    ArmBack.armDown(!ArmBack.isUp());
-//                }
-//                
-//                if(frontToggle)
-//                {
-//                    frontTimeToggled = currentTime;
-//                }
-//                if(backToggle)
-//                {
-//                    backTimeToggled = currentTime;
-//                }
-//                
-//                frontTogglePrevious = frontToggle;
-//                backTogglePrevious = backToggle;
-            }
+            ArmBack.armDown(Gamepad.getRawButton(MainConstants.ARM_HOLD));
+//            if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 
+//                    || Gamepad.getRawButton(MainConstants.ALL_ARMS_UP_GAMEPAD))
+//            {
+//                //ArmFront.armDown(true);
+//                ArmBack.armDown(true);    
+//            }
+//            else if(Gamepad.getRawButton(MainConstants.ALL_ARMS_DOWN_GAMEPAD))
+//            {
+//                //ArmFront.armDown(false);
+//                ArmBack.armDown(false);
+//            }
+//            else
+//            {
+////                frontToggle = Gamepad.getRawButton(MainConstants.FRONT_ARM_TOGGLE);
+////                backToggle = Gamepad.getRawButton(MainConstants.BACK_ARM_TOGGLE);
+////                currentTime = System.currentTimeMillis();
+////                
+////                if (!frontTogglePrevious && frontToggle && (currentTime - frontTimeToggled) > 50)
+////                {
+////                    //ArmFront.armDown(!ArmFront.isUp());
+////                }
+////                if (!backTogglePrevious && backToggle && (currentTime - backTimeToggled) > 50)
+////                {
+////                    ArmBack.armDown(!ArmBack.isUp());
+////                }
+////                
+////                if(frontToggle)
+////                {
+////                    frontTimeToggled = currentTime;
+////                }
+////                if(backToggle)
+////                {
+////                    backTimeToggled = currentTime;
+////                }
+////                
+////                frontTogglePrevious = frontToggle;
+////                backTogglePrevious = backToggle;
+//            }
             
             //arm (rollers)
-            if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD))
+            if(Gamepad.getRawButton(MainConstants.ROLLER_STOP))
+            {
+                //ArmFront.rollerStop();
+                ArmBack.rollerStop();
+            }
+            else if(Gamepad.getRawButton(MainConstants.ROLLER_FORWARD) || Gamepad.getRawButton(MainConstants.ARM_HOLD))
             {
                 //ArmFront.rollerForward();
                 ArmBack.rollerIn();
             }
-            else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD))
+            else if(Gamepad.getRawButton(MainConstants.ROLLER_BACKWARD) || Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON))
             {
                 //ArmFront.rollerBackward();
-                ArmBack.rollerOut();
-            }
-            else if(Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON))
-            {
                 ArmBack.rollerOut();
             }
             else
