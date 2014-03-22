@@ -458,7 +458,7 @@ public class Main extends SimpleRobot
     
     private void updateAutoMode()
     {
-        AutoMode = (AutoBit1.get() ? 1 : 0) + (AutoBit2.get() ? 1 : 0) + (AutoBit4.get() ? 1 : 0) + (AutoBit8.get() ? 1 : 0);
+        AutoMode = (AutoBit1.get() ? 1 : 0) + (AutoBit2.get() ? 2 : 0) + (AutoBit4.get() ? 4 : 0) + (AutoBit8.get() ? 8 : 0);
         DriverMessages.updateAutoMode(AutoMode);
     }
 }
