@@ -24,7 +24,12 @@ public class Shooter implements Runnable
     private Victor WinchMotor1;
     private Victor WinchMotor2;
     private boolean Loading;
+    
     private DigitalInput LimitSwitch;
+    
+    private DigitalInput BeamBreak;
+    private Solenoid BeamBreakPower;
+    
     private DriverStation DriverStation;
     private DriverMessages DriverMessages;
     private boolean Loaded;
@@ -41,7 +46,12 @@ public class Shooter implements Runnable
         WinchMotor1 = new Victor(ShooterConstants.WINCH_MOTOR_1_CHANNEL);
         WinchMotor2 = new Victor(ShooterConstants.WINCH_MOTOR_2_CHANNEL);
         Loading = false;
+        
         LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
+        
+        BeamBreak = new DigitalInput(ShooterConstants.BEAM_BREAK_CHANNEL);
+        BeamBreakPower = new Solenoid(ShooterConstants.BEAM_BREAK_POWER_SLOT, ShooterConstants.BEAM_BREAK_POWER_CHANNEL);
+        
         DriverStation = driverStation;
         DriverMessages = driverMessages;
         
@@ -102,6 +112,8 @@ public class Shooter implements Runnable
     {
         try 
         {
+            
+            //shoot
             if(Loaded)
             {
             //release shooter
@@ -127,21 +139,35 @@ public class Shooter implements Runnable
                 Thread.sleep(5);
             }
             
+            //cock
+            BeamBreakPower.set(true);
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 6000))
+            while(!LimitSwitch.get() && BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
-                WinchMotor1.set(-.55);
-                WinchMotor2.set(-.55);
+                WinchMotor1.set(1);
+                WinchMotor2.set(1);
                 Thread.sleep(5);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
+            
+            while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
+            {
+                WinchMotor1.set(.3);
+                WinchMotor2.set(.3);
+                Thread.sleep(1);
+                //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
+            }
+            
             WinchMotor1.set(0);
             WinchMotor2.set(0);
+            
+            BeamBreakPower.set(false);
+            
             EjectPistonOut.set(false);
             EjectPistonIn.set(true);
             Lob = false;
             
-            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 6000);
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 3000);
             
             Loaded = true;
             Loading = false;
