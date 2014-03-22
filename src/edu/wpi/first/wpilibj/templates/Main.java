@@ -265,6 +265,9 @@ public class Main extends SimpleRobot
                 ArmBack.slowRollEnabled(false);
             }
             
+            
+            updateAutoMode();
+            
             //release shooter at match end
 //            if(154.9 <= DriverStation.getMatchTime())
 //            {
