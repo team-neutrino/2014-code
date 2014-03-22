@@ -83,10 +83,10 @@ public class MainConstants
         CAMERA_LIGHT_CHANNEL = 1;
         
         //Auto Switch
-        AUTO_BIT_1_CHANNEL = 0;
-        AUTO_BIT_2_CHANNEL = 0;
-        AUTO_BIT_4_CHANNEL = 0;
-        AUTO_BIT_8_CHANNEL = 0;
+        AUTO_BIT_1_CHANNEL = 4;
+        AUTO_BIT_2_CHANNEL = 5;
+        AUTO_BIT_4_CHANNEL = 6;
+        AUTO_BIT_8_CHANNEL = 7;
     }
     
     //Compressor
