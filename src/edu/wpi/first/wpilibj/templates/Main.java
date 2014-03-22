@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SimpleRobot;
@@ -21,6 +22,11 @@ import edu.wpi.first.wpilibj.SimpleRobot;
  */
 public class Main extends SimpleRobot 
 {
+    DigitalInput AutoBit1;
+    DigitalInput AutoBit2;
+    DigitalInput AutoBit4;
+    DigitalInput AutoBit8;
+    
     Joystick JoystickRight;
     Joystick JoystickLeft;
     Joystick Gamepad; 
@@ -49,7 +55,12 @@ public class Main extends SimpleRobot
         JoystickLeft = new Joystick(MainConstants.LEFT_JOY_PORT);
         Gamepad = new Joystick(MainConstants.GAMEPAD_PORT);
         
-        AutoMode = MainConstants.DEFUALT_AUTO_MODE;
+        AutoBit1 = new DigitalInput(MainConstants.AUTO_BIT_1_CHANNEL);
+        AutoBit2 = new DigitalInput(MainConstants.AUTO_BIT_2_CHANNEL);
+        AutoBit4 = new DigitalInput(MainConstants.AUTO_BIT_4_CHANNEL);
+        AutoBit8 = new DigitalInput(MainConstants.AUTO_BIT_8_CHANNEL);
+        
+        updateAutoMode();
         
         LightManager = new LightManager();
         DriverMessages = new DriverMessages(AutoMode, LightManager);
@@ -69,6 +80,7 @@ public class Main extends SimpleRobot
     
     public void autonomous() 
     {
+        updateAutoMode();
         LightManager.setFrontLights(false);
         LightManager.setBackLights(false);
         try {
@@ -266,17 +278,7 @@ public class Main extends SimpleRobot
         while(DriverStation.isDisabled())
         {
             //set auto program
-            boolean buttonPressed = false;
-            for(int autoMode = 1; autoMode <= 10 && false == buttonPressed; autoMode++)
-            {
-                if(JoystickLeft.getRawButton(autoMode) || JoystickRight.getRawButton(autoMode))
-                {
-                    AutoMode = autoMode;
-                    DriverMessages.updateAutoMode(autoMode);
-                    buttonPressed = true;
-                    System.out.println("Switching to Auto " + autoMode);
-                }
-            }
+            updateAutoMode();
         }
     }
 
@@ -452,5 +454,11 @@ public class Main extends SimpleRobot
         DriveConstants.init();
         ArmConstants.init();
         LightConstants.init();
+    }
+    
+    private void updateAutoMode()
+    {
+        AutoMode = (AutoBit1.get() ? 1 : 0) + (AutoBit2.get() ? 1 : 0) + (AutoBit4.get() ? 1 : 0) + (AutoBit8.get() ? 1 : 0);
+        DriverMessages.updateAutoMode(AutoMode);
     }
 }

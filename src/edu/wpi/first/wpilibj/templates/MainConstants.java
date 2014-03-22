@@ -64,6 +64,12 @@ public class MainConstants
         //Camera
         CAMERA_LIGHT_SLOT = 1;
         CAMERA_LIGHT_CHANNEL = 8;
+        
+        //Auto Switch
+        AUTO_BIT_1_CHANNEL = 0;
+        AUTO_BIT_2_CHANNEL = 0;
+        AUTO_BIT_4_CHANNEL = 0;
+        AUTO_BIT_8_CHANNEL = 0;
     }
     
     private static void practice() 
@@ -75,6 +81,12 @@ public class MainConstants
         //Camera
         CAMERA_LIGHT_SLOT = 2;
         CAMERA_LIGHT_CHANNEL = 1;
+        
+        //Auto Switch
+        AUTO_BIT_1_CHANNEL = 0;
+        AUTO_BIT_2_CHANNEL = 0;
+        AUTO_BIT_4_CHANNEL = 0;
+        AUTO_BIT_8_CHANNEL = 0;
     }
     
     //Compressor
@@ -84,6 +96,12 @@ public class MainConstants
     //Camera
     public static int CAMERA_LIGHT_SLOT;
     public static int CAMERA_LIGHT_CHANNEL;
+    
+    //Auto Switch
+    public static int AUTO_BIT_1_CHANNEL;
+    public static int AUTO_BIT_2_CHANNEL;
+    public static int AUTO_BIT_4_CHANNEL;
+    public static int AUTO_BIT_8_CHANNEL;
     
     public static void init()
     {

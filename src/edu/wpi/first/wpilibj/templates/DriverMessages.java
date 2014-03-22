@@ -28,8 +28,11 @@ public class DriverMessages
     
     public void updateAutoMode(int autoMode)
     {
-        AutoMode = autoMode;
-        updateLCD();
+        if(AutoMode != autoMode)
+        {
+            AutoMode = autoMode;
+            updateLCD();
+        }
     }
     
     private void updateLCD()
