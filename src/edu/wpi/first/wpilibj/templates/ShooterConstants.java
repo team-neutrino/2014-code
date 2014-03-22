@@ -30,6 +30,8 @@ public class ShooterConstants
         BEAM_BREAK_CHANNEL = 0;
         BEAM_BREAK_POWER_SLOT = 0;
         BEAM_BREAK_POWER_CHANNEL = 0;
+                
+        LIMIT_SWITCH_CHANNEL = 2;
     }
     
     private static void practice() 
@@ -50,6 +52,8 @@ public class ShooterConstants
         BEAM_BREAK_CHANNEL = 2;
         BEAM_BREAK_POWER_SLOT = 2;
         BEAM_BREAK_POWER_CHANNEL = 1;
+        
+        LIMIT_SWITCH_CHANNEL = 3;
     }
     
     public static int RELEASE_PISTON_IN_SLOT;
@@ -68,6 +72,8 @@ public class ShooterConstants
     public static int BEAM_BREAK_CHANNEL;
     public static int BEAM_BREAK_POWER_SLOT;
     public static int BEAM_BREAK_POWER_CHANNEL;
+    
+    public static int LIMIT_SWITCH_CHANNEL;
     
     public static void init()
     {

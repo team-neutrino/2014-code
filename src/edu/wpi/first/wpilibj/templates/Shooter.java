@@ -25,6 +25,8 @@ public class Shooter implements Runnable
     private Victor WinchMotor2;
     private boolean Loading;
     
+    private DigitalInput LimitSwitch;
+    
     private DigitalInput BeamBreak;
     private Solenoid BeamBreakPower;
     
@@ -45,14 +47,16 @@ public class Shooter implements Runnable
         WinchMotor2 = new Victor(ShooterConstants.WINCH_MOTOR_2_CHANNEL);
         Loading = false;
         
+        LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
+        
         BeamBreak = new DigitalInput(ShooterConstants.BEAM_BREAK_CHANNEL);
         BeamBreakPower = new Solenoid(ShooterConstants.BEAM_BREAK_POWER_SLOT, ShooterConstants.BEAM_BREAK_POWER_CHANNEL);
         
         DriverStation = driverStation;
         DriverMessages = driverMessages;
         
-        //assume shooter is cocked
-        Loaded = true;
+        //check if shooter loaded based on limit switch
+        Loaded = LimitSwitch.get();
         
         //shooterCock();
         
@@ -138,7 +142,7 @@ public class Shooter implements Runnable
             //cock
             BeamBreakPower.set(true);
             long startLoad = System.currentTimeMillis();
-            while(BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
+            while(!LimitSwitch.get() && BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
                 WinchMotor1.set(1);
                 WinchMotor2.set(1);
@@ -146,7 +150,7 @@ public class Shooter implements Runnable
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
             
-            while(!BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
+            while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
                 WinchMotor1.set(.3);
                 WinchMotor2.set(.3);
