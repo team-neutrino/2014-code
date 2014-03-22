@@ -18,11 +18,11 @@ public class DriverMessages
     private DriverStationLCD DriverStation;
     private LightManager LightManager;
     
-    public DriverMessages(int autoMode, LightManager lightManager)
+    public DriverMessages(LightManager lightManager)
     {
         LightManager = lightManager;
         DriverStation = DriverStationLCD.getInstance();
-        AutoMode = autoMode;
+        AutoMode = 0;
         updateLCD();
     }
     

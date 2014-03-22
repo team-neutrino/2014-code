@@ -60,10 +60,10 @@ public class Main extends SimpleRobot
         AutoBit4 = new DigitalInput(MainConstants.AUTO_BIT_4_CHANNEL);
         AutoBit8 = new DigitalInput(MainConstants.AUTO_BIT_8_CHANNEL);
         
-        updateAutoMode();
-        
         LightManager = new LightManager();
-        DriverMessages = new DriverMessages(AutoMode, LightManager);
+        DriverMessages = new DriverMessages(LightManager);
+        
+        updateAutoMode();
         
         DriverStation = DriverStation.getInstance();
         
