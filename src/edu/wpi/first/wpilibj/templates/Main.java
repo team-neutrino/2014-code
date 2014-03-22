@@ -153,13 +153,13 @@ public class Main extends SimpleRobot
             
             if(InvertDrive)
             {
-                Drive.setLeft(JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
-                Drive.setRight(JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
             }
             else
             {
-                Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
-                Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setLeft(JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
             }
             
             //traction
