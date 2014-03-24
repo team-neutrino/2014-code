@@ -190,6 +190,8 @@ public class Main extends SimpleRobot
             
             Shooter.eject(Gamepad.getRawButton(MainConstants.BALL_EJECT_BUTTON));
             
+            Shooter.manualCock(Gamepad.getRawButton(MainConstants.MANUAL_COCK_BUTTON));
+            
             //arm (up/down)
             ArmBack.armDown(Gamepad.getRawButton(MainConstants.ARM_HOLD));
 //            if(JoystickRight.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) || JoystickLeft.getRawButton(MainConstants.ALL_ARMS_UP_DRIVER) 

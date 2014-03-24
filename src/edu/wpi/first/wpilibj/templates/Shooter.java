@@ -108,10 +108,33 @@ public class Shooter implements Runnable
         Loaded = false;
     }
     
+    public void manualCock(boolean cock)
+    {
+        if(!Loading)
+        {
+            if(cock)
+            {
+                ReleasePistonIn.set(true);
+                ReleasePistonOut.set(false);
+                WinchMotor1.set(1);
+                WinchMotor2.set(1);
+            }
+            else
+            {
+                WinchMotor1.set(0);
+                WinchMotor2.set(0);
+            }
+        }
+    }
+    
     public void run() 
     {
         try 
         {
+            
+            //dont winch
+            WinchMotor1.set(0);
+            WinchMotor2.set(0);
             
             //shoot
             if(Loaded)

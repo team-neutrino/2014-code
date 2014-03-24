@@ -38,6 +38,8 @@ public class MainConstants
     
     public static final int BALL_EJECT_BUTTON = 2;
     
+    public static final int MANUAL_COCK_BUTTON = 9;
+    
     //arms
     public static final int ALL_ARMS_UP_DRIVER = 3;
     public static final int ALL_ARMS_UP_GAMEPAD = 1; //7
