@@ -158,7 +158,7 @@ public class Main extends SimpleRobot
         while(DriverStation.isOperatorControl() && DriverStation.isEnabled())
         {
             //drive
-            InvertDrive = (JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT));
+            InvertDrive = (JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT_BUTTON));
             
             LightManager.setFrontLights(!InvertDrive);
             LightManager.setBackLights(InvertDrive);
@@ -175,10 +175,10 @@ public class Main extends SimpleRobot
             }
             
             //traction
-            Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON));
+            Drive.traction(JoystickRight.getRawButton(MainConstants.TRACTION_BUTTON) || JoystickLeft.getRawButton(MainConstants.TRACTION_BUTTON));
             
             //shoot
-            if(JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON) || JoystickLeft.getRawButton(MainConstants.SHOOT_LOB_BUTTON))
+            if(JoystickRight.getRawButton(MainConstants.SHOOT_BUTTON))
             {
                 Shooter.shootCock();
             }
