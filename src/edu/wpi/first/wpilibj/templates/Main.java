@@ -160,8 +160,8 @@ public class Main extends SimpleRobot
             //drive
             InvertDrive = (JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT_BUTTON));
             
-            LightManager.setFrontLights(!InvertDrive);
-            LightManager.setBackLights(InvertDrive);
+            LightManager.setFrontLights(InvertDrive);
+            LightManager.setBackLights(!InvertDrive);
             
             if(InvertDrive)
             {
