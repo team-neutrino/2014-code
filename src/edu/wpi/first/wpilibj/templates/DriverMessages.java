@@ -48,19 +48,19 @@ public class DriverMessages
                 autoDescription = "Shoot Hot & Mobility";
                 break;
             case 2:
-                autoDescription = "Shoot Hot";
-                break;
-            case 3:
-                autoDescription = "Mobility";
-                break;
-            case 4:
                 autoDescription = "Shoot 2 & Mobility";
                 break;
+            case 3:
+                autoDescription = "(not tested) Mobility";
+                break;
+            case 4:
+                autoDescription = "(not tested) Low Goal";
+                break;
             case 5:
-                autoDescription = "(don't use) Shoot 3 & Mobility";
+                autoDescription = "(not tested) Shoot 3 & Mobility";
                 break;
             case 6:
-                autoDescription = "(don't use) Low Goal Hot";
+                autoDescription = "(not tested) Shoot Hot";
                 break;
             case 7:
                 autoDescription = "Not Created";

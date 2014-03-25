@@ -91,40 +91,33 @@ public class Main extends SimpleRobot
                 case 1://Shoot Hot & Mobility
                     if(Camera.goalIsHot())
                     {
-                        auto1Hot();
+                        autoSHMHot();
                     }
                     else
                     {
-                        auto1Cold();
+                        autoSHMCold();
                     }
                     break;
-                case 2://Shoot Hot
-                    if(Camera.goalIsHot())
-                    {
-                        auto2Hot();
-                    }
-                    else
-                    {
-                        auto2Cold();
-                    }
+                case 2://Shoot 2 & Mobility
+                    autoS2M();
                     break;
                 case 3://Mobility
-                    auto3();
+                    autoM();
                     break;
-                case 4://Shoot 2 & Mobility
-                    auto4();
+                case 4://Low Goal
+                    autoL();
                     break;
                 case 5://Shoot 3 & Mobility
-                    auto5();
+                    autoS3M();
                     break;
-                case 6://Low Goal Hot
+                case 6://Shoot Hot
                     if(Camera.goalIsHot())
                     {
-                        auto6Hot();
+                        autoSHHot();
                     }
                     else
                     {
-                        auto6Cold();
+                        autoSHCold();
                     }
                     break;
                 case 7:
@@ -288,7 +281,7 @@ public class Main extends SimpleRobot
     }
 
     //Shoot Hot & Mobility
-    private void auto1Hot() throws InterruptedException 
+    private void autoSHMHot() throws InterruptedException 
     {
         Drive.traction(true);
         //ArmFront.armDown(false);
@@ -303,7 +296,7 @@ public class Main extends SimpleRobot
         Drive.traction(false);
     }
 
-    private void auto1Cold() throws InterruptedException 
+    private void autoSHMCold() throws InterruptedException 
     {
         Drive.traction(true);
         //ArmFront.armDown(false);
@@ -319,7 +312,7 @@ public class Main extends SimpleRobot
     }
     
     //Shoot Hot
-    private void auto2Hot() throws InterruptedException 
+    private void autoSHHot() throws InterruptedException 
     {
         //ArmFront.armDown(false);
         ArmBack.armDown(false);
@@ -327,7 +320,7 @@ public class Main extends SimpleRobot
         Shooter.shootCock();
     }
     
-    private void auto2Cold() throws InterruptedException 
+    private void autoSHCold() throws InterruptedException 
     {
         //ArmFront.armDown(false);
         ArmBack.armDown(false);
@@ -336,7 +329,7 @@ public class Main extends SimpleRobot
     }
     
     //Mobility
-    private void auto3() throws InterruptedException 
+    private void autoM() throws InterruptedException 
     {
         Drive.traction(true);
         //ArmFront.armDown(false);
@@ -350,7 +343,7 @@ public class Main extends SimpleRobot
     }
     
     //Shoot 2 & Mobility
-    private void auto4() throws InterruptedException 
+    private void autoS2M() throws InterruptedException 
     {
         Drive.traction(true);
         //ArmFront.armDown(false);
@@ -379,7 +372,7 @@ public class Main extends SimpleRobot
     }
     
     //Shoot 3 & Mobility
-    private void auto5() throws InterruptedException
+    private void autoS3M() throws InterruptedException
     {
         Drive.traction(true);
         //ArmFront.armDown(true);
@@ -408,8 +401,8 @@ public class Main extends SimpleRobot
         Drive.setRight(0);
     }
     
-    //Low Goal Hot
-    private void auto6Hot() throws InterruptedException
+    //Low Goal
+    private void autoL() throws InterruptedException
     {
         Drive.traction(true);
         //ArmFront.armDown(false);
@@ -421,25 +414,6 @@ public class Main extends SimpleRobot
         Drive.setRight(0);
         Drive.traction(false);
         Thread.sleep(500);
-        Shooter.eject(true);
-        ArmBack.rollerOut();
-        Thread.sleep(2000);
-        Shooter.eject(false);
-        ArmBack.rollerStopSlow();
-    }
-    
-    private void auto6Cold() throws InterruptedException
-    {
-        Drive.traction(true);
-        //ArmFront.armDown(false);
-        ArmBack.armDown(false);
-        Drive.setLeft(1);
-        Drive.setRight(1);
-        Thread.sleep(2250);
-        Drive.setLeft(0);
-        Drive.setRight(0);
-        Drive.traction(false);
-        Thread.sleep(2750);
         Shooter.eject(true);
         ArmBack.rollerOut();
         Thread.sleep(2000);
