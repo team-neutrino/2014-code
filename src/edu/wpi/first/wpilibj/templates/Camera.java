@@ -27,8 +27,8 @@ public class Camera
         {
             RobotCamera = AxisCamera.getInstance();
             CameraLight = new Solenoid(MainConstants.CAMERA_LIGHT_SLOT, MainConstants.CAMERA_LIGHT_CHANNEL);
-            DriverMessages = driverMessages;
         }
+        DriverMessages = driverMessages;
     }
     
     public boolean goalIsHot()
