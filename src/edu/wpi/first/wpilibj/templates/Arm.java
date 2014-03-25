@@ -17,7 +17,8 @@ public class Arm
 {
     private Solenoid solenoidUp;
     private Solenoid solenoidDown;
-    private Victor RollerMotor;
+    private Victor RollerMotor1;
+    private Victor RollerMotor2;
     private boolean Front;
     private boolean Down;
     private boolean SlowRollEnabled;
@@ -29,29 +30,32 @@ public class Arm
         int solenoidDownSlot;
         int solenoidUpChannel;
         int solenoidDownChannel;
-        int rollerChannel;
+        int rollerChannel1;
+        int rollerChannel2;
         Front = front;
         
-        if(front)
-        {
-            solenoidUpSlot = ArmConstants.SOLENOID_FRONT_UP_SLOT;
-            solenoidDownSlot = ArmConstants.SOLENOID_FRONT_DOWN_SLOT;
-            solenoidUpChannel = ArmConstants.SOLENOID_FRONT_UP_CHANNEL;
-            solenoidDownChannel = ArmConstants.SOLENOID_FRONT_DOWN_CHANNEL;
-            rollerChannel = ArmConstants.ROLLER_FRONT_CHANNEL;
-        }
-        else
-        {
+//        if(front)
+//        {
+//            solenoidUpSlot = ArmConstants.SOLENOID_FRONT_UP_SLOT;
+//            solenoidDownSlot = ArmConstants.SOLENOID_FRONT_DOWN_SLOT;
+//            solenoidUpChannel = ArmConstants.SOLENOID_FRONT_UP_CHANNEL;
+//            solenoidDownChannel = ArmConstants.SOLENOID_FRONT_DOWN_CHANNEL;
+//            rollerChannel1 = ArmConstants.ROLLER_FRONT_CHANNEL;
+//        }
+//        else
+//        {
             solenoidUpSlot = ArmConstants.SOLENOID_BACK_UP_SLOT;
             solenoidDownSlot = ArmConstants.SOLENOID_BACK_DOWN_SLOT;
             solenoidUpChannel = ArmConstants.SOLENOID_BACK_UP_CHANNEL;
             solenoidDownChannel = ArmConstants.SOLENOID_BACK_DOWN_CHANNEL;
-            rollerChannel = ArmConstants.ROLLER_BACK_CHANNEL;
-        }
+            rollerChannel1 = ArmConstants.ROLLER_BACK_CHANNEL;
+            rollerChannel2 = ArmConstants.ROLLER_FRONT_CHANNEL;
+//        }
 
         solenoidUp = new Solenoid(solenoidUpSlot, solenoidUpChannel);
         solenoidDown = new Solenoid(solenoidDownSlot, solenoidDownChannel);
-        RollerMotor = new Victor(rollerChannel);
+        RollerMotor1 = new Victor(rollerChannel1);
+        RollerMotor2 = new Victor(rollerChannel2);
         Down = false;
         SlowRollEnabled = true;
         SlowRollRunning = true;
@@ -75,11 +79,13 @@ public class Arm
         SlowRollRunning = false;
         if(Front)
         {
-            RollerMotor.set(-1);
+            RollerMotor1.set(-1);
+            RollerMotor2.set(-1);
         }
         else
         {
-            RollerMotor.set(1);
+            RollerMotor1.set(1);
+            RollerMotor2.set(1);
         }
     }
     
@@ -88,11 +94,13 @@ public class Arm
         SlowRollRunning = false;
         if(Front)
         {
-            RollerMotor.set(1);
+            RollerMotor1.set(1);
+            RollerMotor2.set(1);
         }
         else
         {
-            RollerMotor.set(-1);
+            RollerMotor1.set(-1);
+            RollerMotor2.set(-1);
         }
     }
     
@@ -108,23 +116,27 @@ public class Arm
         {
             if(Front)
             {
-                RollerMotor.set(-.5);
+                RollerMotor1.set(-.5);
+                RollerMotor2.set(-.5);
             }
             else
             {
-                RollerMotor.set(.5);
+                RollerMotor1.set(.5);
+                RollerMotor2.set(.5);
             }
         }
         else
         {
-        RollerMotor.set(0);
+            RollerMotor1.set(0);
+            RollerMotor2.set(0);
         }
     }
     
     public void rollerStop()
     {
         SlowRollRunning = false;
-        RollerMotor.set(0);
+        RollerMotor1.set(0);
+        RollerMotor2.set(0);
     }
     
     public boolean isUp()
