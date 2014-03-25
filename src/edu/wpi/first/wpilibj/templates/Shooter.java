@@ -165,21 +165,21 @@ public class Shooter implements Runnable
             //cock
             BeamBreakPower.set(true);
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
+            while(!LimitSwitch.get() /*&& BeamBreak.get()*/ && (System.currentTimeMillis() - startLoad < 3000))
             {
-                WinchMotor1.set(1);
-                WinchMotor2.set(1);
+                WinchMotor1.set(.7); //1
+                WinchMotor2.set(.7); //1
                 Thread.sleep(5);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
             
-            while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 10000))
-            {
-                WinchMotor1.set(.3);
-                WinchMotor2.set(.3);
-                Thread.sleep(1);
-                //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
-            }
+//            while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 10000))
+//            {
+//                WinchMotor1.set(.3);
+//                WinchMotor2.set(.3);
+//                Thread.sleep(1);
+//                //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
+//            }
             
             WinchMotor1.set(0);
             WinchMotor2.set(0);
