@@ -68,10 +68,10 @@ public class MainConstants
         CAMERA_LIGHT_CHANNEL = 8;
         
         //Auto Switch
-        AUTO_BIT_1_CHANNEL = 5;
-        AUTO_BIT_2_CHANNEL = 6;
-        AUTO_BIT_4_CHANNEL = 7;
-        AUTO_BIT_8_CHANNEL = 8;
+        AUTO_BIT_1_CHANNEL = 11;
+        AUTO_BIT_2_CHANNEL = 12;
+        AUTO_BIT_4_CHANNEL = 13;
+        AUTO_BIT_8_CHANNEL = 14;
     }
     
     private static void practice() 
