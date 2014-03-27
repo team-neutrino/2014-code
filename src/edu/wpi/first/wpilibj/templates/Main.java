@@ -98,17 +98,15 @@ public class Main extends SimpleRobot
                         autoSHMCold();
                     }
                     break;
-                case 2://Shoot 2 & Mobility
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4://Shoot 2 & Mobility
                     autoS2M();
                     break;
-                case 3://Mobility
+                case 5://Mobility
                     autoM();
-                    break;
-                case 4://Low Goal
-                    autoL();
-                    break;
-                case 5://Shoot 3 & Mobility
-                    autoS3M();
                     break;
                 case 6://Shoot Hot
                     if(Camera.goalIsHot())
@@ -123,11 +121,11 @@ public class Main extends SimpleRobot
                 case 7:
                     //code for auto 7
                     break;
-                case 8:
-                    //code for auto 8
+                case 8://Low Goal
+                    autoL();
                     break;
-                case 9:
-                    //code for auto 9
+                case 9://Shoot 3 & Mobility
+                    autoS3M();
                     break;
             }
         }
