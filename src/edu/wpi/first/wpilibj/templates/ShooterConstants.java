@@ -27,9 +27,9 @@ public class ShooterConstants
         WINCH_MOTOR_1_CHANNEL = 6;
         WINCH_MOTOR_2_CHANNEL = 2;
         
-        BEAM_BREAK_CHANNEL = 13;
+        BEAM_BREAK_CHANNEL = 6;
         BEAM_BREAK_POWER_SLOT = 1;
-        BEAM_BREAK_POWER_CHANNEL = 6;
+        BEAM_BREAK_POWER_CHANNEL = 5;
                 
         LIMIT_SWITCH_CHANNEL = 2;
     }

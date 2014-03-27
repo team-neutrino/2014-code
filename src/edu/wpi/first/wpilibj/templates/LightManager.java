@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 public class LightManager implements Runnable
 {
 //    private Solenoid FrontLight;
-    private Solenoid BackLight;
+//    private Solenoid BackLight;
     private boolean Blinking;
     private boolean FrontOn;
     private boolean BackOn;
@@ -23,7 +23,7 @@ public class LightManager implements Runnable
     public LightManager()
     {
 //        FrontLight = new Solenoid(LightConstants.FRONT_LIGHT_SLOT, LightConstants.FRONT_LIGHT_CHANNEL);
-        BackLight = new Solenoid(LightConstants.BACK_LIGHT_SLOT, LightConstants.BACK_LIGHT_CHANNEL);
+//        BackLight = new Solenoid(LightConstants.BACK_LIGHT_SLOT, LightConstants.BACK_LIGHT_CHANNEL);
     }
     
     public void setFrontLights(boolean on)
@@ -40,7 +40,7 @@ public class LightManager implements Runnable
         BackOn = on;
         if(!Blinking)
         {
-            BackLight.set(on);
+//            BackLight.set(on);
         }
     }
     
@@ -61,14 +61,14 @@ public class LightManager implements Runnable
             for (int i = 0; i < 20; i++) 
             {
 //                FrontLight.set(true);
-                BackLight.set(false);
+//                BackLight.set(false);
                 Thread.sleep(25);
 //                FrontLight.set(false);
-                BackLight.set(true);
+//                BackLight.set(true);
                 Thread.sleep(25);
             }
 //            FrontLight.set(FrontOn);
-            BackLight.set(BackOn);
+//            BackLight.set(BackOn);
         } 
         catch (InterruptedException ex) 
         {
