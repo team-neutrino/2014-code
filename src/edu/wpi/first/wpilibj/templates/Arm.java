@@ -79,13 +79,13 @@ public class Arm
         SlowRollRunning = false;
         if(Front)
         {
-            RollerMotor1.set(-1);
-            RollerMotor2.set(1);
+            RollerMotor1.set(1);
+            RollerMotor2.set(-1);
         }
         else
         {
-            RollerMotor1.set(1);
-            RollerMotor2.set(-1);
+            RollerMotor1.set(-1);
+            RollerMotor2.set(1);
         }
     }
     
@@ -94,13 +94,13 @@ public class Arm
         SlowRollRunning = false;
         if(Front)
         {
-            RollerMotor1.set(1);
-            RollerMotor2.set(-1);
+            RollerMotor1.set(-1);
+            RollerMotor2.set(1);
         }
         else
         {
-            RollerMotor1.set(-1);
-            RollerMotor2.set(1);
+            RollerMotor1.set(1);
+            RollerMotor2.set(-1);
         }
     }
     
@@ -116,13 +116,13 @@ public class Arm
         {
             if(Front)
             {
-                RollerMotor1.set(-.5);
-                RollerMotor2.set(.5);
+                RollerMotor1.set(.5);
+                RollerMotor2.set(-.5);
             }
             else
             {
-                RollerMotor1.set(.5);
-                RollerMotor2.set(-.5);
+                RollerMotor1.set(-.5);
+                RollerMotor2.set(.5);
             }
         }
         else
