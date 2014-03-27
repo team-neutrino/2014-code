@@ -27,8 +27,8 @@ public class Shooter implements Runnable
     
     private DigitalInput LimitSwitch;
     
-//    private DigitalInput BeamBreak;
-//    private Solenoid BeamBreakPower;
+    private DigitalInput BeamBreak;
+    private Solenoid BeamBreakPower;
     
     private DriverStation DriverStation;
     private DriverMessages DriverMessages;
@@ -49,8 +49,8 @@ public class Shooter implements Runnable
         
         LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
         
-//        BeamBreak = new DigitalInput(ShooterConstants.BEAM_BREAK_CHANNEL);
-//        BeamBreakPower = new Solenoid(ShooterConstants.BEAM_BREAK_POWER_SLOT, ShooterConstants.BEAM_BREAK_POWER_CHANNEL);
+        BeamBreak = new DigitalInput(ShooterConstants.BEAM_BREAK_CHANNEL);
+        BeamBreakPower = new Solenoid(ShooterConstants.BEAM_BREAK_POWER_SLOT, ShooterConstants.BEAM_BREAK_POWER_CHANNEL);
         
         DriverStation = driverStation;
         DriverMessages = driverMessages;
@@ -163,9 +163,9 @@ public class Shooter implements Runnable
             }
             
             //cock
-//            BeamBreakPower.set(true);
+            BeamBreakPower.set(true);
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 3000))
+            while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
                 WinchMotor1.set(1); 
                 WinchMotor2.set(1); 
@@ -173,16 +173,24 @@ public class Shooter implements Runnable
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
             
+            while(!LimitSwitch.get() && BeamBreak.get() && (System.currentTimeMillis() - startLoad < 10000))
+            {
+                WinchMotor1.set(.3);
+                WinchMotor2.set(.3);
+                Thread.sleep(1);
+                //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
+            }
+            
             WinchMotor1.set(0);
             WinchMotor2.set(0);
             
-//            BeamBreakPower.set(false);
+            BeamBreakPower.set(false);
             
             EjectPistonOut.set(false);
             EjectPistonIn.set(true);
             Lob = false;
             
-            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 3000);
+            DriverMessages.displayShooterTimeout(System.currentTimeMillis() - startLoad > 10000);
             
             Loaded = true;
             Loading = false;
