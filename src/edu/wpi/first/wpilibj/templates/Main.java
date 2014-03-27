@@ -346,7 +346,7 @@ public class Main extends SimpleRobot
         Drive.traction(true);
         //ArmFront.armDown(false);
         ArmBack.armDown(true);
-        ArmBack.rollerIn();
+        //ArmBack.rollerIn();
         Thread.sleep(1000);
         Drive.setLeft(1);
         Drive.setRight(1);
