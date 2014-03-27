@@ -347,7 +347,7 @@ public class Main extends SimpleRobot
         //ArmFront.armDown(false);
         ArmBack.armDown(true);
         ArmBack.rollerIn();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         Drive.setLeft(1);
         Drive.setRight(1);
         Thread.sleep(MainConstants.FORWARD_WAIT);
