@@ -13,7 +13,7 @@ package edu.wpi.first.wpilibj.templates;
 public class MainConstants
 {
     
-    public static final boolean REAL_BOT = false;
+    public static final boolean REAL_BOT = true;
     
     //autonomous
     public static final int DEFUALT_AUTO_MODE = 1;
