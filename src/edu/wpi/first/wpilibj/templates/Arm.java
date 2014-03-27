@@ -104,6 +104,12 @@ public class Arm
         }
     }
     
+    public void rollerAuto()
+    {
+        RollerMotor1.set(-1);
+        RollerMotor2.set(0);
+    }
+    
     public void slowRollEnabled(boolean enabled)
     {
         SlowRollEnabled = enabled;
