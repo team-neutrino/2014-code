@@ -52,6 +52,8 @@ public class Shooter implements Runnable
         BeamBreak = new DigitalInput(ShooterConstants.BEAM_BREAK_CHANNEL);
         BeamBreakPower = new Solenoid(ShooterConstants.BEAM_BREAK_POWER_SLOT, ShooterConstants.BEAM_BREAK_POWER_CHANNEL);
         
+        BeamBreakPower.set(true);
+        
         DriverStation = driverStation;
         DriverMessages = driverMessages;
         
@@ -163,7 +165,6 @@ public class Shooter implements Runnable
             }
             
             //cock
-            BeamBreakPower.set(true);
             long startLoad = System.currentTimeMillis();
             while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
@@ -183,8 +184,6 @@ public class Shooter implements Runnable
             
             WinchMotor1.set(0);
             WinchMotor2.set(0);
-            
-            BeamBreakPower.set(false);
             
             EjectPistonOut.set(false);
             EjectPistonIn.set(true);
