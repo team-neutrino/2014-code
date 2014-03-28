@@ -168,8 +168,16 @@ public class Shooter implements Runnable
             long startLoad = System.currentTimeMillis();
             while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
             {
-                WinchMotor1.set(1); 
-                WinchMotor2.set(1); 
+                if(DriverStation.isAutonomous())
+                {
+                    WinchMotor1.set(1); 
+                    WinchMotor2.set(1);
+                }
+                else
+                {
+                    WinchMotor1.set(.7); 
+                    WinchMotor2.set(.7);
+                }
                 Thread.sleep(5);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
