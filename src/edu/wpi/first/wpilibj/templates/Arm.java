@@ -122,13 +122,13 @@ public class Arm
         {
             if(Front)
             {
-                RollerMotor1.set(.5);
-                RollerMotor2.set(-.5);
+                RollerMotor1.set(.2);
+                RollerMotor2.set(-.2);
             }
             else
             {
-                RollerMotor1.set(-.5);
-                RollerMotor2.set(.5);
+                RollerMotor1.set(-.2);
+                RollerMotor2.set(.2);
             }
         }
         else
