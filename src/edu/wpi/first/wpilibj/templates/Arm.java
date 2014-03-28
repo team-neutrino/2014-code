@@ -79,13 +79,13 @@ public class Arm
         SlowRollRunning = false;
         if(Front)
         {
-            RollerMotor1.set(1);
-            RollerMotor2.set(-1);
+            RollerMotor1.set(.8);
+            RollerMotor2.set(-.8);
         }
         else
         {
-            RollerMotor1.set(-1);
-            RollerMotor2.set(1);
+            RollerMotor1.set(-.8);
+            RollerMotor2.set(.8);
         }
     }
     
