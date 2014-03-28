@@ -151,18 +151,18 @@ public class Main extends SimpleRobot
             //drive
             InvertDrive = (JoystickLeft.getRawButton(MainConstants.DRIVE_INVERT_BUTTON));
             
-            LightManager.setFrontLights(InvertDrive);
-            LightManager.setBackLights(!InvertDrive);
+            LightManager.setFrontLights(!InvertDrive);
+            LightManager.setBackLights(InvertDrive);
             
             if(InvertDrive)
             {
-                Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
-                Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setLeft(JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
             }
             else
             {
-                Drive.setLeft(JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
-                Drive.setRight(JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setLeft(-JoystickLeft.getRawAxis(MainConstants.DRIVE_AXIS));
+                Drive.setRight(-JoystickRight.getRawAxis(MainConstants.DRIVE_AXIS));
             }
             
             //traction
