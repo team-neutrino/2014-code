@@ -366,7 +366,9 @@ public class Main extends SimpleRobot
         Drive.traction(false);
         ArmBack.armDown(false);
         ArmBack.rollerStopSlow();
-        Thread.sleep(2500);
+        Thread.sleep(2000);
+        ArmBack.rollerStop();
+        Thread.sleep(500);
         Shooter.shootCock();
     }
     
