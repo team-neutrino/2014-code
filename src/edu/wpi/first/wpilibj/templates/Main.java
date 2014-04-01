@@ -71,7 +71,7 @@ public class Main extends SimpleRobot
         Shooter = new Shooter(DriverStation, DriverMessages);
         
         //ArmFront = new Arm(true);
-        ArmBack = new Arm(false);
+        ArmBack = new Arm(false, DriverStation);
         
         Camera = new Camera(DriverMessages);
         

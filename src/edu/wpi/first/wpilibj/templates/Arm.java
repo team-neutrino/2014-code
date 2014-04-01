@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
 
@@ -19,12 +20,13 @@ public class Arm
     private Solenoid solenoidDown;
     private Victor RollerMotor1;
     private Victor RollerMotor2;
+    private DriverStation DriverStation;
     private boolean Front;
     private boolean Down;
     private boolean SlowRollEnabled;
     private boolean SlowRollRunning;
     
-    public Arm(boolean front)
+    public Arm(boolean front, DriverStation driverStation)
     {
         int solenoidUpSlot;
         int solenoidDownSlot;
@@ -56,6 +58,7 @@ public class Arm
         solenoidDown = new Solenoid(solenoidDownSlot, solenoidDownChannel);
         RollerMotor1 = new Victor(rollerChannel1);
         RollerMotor2 = new Victor(rollerChannel2);
+        DriverStation = driverStation;
         Down = false;
         SlowRollEnabled = true;
         SlowRollRunning = true;
@@ -77,15 +80,31 @@ public class Arm
     public void rollerIn()
     {
         SlowRollRunning = false;
-        if(Front)
+        if(DriverStation.isAutonomous())
         {
-            RollerMotor1.set(.8);
-            RollerMotor2.set(-.8);
+            if(Front)
+            {
+                RollerMotor1.set(.8);
+                RollerMotor2.set(-.8);
+            }
+            else
+            {
+                RollerMotor1.set(-.8);
+                RollerMotor2.set(.8);
+            }
         }
         else
         {
-            RollerMotor1.set(-.8);
-            RollerMotor2.set(.8);
+            if(Front)
+            {
+                RollerMotor1.set(1);
+                RollerMotor2.set(-1);
+            }
+            else
+            {
+                RollerMotor1.set(-1);
+                RollerMotor2.set(1);
+            }
         }
     }
     
