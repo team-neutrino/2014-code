@@ -49,10 +49,13 @@ public class Shooter implements Runnable
         
         LimitSwitch = new DigitalInput(ShooterConstants.LIMIT_SWITCH_CHANNEL);
         
-        BeamBreak = new DigitalInput(ShooterConstants.BEAM_BREAK_CHANNEL);
-        BeamBreakPower = new Solenoid(ShooterConstants.BEAM_BREAK_POWER_SLOT, ShooterConstants.BEAM_BREAK_POWER_CHANNEL);
-        
-        BeamBreakPower.set(true);
+        if(MainConstants.REAL_BOT)
+        {
+            BeamBreak = new DigitalInput(ShooterConstants.BEAM_BREAK_CHANNEL);
+            BeamBreakPower = new Solenoid(ShooterConstants.BEAM_BREAK_POWER_SLOT, ShooterConstants.BEAM_BREAK_POWER_CHANNEL);
+
+            BeamBreakPower.set(true);
+        }
         
         DriverStation = driverStation;
         DriverMessages = driverMessages;
@@ -166,7 +169,9 @@ public class Shooter implements Runnable
             
             //cock
             long startLoad = System.currentTimeMillis();
-            while(!LimitSwitch.get() && !BeamBreak.get() && (System.currentTimeMillis() - startLoad < 3000))
+            
+            //leave the order of the line below the same make sure the beambreak check is at the end
+            while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 3000) && MainConstants.REAL_BOT && !BeamBreak.get())
             {
                 if(DriverStation.isAutonomous())
                 {
