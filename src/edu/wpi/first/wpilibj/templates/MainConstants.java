@@ -40,6 +40,8 @@ public class MainConstants
     
     public static final int MANUAL_COCK_BUTTON = 9;
     
+    public static final int AUTO_COCK_BUTTON = 10;
+    
     //arms
     public static final int ALL_ARMS_UP_DRIVER = 3;
     public static final int ALL_ARMS_UP_GAMEPAD = 1; //7

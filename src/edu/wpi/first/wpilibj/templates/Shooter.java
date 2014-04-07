@@ -101,6 +101,19 @@ public class Shooter implements Runnable
         }
     }
     
+    public void cock()
+    {
+        //just cock the shooter
+        if (!Loading)
+        {
+            Lob = false;
+            Loaded = false;
+            Loading = true;
+            Thread thread = new Thread(this);
+            thread.start();
+        }
+    }
+    
     public void release()
     {
         //release the shooter without recocking
