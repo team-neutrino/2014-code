@@ -309,7 +309,7 @@ public class Main extends SimpleRobot
         Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
-        Thread.sleep(6000 - MainConstants.FORWARD_WAIT);
+        Thread.sleep(4000 - MainConstants.FORWARD_WAIT);
         Shooter.shootCock();
         Drive.traction(false);
     }
