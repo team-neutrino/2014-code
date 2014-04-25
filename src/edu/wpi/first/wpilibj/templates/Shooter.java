@@ -134,8 +134,8 @@ public class Shooter implements Runnable
             {
                 ReleasePistonIn.set(true);
                 ReleasePistonOut.set(false);
-                WinchMotor1.set(1);
-                WinchMotor2.set(1);
+                WinchMotor1.set(-1);
+                WinchMotor2.set(-1);
             }
             else
             {
@@ -188,13 +188,13 @@ public class Shooter implements Runnable
             {
                 if(DriverStation.isAutonomous())
                 {
-                    WinchMotor1.set(1); 
-                    WinchMotor2.set(1);
+                    WinchMotor1.set(-1); 
+                    WinchMotor2.set(-1);
                 }
                 else
                 {
-                    WinchMotor1.set(.7); 
-                    WinchMotor2.set(.7);
+                    WinchMotor1.set(-.7); 
+                    WinchMotor2.set(-.7);
                 }
                 Thread.sleep(5);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
@@ -202,8 +202,8 @@ public class Shooter implements Runnable
             
             while(!LimitSwitch.get() && (System.currentTimeMillis() - startLoad < 10000))
             {
-                WinchMotor1.set(.5);
-                WinchMotor2.set(.5);
+                WinchMotor1.set(-.5);
+                WinchMotor2.set(-.5);
                 Thread.sleep(1);
                 //System.out.println("Cocking: " + (System.currentTimeMillis() - startLoad));
             }
