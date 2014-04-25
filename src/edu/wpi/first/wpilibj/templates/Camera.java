@@ -42,7 +42,7 @@ public class Camera
         CameraLight.set(true);
         try
         {
-            Thread.sleep(1750);
+            Thread.sleep(1250);
         } catch (InterruptedException ex)
         {
             ex.printStackTrace();
