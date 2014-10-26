@@ -89,14 +89,7 @@ public class Main extends SimpleRobot
                 case 0://Do Nothing
                     break;
                 case 1://Shoot Hot & Mobility
-                    if(Camera.goalIsHot())
-                    {
-                        autoSHMHot();
-                    }
-                    else
-                    {
-                        autoSHMCold();
-                    }
+                    autoSHM();
                     break;
                 case 2:
                     break;
@@ -284,7 +277,7 @@ public class Main extends SimpleRobot
     }
 
     //Shoot Hot & Mobility
-    private void autoSHMHot() throws InterruptedException 
+    private void autoSHM() throws InterruptedException 
     {
         Drive.traction(true);
         //ArmFront.armDown(false);
@@ -294,22 +287,10 @@ public class Main extends SimpleRobot
         Thread.sleep(MainConstants.FORWARD_WAIT);
         Drive.setLeft(0);
         Drive.setRight(0);
-        Thread.sleep(1000);
-        Shooter.shootCock();
-        Drive.traction(false);
-    }
-
-    private void autoSHMCold() throws InterruptedException 
-    {
-        Drive.traction(true);
-        //ArmFront.armDown(false);
-        ArmBack.armDown(false);
-        Drive.setLeft(1);
-        Drive.setRight(1);
-        Thread.sleep(MainConstants.FORWARD_WAIT);
-        Drive.setLeft(0);
-        Drive.setRight(0);
-        Thread.sleep(6000 - MainConstants.FORWARD_WAIT);
+        if(Camera.goalIsHot())
+        {
+            Thread.sleep(6000 - MainConstants.FORWARD_WAIT);
+        }
         Shooter.shootCock();
         Drive.traction(false);
     }
