@@ -62,7 +62,7 @@ public class MainConstants
     private static void real() 
     {
         //Compressor
-        COMPRESSOR_SWITCH_CHANNEL = 4;
+        COMPRESSOR_SWITCH_CHANNEL = 1;
         COMPRESSOR_RELAY_CHANNEL = 4;
         
         //Camera
